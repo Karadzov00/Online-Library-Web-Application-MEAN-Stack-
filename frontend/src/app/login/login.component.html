@@ -1,1 +1,34 @@
-<p>login works!</p>
+<body>
+    <div class="topNav">
+        <ul>
+            <li class="pocetna">POCETNA</li>
+            <li><a (click) = "contactRedirect()" class="buttonONama">KONTAKT</a></li>
+            <li><a (click) = "aboutUsRedirect()" class="buttonDoNas">O NAMA</a></li>
+        </ul>
+    </div>
+
+    <div class="loginForm">
+        <h2 class="active">Dobrodosli</h2>
+        <form class="login">
+            <input type="text" class="text" name="username" [(ngModel)]="username">
+            <span>Username</span>
+            <br>
+            <br>
+            <input type="password" class="text" name="password" [(ngModel)]="password">
+            <span>Password</span>
+            <br>
+            <br>
+            <span class="typeSpan">Type</span>
+            <select name="type" class="type" [(ngModel)]="type">
+                <option value="admin">Admin</option>
+                <option value="moderator">Moderator</option>
+                <option value="citalac">Citalac</option>
+            </select>
+            <br>
+            <button class="signInDugme" (click)='login()'>Uloguj se</button>
+            <br>
+            <div *ngIf='errorMessage' class='errorClass'>{{errorMessage}}</div>
+        </form>
+        <hr>
+    </div>
+</body>
