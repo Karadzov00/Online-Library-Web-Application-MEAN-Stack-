@@ -3,7 +3,7 @@
     "lozinka": "karadzov123", 
     "ime": "Aleksandar",
     "prezime": "Karadzov",
-    "tip": "admin",
+    "tip": "citalac",
     "adresa": "Slogina 1",
     "telefon": "0641257227",
     "email": "karadzov@gmail.com"
@@ -13,7 +13,7 @@
     "lozinka": "neca123", 
     "ime": "Nemanja",
     "prezime": "Stanojkovic",
-    "tip": "korisnik",
+    "tip": "citalac",
     "adresa": "Krusevacka 35",
     "telefon": "0643456781",
     "email": "neca@gmail.com"
@@ -23,8 +23,18 @@
     "lozinka": "pero123", 
     "ime": "Petar",
     "prezime": "Jovanovic",
-    "tip": "korisnik",
+    "tip": "citalac",
     "adresa": "Zahumska 56",
     "telefon": "06413334441",
     "email": "perojov@gmail.com"
+}
+{
+    "kor_ime": "andrija",
+    "lozinka": "andrija123", 
+    "ime": "Andrija",
+    "prezime": "Stojanovic",
+    "tip": "citalac",
+    "adresa": "Vladetina 9",
+    "telefon": "0641333221",
+    "email": "andrija@gmail.com"
 }

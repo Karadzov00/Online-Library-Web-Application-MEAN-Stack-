@@ -1,9 +1,16 @@
 <body>
     <div class="topNav">
         <ul>
-            <li class="pocetna">POCETNA</li>
-            <li><a (click) = "contactRedirect()" class="buttonONama">KONTAKT</a></li>
-            <li><a (click) = "aboutUsRedirect()" class="buttonDoNas">O NAMA</a></li>
+            <li class="pocetna">
+                <a routerLink='/'>POCETNA</a>
+            </li>
+            <li>
+                <a routerLink='/register' class="buttonONama">REGISTRACIJA</a>
+            </li>
+            <li>
+                <a routerLink='/changePassword' class="buttonDoNas">PROMENA LOZINKE</a>        
+            </li>
+
         </ul>
     </div>
 
@@ -20,7 +27,6 @@
             <br>
             <span class="typeSpan">Type</span>
             <select name="type" class="type" [(ngModel)]="type">
-                <option value="admin">Admin</option>
                 <option value="moderator">Moderator</option>
                 <option value="citalac">Citalac</option>
             </select>

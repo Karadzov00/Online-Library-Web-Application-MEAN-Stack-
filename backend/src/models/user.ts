@@ -27,7 +27,7 @@ let User = new Schema(
         },
         email: {
             type: String
-        },
+        }
         
     }
 );

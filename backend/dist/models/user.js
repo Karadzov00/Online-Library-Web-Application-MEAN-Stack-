@@ -29,7 +29,7 @@ let User = new Schema({
     },
     email: {
         type: String
-    },
+    }
 });
 exports.default = mongoose_1.default.model("User", User, "korisnici");
 //# sourceMappingURL=user.js.map
