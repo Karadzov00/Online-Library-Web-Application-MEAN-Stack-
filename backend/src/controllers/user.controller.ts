@@ -26,7 +26,9 @@ export class UserController{
             tip: req.body.type,
             adresa: req.body.address,
             telefon: req.body.phone,
-            email: req.body.email
+            email: req.body.email,
+            status: req.body.status,
+            slika: req.body.image
         })
 
         user.save((err, resp)=>{

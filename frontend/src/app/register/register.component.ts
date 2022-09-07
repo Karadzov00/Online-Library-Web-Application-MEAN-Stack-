@@ -1,6 +1,7 @@
 import { ReturnStatement } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from '../model/user';
 import { RequestService } from '../request.service';
 import { UserService } from '../user.service';
 
@@ -21,6 +22,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.imageChosen=false; 
+    this.message="alert message"
   }
 
   username: string; 
@@ -54,10 +56,26 @@ export class RegisterComponent implements OnInit {
       this.message="Lozinka nije u ispravnom formatu!"; 
       return; 
     }
-    
 
+    if(this.userService.checkMobileNumber(this.phone)==false){
+      this.message="Broj telefona nije u ispravnom formatu!"; 
+      return; 
+    }
+
+    this.userService.findUser(this.username).subscribe((user:User)=>{
+      if(user!=null){
+        this.message="Vec postoji korisnik sa zadatim korisnickim imenom!"; 
+        return; 
+      }
+    })
+
+    let userImage; 
+    if(!this.imageChosen){
+      userImage='D:\PIA\Project22-library-managment\frontend\src\assets\no-user-image.jpg';
+    }
+    
     this.userService.register(this.username, this.password, this.firstname, 
-      this.lastname,this.type, this.address, this.phone, this.email, "na cekanju", this.image ).subscribe(
+      this.lastname,this.type, this.address, this.phone, this.email, "na cekanju", userImage ).subscribe(
         respObj=>{
           if(respObj['message']=='ok'){
             this.message='User added'         
@@ -79,9 +97,8 @@ export class RegisterComponent implements OnInit {
 
       this.selectedFile = new ImageSnippet(event.target.result, file);
       this.imageChosen=true; 
-
+      this.image=event.target.result; 
     });
-
 
     reader.readAsDataURL(file);
   }

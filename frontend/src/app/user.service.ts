@@ -89,6 +89,23 @@ export class UserService {
     return true; 
   }
 
+  checkEmail(email:String):boolean{
+    let mail:string = email.valueOf();
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail))
+    {
+      return true; 
+    }
+    return false; 
+  }
+
+  findUser(username:String){
+    const data={
+      username:username
+    }
+    return this.http.post(`${this.uri}/users/findUser`, data)
+
+  }
+
 
   public uploadImage(image: File) {
     const formData = new FormData();

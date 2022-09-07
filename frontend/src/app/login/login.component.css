@@ -14,14 +14,11 @@
     margin: auto;
     padding: 60px 60px;
     background: url(/assets/books-blured1.jpg) no-repeat center center #505050;
-
     background-size: cover;
     box-shadow: 0px 30px 60px -5px #000;
 }
 
-.loginForm::before{
-    filter: blur(2px);
-}
+
 
 .login{
     padding-top: 80px;
@@ -65,7 +62,7 @@ span{
     display: block;
     height: 15px;
     border-radius: 20px;
-    background: rgba(119, 113, 113, 0.299);
+    background: rgba(119, 113, 113, 0.562);
     border: 2px solid rgba(255, 255, 255, 0);
     overflow: hidden;
     margin-top: 15px;
@@ -92,7 +89,7 @@ a:hover {
 
 .type {
     width: 100%;
-    color: rgb(38, 50, 56);
+    color: rgba(255, 255, 255, 0.76);
     font-weight: 700;
     font-size: 14px;
     letter-spacing: 1px;
@@ -106,6 +103,7 @@ a:hover {
     margin-left: 0px;
     text-align: center;
     margin-bottom: 20px;
+    margin-top: 10px;
     font-family: 'Montserrat', sans-serif;
 }
 
