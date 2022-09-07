@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -33,19 +34,36 @@ export class UserService {
   image:string; 
   type:string;
    */
-  register(username, password, firstname, lastname, address, phone, email, image, type){
+  register(username, password, firstname, lastname, type, address, phone, email, status, image){
     const data={
       username: username,
       password: password,
       firstname: firstname,
       lastname: lastname,
+      type:type,
       address: address,
       phone: phone,
       email: email,
-      image: image,
-      type:type
+      status: status, 
+      image: image
     }
     return this.http.post(`${this.uri}/users/register`, data)
 
   }
+
+
+  checkPassword(password: String):boolean{
+    
+    return false; 
+  }
+
+
+  public uploadImage(image: File) {
+    const formData = new FormData();
+
+    formData.append('image', image);
+
+    return this.http.post('/api/v1/image-upload', formData);
+  }
+
 }

@@ -18,16 +18,16 @@
         <label for="validationCustom01">Ime</label>
         <input type="text" class="form-control" id="validationCustom01" placeholder="Ime"  required
         [(ngModel)]="firstname">
-        <div class="valid-feedback">
-          Looks good!
+        <div class="invalid-feedback">
+          Molimo vas unesite vaše ime
         </div>
       </div>
       <div class="col-md-4 mb-3">
         <label for="validationCustom02">Prezime</label>
         <input type="text" class="form-control" id="validationCustom02" placeholder="Prezime"  required
         [(ngModel)]="lastname">
-        <div class="valid-feedback">
-          Looks good!
+        <div class="invalid-feedback">
+            Molimo vas unesite vaše prezime
         </div>
       </div>
       <div class="col-md-4 mb-3">
@@ -39,8 +39,7 @@
           <input type="text" class="form-control" id="validationCustomUsername" placeholder="Korisničko ime" aria-describedby="inputGroupPrepend" required
           [(ngModel)]="username">
           <div class="invalid-feedback">
-          Molima vas unesite korisničko ime 
-            
+          Molimo vas unesite korisničko ime 
           </div>
         </div>
       </div>
@@ -50,11 +49,17 @@
             <label for="inputPassword3" class="col-sm-2 col-form-label">Lozinka</label>
             <input type="password" class="form-control" id="inputPassword3" placeholder="Lozinka"
             [(ngModel)]="password" required>
+            <div class="invalid-feedback">
+                Molima vas unesite lozinku 
+            </div>
         </div>
         <div class="col-md-3">
             <label for="inputPassword3" class="col-sm-2 col-form-label">Potvrdite lozinku</label>
             <input type="password" class="form-control" id="inputPassword3" placeholder="Lozinka"
             [(ngModel)]="password2" required>
+            <div class="invalid-feedback">
+                Molima vas potvrdite lozinku 
+            </div>
         </div>
     </div>
     <div class="form-row">
@@ -64,7 +69,6 @@
         [(ngModel)]="address">
         <div class="invalid-feedback">
             Molima vas unesite validnu adresu  
-          
         </div>
       </div>
       <div class="col-md-3 mb-3">
@@ -83,6 +87,13 @@
           Molimo vas unesite validnu email adresu 
         </div>
       </div>
+    </div>
+    <div class="form-group col-md-3">
+        <label for="exampleFormControlSelect1">Tip korisnika</label>
+        <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="type" placeholder="Izaberite tip">
+          <option value="citalac">Čitalac</option>
+          <option value="moderator">Moderator</option>
+        </select>
     </div>
     <div class="form-group">
         <label class="image-upload-container btn btn-bwm" id="validationCustom06">

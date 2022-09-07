@@ -7,4 +7,6 @@ export class User{
     adresa: string;
     telefon: string;
     email: string;
+    status: string; 
+    slika: string; 
 }

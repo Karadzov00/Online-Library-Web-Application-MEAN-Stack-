@@ -27,6 +27,12 @@ let User = new Schema(
         },
         email: {
             type: String
+        }, 
+        status: {
+            type: String
+        }, 
+        slika: {
+            type: String
         }
         
     }

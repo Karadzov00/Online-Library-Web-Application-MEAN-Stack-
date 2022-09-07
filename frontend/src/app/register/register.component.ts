@@ -1,8 +1,11 @@
+import { ReturnStatement } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { RequestService } from '../request.service';
 import { UserService } from '../user.service';
 
 
-class ImageSnippet {
+export class ImageSnippet {
   constructor(public src: string, public file: File) {}
 }
 
@@ -13,9 +16,11 @@ class ImageSnippet {
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private requestService: RequestService,
+    private router: Router) { }
 
   ngOnInit(): void {
+    this.imageChosen=false; 
   }
 
   username: string; 
@@ -30,10 +35,29 @@ export class RegisterComponent implements OnInit {
   type:string;
   message: string; 
   imageChosen: boolean; 
+  status: string; 
 
   register(){
+    //provera da li su sva polja popunjena 
+    if(!this.username || !this.password || !this.password2 || !this.firstname || !this.lastname ||
+      !this.address || !this.phone || !this.email || !this.type){
+        this.message="Sva polja su obavezna!"; 
+        return; 
+      }
+
+    if(this.password.localeCompare(this.password2)!=0){
+      this.message="Lozinka i potvrda lozinke moraju da budu iste!"; 
+      return; 
+    }
+
+    if(this.userService.checkPassword(this.password)==false){
+      this.message="Lozinka nije u ispravnom formatu!"; 
+      return; 
+    }
+    
+
     this.userService.register(this.username, this.password, this.firstname, 
-      this.lastname, this.address, this.phone, this.email, this.image, this.type).subscribe(
+      this.lastname,this.type, this.address, this.phone, this.email, "na cekanju", this.image ).subscribe(
         respObj=>{
           if(respObj['message']=='ok'){
             this.message='User added'         
@@ -54,8 +78,10 @@ export class RegisterComponent implements OnInit {
     reader.addEventListener('load', (event: any) => {
 
       this.selectedFile = new ImageSnippet(event.target.result, file);
+      this.imageChosen=true; 
 
     });
+
 
     reader.readAsDataURL(file);
   }
