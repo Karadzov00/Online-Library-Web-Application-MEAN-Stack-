@@ -53,8 +53,30 @@ export class UserService {
 
 
   checkPassword(password: String):boolean{
-    
+    let upper = false;     
+    let lower = false;     
+    let digits = false;
+    if(password.length<6){
+      return false;
+    }
+    for (let i = 0; i< password.length; i++) {
+      let character = password.charAt(i); 
+      if(/[a-z]/.test(character)){
+        lower=true; 
+      }
+      else if(/[A-Z]/.test(character)){
+        upper=true; 
+      }
+      else if(/[0-9]/.test(character)){
+        digits=true; 
+      }
+
+    }
+    if(upper && lower && digits){
+      return true; 
+    }
     return false; 
+    
   }
 
 
