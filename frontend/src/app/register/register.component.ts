@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 
+
+class ImageSnippet {
+  constructor(public src: string, public file: File) {}
+}
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -24,7 +29,7 @@ export class RegisterComponent implements OnInit {
   image:string; 
   type:string;
   message: string; 
-  
+  imageChosen: boolean; 
 
   register(){
     this.userService.register(this.username, this.password, this.firstname, 
@@ -38,7 +43,21 @@ export class RegisterComponent implements OnInit {
           }
         }
       )
+  }
 
+  selectedFile: ImageSnippet;
+
+  processFile(imageInput: any) {
+    const file: File = imageInput.files[0];
+    const reader = new FileReader();
+
+    reader.addEventListener('load', (event: any) => {
+
+      this.selectedFile = new ImageSnippet(event.target.result, file);
+
+    });
+
+    reader.readAsDataURL(file);
   }
 
 }

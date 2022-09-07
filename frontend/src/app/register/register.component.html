@@ -1,3 +1,17 @@
+<div class="topNav">
+    <ul>
+        <li class="pocetna">
+            <a routerLink='/'>POCETNA</a>
+        </li>
+        <li>
+            <a routerLink='/register' class="buttonONama">REGISTRACIJA</a>
+        </li>
+        <li>
+            <a routerLink='/changePassword' class="buttonDoNas">PROMENA LOZINKE</a>        
+        </li>
+
+    </ul>
+</div>
 <form class="needs-validation" novalidate>
     <div class="form-row">
       <div class="col-md-4 mb-3">
@@ -35,12 +49,12 @@
         <div class="col-md-3">
             <label for="inputPassword3" class="col-sm-2 col-form-label">Lozinka</label>
             <input type="password" class="form-control" id="inputPassword3" placeholder="Lozinka"
-            [(ngModel)]="password">
+            [(ngModel)]="password" required>
         </div>
         <div class="col-md-3">
             <label for="inputPassword3" class="col-sm-2 col-form-label">Potvrdite lozinku</label>
             <input type="password" class="form-control" id="inputPassword3" placeholder="Lozinka"
-            [(ngModel)]="password2">
+            [(ngModel)]="password2" required>
         </div>
     </div>
     <div class="form-row">
@@ -69,6 +83,16 @@
           Molimo vas unesite validnu email adresu 
         </div>
       </div>
+    </div>
+    <div class="form-group">
+        <label class="image-upload-container btn btn-bwm" id="validationCustom06">
+            <label for="validationCustom06">Izaberite sliku</label>
+            <input #imageInput
+                   type="file"
+                   accept="image/*"
+                   (change)="processFile(imageInput)" 
+                   class="form-control">
+          </label>
     </div>
     <div class="form-group">
       <div class="form-check">
