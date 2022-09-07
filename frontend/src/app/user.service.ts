@@ -79,6 +79,16 @@ export class UserService {
     
   }
 
+  checkMobileNumber(phone: String):boolean{
+    for (let i = 0; i< phone.length; i++) {
+      let character = phone.charAt(i); 
+      if(!(/[0-9]/.test(character))){
+        return false;  
+      }
+    }
+    return true; 
+  }
+
 
   public uploadImage(image: File) {
     const formData = new FormData();
