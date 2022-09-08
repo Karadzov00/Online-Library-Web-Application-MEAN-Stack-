@@ -29,6 +29,12 @@ let User = new Schema({
     },
     email: {
         type: String
+    },
+    status: {
+        type: String
+    },
+    slika: {
+        type: String
     }
 });
 exports.default = mongoose_1.default.model("User", User, "korisnici");

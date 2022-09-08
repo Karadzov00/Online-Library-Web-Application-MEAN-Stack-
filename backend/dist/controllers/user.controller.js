@@ -18,16 +18,27 @@ class UserController {
                     res.json(user);
             });
         };
+        this.findUser = (req, res) => {
+            let username = req.body.username;
+            user_1.default.findOne({ 'kor_ime': username }, (err, user) => {
+                if (err)
+                    console.log(err);
+                else
+                    res.json(user);
+            });
+        };
         this.register = (req, res) => {
             let user = new user_1.default({
-                kor_ime: req.body.firstname,
-                lozinka: req.body.lastname,
-                ime: req.body.username,
-                prezime: req.body.password,
+                kor_ime: req.body.username,
+                lozinka: req.body.password,
+                ime: req.body.firstname,
+                prezime: req.body.lastname,
                 tip: req.body.type,
                 adresa: req.body.address,
                 telefon: req.body.phone,
-                email: req.body.email
+                email: req.body.email,
+                status: req.body.status,
+                slika: req.body.image
             });
             user.save((err, resp) => {
                 if (err) {

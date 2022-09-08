@@ -16,13 +16,22 @@ export class UserController{
         
     }
 
+    findUser = (req: express.Request, res: express.Response)=>{
+        let username = req.body.username; 
+
+        User.findOne({'kor_ime':username}, (err, user)=>{
+            if(err)console.log(err); 
+            else res.json(user); 
+        })
+    }
+
 
     register = (req: express.Request, res: express.Response)=>{
         let user = new User({
-            kor_ime: req.body.firstname,
-            lozinka: req.body.lastname,
-            ime: req.body.username,
-            prezime: req.body.password,
+            kor_ime: req.body.username,
+            lozinka: req.body.password,
+            ime: req.body.firstname,
+            prezime: req.body.lastname,
             tip: req.body.type,
             adresa: req.body.address,
             telefon: req.body.phone,
@@ -39,6 +48,8 @@ export class UserController{
             else res.json({"message": "ok"})
         })
     }
+
+    
 
 
 

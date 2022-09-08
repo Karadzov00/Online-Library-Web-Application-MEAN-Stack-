@@ -1,23 +1,27 @@
-<div class="topNav">
-    <ul>
-        <li class="pocetna">
-            <a routerLink='/'>POCETNA</a>
-        </li>
-        <li>
-            <a routerLink='/register' class="buttonONama">REGISTRACIJA</a>
-        </li>
-        <li>
-            <a routerLink='/changePassword' class="buttonDoNas">PROMENA LOZINKE</a>        
-        </li>
-
-    </ul>
-</div>
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <div class="mx-auto d-sm-flex d-block flex-sm-nowrap">
+        <a class="btn btn-primary" href="#">POCETNA</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample11" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse text-center" id="navbarsExample11">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Prijava</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Registracija</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 <form class="needs-validation" novalidate>
     <div class="form-row">
       <div class="col-md-4 mb-3">
         <label for="validationCustom01">Ime</label>
         <input type="text" class="form-control" id="validationCustom01" placeholder="Ime"  required
-        [(ngModel)]="firstname">
+        [(ngModel)]="firstname" name="firstname">
         <div class="invalid-feedback">
           Molimo vas unesite vaše ime
         </div>
@@ -25,7 +29,7 @@
       <div class="col-md-4 mb-3">
         <label for="validationCustom02">Prezime</label>
         <input type="text" class="form-control" id="validationCustom02" placeholder="Prezime"  required
-        [(ngModel)]="lastname">
+        [(ngModel)]="lastname" name="lastname">
         <div class="invalid-feedback">
             Molimo vas unesite vaše prezime
         </div>
@@ -37,7 +41,7 @@
             <span class="input-group-text" id="inputGroupPrepend">@</span>
           </div>
           <input type="text" class="form-control" id="validationCustomUsername" placeholder="Korisničko ime" aria-describedby="inputGroupPrepend" required
-          [(ngModel)]="username">
+          [(ngModel)]="username" name="username">
           <div class="invalid-feedback">
           Molimo vas unesite korisničko ime 
           </div>
@@ -48,7 +52,7 @@
         <div class="col-md-3">
             <label for="inputPassword3" class="col-sm-2 col-form-label">Lozinka</label>
             <input type="password" class="form-control" id="inputPassword3" placeholder="Lozinka"
-            [(ngModel)]="password" required>
+            [(ngModel)]="password" name="password" required>
             <div class="invalid-feedback">
                 Molima vas unesite lozinku 
             </div>
@@ -56,7 +60,7 @@
         <div class="col-md-3">
             <label for="inputPassword3" class="col-sm-2 col-form-label">Potvrdite lozinku</label>
             <input type="password" class="form-control" id="inputPassword3" placeholder="Lozinka"
-            [(ngModel)]="password2" required>
+            [(ngModel)]="password2" name="password2" required>
             <div class="invalid-feedback">
                 Molima vas potvrdite lozinku 
             </div>
@@ -66,7 +70,7 @@
       <div class="col-md-6 mb-3">
         <label for="validationCustom03">Adresa</label>
         <input type="text" class="form-control" id="validationCustom03" placeholder="Adresa" required
-        [(ngModel)]="address">
+        [(ngModel)]="address" name="address">
         <div class="invalid-feedback">
             Molima vas unesite validnu adresu  
         </div>
@@ -74,7 +78,7 @@
       <div class="col-md-3 mb-3">
         <label for="validationCustom04">Telefon</label>
         <input type="text" class="form-control" id="validationCustom04" placeholder="Telefon" required
-        [(ngModel)]="phone">
+        [(ngModel)]="phone" name="phone">
         <div class="invalid-feedback">
           Molima vas unesite validan broj telefona 
         </div>
@@ -82,7 +86,7 @@
       <div class="col-md-3 mb-3">
         <label for="validationCustom05">Email adresa</label>
         <input type="text" class="form-control" id="validationCustom05" placeholder="Email" required
-        [(ngModel)]="email">
+        [(ngModel)]="email" name="email">
         <div class="invalid-feedback">
           Molimo vas unesite validnu email adresu 
         </div>
@@ -90,7 +94,7 @@
     </div>
     <div class="form-group col-md-3">
         <label for="exampleFormControlSelect1">Tip korisnika</label>
-        <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="type" placeholder="Izaberite tip">
+        <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="type" placeholder="Izaberite tip" name="type">
           <option value="citalac">Čitalac</option>
           <option value="moderator">Moderator</option>
         </select>
@@ -102,12 +106,13 @@
                    type="file"
                    accept="image/*"
                    (change)="processFile(imageInput)" 
-                   class="form-control">
+                   class="form-control"
+                   name="image">
           </label>
     </div>
     <div class="form-group">
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" name="check" required >
         <label class="form-check-label" for="invalidCheck">
           Slažem se sa uslovima korišćenja
         </label>
@@ -117,11 +122,16 @@
       </div>
     </div>
     <div class="col-md-3">
-        <div class="alert alert-danger " *ngIf="message">
+        <div class="alert alert-success " *ngIf="userAdded">
+          {{successMessage}}
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="alert alert-danger " *ngIf="!userAdded">
           {{message}}
         </div>
     </div>
-    <button class="btn btn-primary" type="submit">Submit form</button>
+    <button class="btn btn-primary" type="submit" name="register" (click)="register()">Submit form</button>
   </form>
   <script>
 

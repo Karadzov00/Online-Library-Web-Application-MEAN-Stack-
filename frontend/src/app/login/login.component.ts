@@ -46,4 +46,16 @@ export class LoginComponent implements OnInit {
 
   }
 
+
+  routerLogin(){
+    this.router.navigate(['login']);
+  }
+  routerHome(){
+    this.router.navigate(['']);
+  }
+  routerRegister(){
+    this.router.navigate(['register']);
+  }
+  
+
 }

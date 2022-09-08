@@ -6,7 +6,9 @@
     "tip": "citalac",
     "adresa": "Slogina 1",
     "telefon": "0641257227",
-    "email": "karadzov@gmail.com"
+    "email": "karadzov@gmail.com",
+    "status":"odobren",
+    "slika":"D:\PIA\Project22-library-managment\frontend\src\assets\no-user-image.jpg" 
 }
 {
     "kor_ime": "neca",
@@ -16,7 +18,9 @@
     "tip": "citalac",
     "adresa": "Krusevacka 35",
     "telefon": "0643456781",
-    "email": "neca@gmail.com"
+    "email": "neca@gmail.com",
+    "status":"odobren",
+    "slika":"D:\PIA\Project22-library-managment\frontend\src\assets\no-user-image.jpg" 
 }
 {
     "kor_ime": "pero",
@@ -26,7 +30,9 @@
     "tip": "citalac",
     "adresa": "Zahumska 56",
     "telefon": "06413334441",
-    "email": "perojov@gmail.com"
+    "email": "perojov@gmail.com",
+    "status":"odobren",
+    "slika":"D:\PIA\Project22-library-managment\frontend\src\assets\no-user-image.jpg"
 }
 {
     "kor_ime": "andrija",
@@ -36,5 +42,7 @@
     "tip": "citalac",
     "adresa": "Vladetina 9",
     "telefon": "0641333221",
-    "email": "andrija@gmail.com"
+    "email": "andrija@gmail.com",
+    "status":"odobren",
+    "slika":"D:\PIA\Project22-library-managment\frontend\src\assets\no-user-image.jpg"
 }

@@ -1,19 +1,21 @@
-<body>
-    <div class="topNav">
-        <ul>
-            <li class="pocetna">
-                <a routerLink='/'>POCETNA</a>
-            </li>
-            <li>
-                <a routerLink='/register' class="buttonONama">REGISTRACIJA</a>
-            </li>
-            <li>
-                <a routerLink='/changePassword' class="buttonDoNas">PROMENA LOZINKE</a>        
-            </li>
-
-        </ul>
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark ! important">
+    <div class="mx-auto d-sm-flex d-block flex-sm-nowrap">
+        <a class="btn btn-primary" role="button" (click)="routerHome()">POCETNA</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample11" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse text-center" id="navbarsExample11">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" role="button" (click)="routerLogin()">Prijava</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" role="button" (click)="routerRegister()">Registracija</a>
+                </li>
+            </ul>
+        </div>
     </div>
-
+</nav>
     <div class="loginForm">
         <h2 class="active">Dobrodosli</h2>
         <form class="login">
@@ -37,4 +39,3 @@
         </form>
         <hr>
     </div>
-</body>

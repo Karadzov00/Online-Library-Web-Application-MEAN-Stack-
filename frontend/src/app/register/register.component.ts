@@ -6,9 +6,7 @@ import { RequestService } from '../request.service';
 import { UserService } from '../user.service';
 
 
-export class ImageSnippet {
-  constructor(public src: string, public file: File) {}
-}
+
 
 @Component({
   selector: 'app-register',
@@ -22,7 +20,8 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.imageChosen=false; 
-    this.message="alert message"
+    this.userAdded=false; 
+    // this.message="Greska!"
   }
 
   username: string; 
@@ -38,56 +37,67 @@ export class RegisterComponent implements OnInit {
   message: string; 
   imageChosen: boolean; 
   status: string; 
+  userAdded:boolean; 
+  successMessage:string; 
 
   register(){
     //provera da li su sva polja popunjena 
     if(!this.username || !this.password || !this.password2 || !this.firstname || !this.lastname ||
       !this.address || !this.phone || !this.email || !this.type){
         this.message="Sva polja su obavezna!"; 
+        this.userAdded=false;    
         return; 
       }
 
     if(this.password.localeCompare(this.password2)!=0){
       this.message="Lozinka i potvrda lozinke moraju da budu iste!"; 
+      this.userAdded=false;    
       return; 
     }
 
     if(this.userService.checkPassword(this.password)==false){
       this.message="Lozinka nije u ispravnom formatu!"; 
+      this.userAdded=false;    
       return; 
     }
 
     if(this.userService.checkMobileNumber(this.phone)==false){
       this.message="Broj telefona nije u ispravnom formatu!"; 
+      this.userAdded=false;    
       return; 
     }
 
     this.userService.findUser(this.username).subscribe((user:User)=>{
       if(user!=null){
         this.message="Vec postoji korisnik sa zadatim korisnickim imenom!"; 
+        this.userAdded=false;    
         return; 
       }
     })
 
     let userImage; 
     if(!this.imageChosen){
-      userImage='D:\PIA\Project22-library-managment\frontend\src\assets\no-user-image.jpg';
+      
+    }
+    else{
+      userImage=this.image; 
     }
     
     this.userService.register(this.username, this.password, this.firstname, 
       this.lastname,this.type, this.address, this.phone, this.email, "na cekanju", userImage ).subscribe(
         respObj=>{
           if(respObj['message']=='ok'){
-            this.message='User added'         
+            this.successMessage='Korisnik je dodat'; 
+            this.userAdded=true;    
           }
           else{
-            this.message='Error'
+            this.message='Greska!'
           }
         }
       )
   }
 
-  selectedFile: ImageSnippet;
+  selectedFile: File;
 
   processFile(imageInput: any) {
     const file: File = imageInput.files[0];
@@ -95,7 +105,7 @@ export class RegisterComponent implements OnInit {
 
     reader.addEventListener('load', (event: any) => {
 
-      this.selectedFile = new ImageSnippet(event.target.result, file);
+      this.selectedFile = file; 
       this.imageChosen=true; 
       this.image=event.target.result; 
     });
