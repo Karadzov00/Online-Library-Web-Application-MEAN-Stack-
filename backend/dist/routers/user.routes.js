@@ -11,6 +11,5 @@ userRouter.route('/register').post((req, res) => new user_controller_1.UserContr
 userRouter.route('/findUser').post((req, res) => new user_controller_1.UserController().findUser(req, res));
 userRouter.route('/updatePassword').post((req, res) => new user_controller_1.UserController().updatePassword(req, res));
 userRouter.route('/getNoUserImage').get((req, res) => new user_controller_1.UserController().getNoUserImage(req, res));
-userRouter.route('/uploadFile').post();
 exports.default = userRouter;
 //# sourceMappingURL=user.routes.js.map

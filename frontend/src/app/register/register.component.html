@@ -82,7 +82,7 @@
             <option value="moderator">Moderator</option>
           </select>
       </div>
-      <!-- <div class="form-group">
+      <div class="form-group">
           <label class="image-upload-container btn btn-bwm" id="validationCustom06">
               <label for="validationCustom06">Izaberite sliku</label>
               <input #imageInput
@@ -92,13 +92,16 @@
                     class="form-control"
                     name="image">
             </label>
-      </div> -->
-      <div class="form-group col-md-3">
-        <form action="/uploadfile" enctype="multipart/form-data" method="POST"> 
-          <input type="file" name="myFile" class="form-control" />
+      </div>
+      <!-- <div class="form-group col-md-3">
+        <form action="/profile" enctype="multipart/form-data" method="POST"> 
+          <input type="file" name="avatar" class="form-control" />
           <input type="submit" value="Upload a file" class="form-control"/>
        </form>
-      </div>
+      </div> -->
+      <!-- <form action="/profile" method="post" enctype="multipart/form-data">
+        <input type="file" name="avatar" />
+      </form> -->
       <div class="form-group">
         <div class="form-check">
           <input class="form-check-input" type="checkbox" value="" id="invalidCheck" name="check" required >
