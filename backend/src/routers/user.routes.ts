@@ -24,4 +24,7 @@ userRouter.route('/getNoUserImage').get(
     (req, res) => new UserController().getNoUserImage(req, res)
 )
 
+
+
+
 export default userRouter; 
