@@ -12,7 +12,7 @@ export class AppComponent {
   constructor(private router: Router) {}
 
   routerLogin(){
-    this.router.navigate(['login']);
+    this.router.navigate(['']);
   }
   routerHome(){
     this.router.navigate(['']);
