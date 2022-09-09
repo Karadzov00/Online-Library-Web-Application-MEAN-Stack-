@@ -98,7 +98,7 @@ export class UserService {
     return false; 
   }
 
-  findUser(username:String){
+  findUser(username){
     const data={
       username:username
     }

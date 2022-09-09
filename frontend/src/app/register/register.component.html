@@ -121,14 +121,16 @@
         </div>
       </div>
     </div>
-    <div class="col-md-3">
-        <div class="alert alert-success " *ngIf="userAdded">
-          {{successMessage}}
+    <div *ngIf="showAlert">
+        <div class="col-md-3">
+            <div class="alert alert-success " *ngIf="userAdded">
+            {{successMessage}}
+            </div>
         </div>
-    </div>
-    <div class="col-md-3">
-        <div class="alert alert-danger " *ngIf="!userAdded">
-          {{message}}
+        <div class="col-md-3">
+            <div class="alert alert-danger " *ngIf="!userAdded">
+            {{message}}
+            </div>
         </div>
     </div>
     <button class="btn btn-primary" type="submit" name="register" (click)="register()">Submit form</button>

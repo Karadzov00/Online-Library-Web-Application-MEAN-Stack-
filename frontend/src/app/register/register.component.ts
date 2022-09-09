@@ -21,6 +21,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     this.imageChosen=false; 
     this.userAdded=false; 
+    this.exitFunc=false; 
     // this.message="Greska!"
   }
 
@@ -38,10 +39,14 @@ export class RegisterComponent implements OnInit {
   imageChosen: boolean; 
   status: string; 
   userAdded:boolean; 
-  successMessage:string; 
+  successMessage:string;
+  
+  exitFunc:boolean;  
+  showAlert=false; 
 
   register(){
     //provera da li su sva polja popunjena 
+    this.showAlert=true; 
     if(!this.username || !this.password || !this.password2 || !this.firstname || !this.lastname ||
       !this.address || !this.phone || !this.email || !this.type){
         this.message="Sva polja su obavezna!"; 
@@ -70,10 +75,14 @@ export class RegisterComponent implements OnInit {
     this.userService.findUser(this.username).subscribe((user:User)=>{
       if(user!=null){
         this.message="Vec postoji korisnik sa zadatim korisnickim imenom!"; 
-        this.userAdded=false;    
+        this.userAdded=false; 
+        this.exitFunc=true; 
+
         return; 
       }
     })
+
+    if(!this.userAdded && this.exitFunc)return; 
 
     let userImage; 
     if(!this.imageChosen){
