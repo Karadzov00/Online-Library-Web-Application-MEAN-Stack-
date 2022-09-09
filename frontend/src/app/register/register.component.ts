@@ -104,10 +104,12 @@ export class RegisterComponent implements OnInit {
       })
     }
     else{
-      console.log("dohvacen no user image"); 
+      console.log("dohvacen image preko forme"); 
       this.userImage=this.image; 
     }
-
+    if(this.userImage){
+      console.log("dohvacen image"); 
+    }
     console.log(this.userImage); 
 
         
