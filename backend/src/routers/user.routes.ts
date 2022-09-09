@@ -15,5 +15,8 @@ userRouter.route('/register').post(
 userRouter.route('/findUser').post(
     (req, res) => new UserController().findUser(req, res)
 )
+userRouter.route('/getNoUserImage').get(
+    (req, res) => new UserController().getNoUserImage(req, res)
+)
 
 export default userRouter; 

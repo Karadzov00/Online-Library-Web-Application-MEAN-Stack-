@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserController = void 0;
 const user_1 = __importDefault(require("../models/user"));
+const image_1 = __importDefault(require("../models/image"));
 class UserController {
     constructor() {
         this.login = (req, res) => {
@@ -25,6 +26,14 @@ class UserController {
                     console.log(err);
                 else
                     res.json(user);
+            });
+        };
+        this.getNoUserImage = (req, res) => {
+            image_1.default.findOne({ 'id': 1 }, (err, image) => {
+                if (err)
+                    console.log(err);
+                else
+                    res.json(image);
             });
         };
         this.register = (req, res) => {

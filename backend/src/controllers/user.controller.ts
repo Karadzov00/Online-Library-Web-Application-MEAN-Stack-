@@ -1,5 +1,6 @@
 import express from "express";
 import User from "../models/user"
+import Image from "../models/image"
 
 
 export class UserController{
@@ -22,6 +23,13 @@ export class UserController{
         User.findOne({'kor_ime':username}, (err, user)=>{
             if(err)console.log(err); 
             else res.json(user); 
+        })
+    }
+
+    getNoUserImage = (req: express.Request, res: express.Response)=>{
+        Image.findOne({'id':1}, (err, image)=>{
+            if(err)console.log(err); 
+            else res.json(image); 
         })
     }
 

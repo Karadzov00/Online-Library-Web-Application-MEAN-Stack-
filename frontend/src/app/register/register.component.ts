@@ -1,6 +1,7 @@
 import { ReturnStatement } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Image } from '../model/image';
 import { User } from '../model/user';
 import { RequestService } from '../request.service';
 import { UserService } from '../user.service';
@@ -43,6 +44,7 @@ export class RegisterComponent implements OnInit {
   
   exitFunc:boolean;  
   showAlert=false; 
+  userImage:string; 
 
   register(){
     //provera da li su sva polja popunjena 
@@ -84,16 +86,33 @@ export class RegisterComponent implements OnInit {
 
     if(!this.userAdded && this.exitFunc)return; 
 
-    let userImage; 
+ 
     if(!this.imageChosen){
-      
+      this.userService.getNoUserImage().subscribe((image:Image)=>{
+        if(image){
+          console.log("dohvacen no user image"); 
+          this.userImage=image.slika; 
+          console.log(this.userImage); 
+        }
+        else{
+          this.message="Greska pri dohvatanju slike!"; 
+          this.userAdded=false; 
+          this.exitFunc=true; 
+  
+          return; 
+        }
+      })
     }
     else{
-      userImage=this.image; 
+      console.log("dohvacen no user image"); 
+      this.userImage=this.image; 
     }
-    
+
+    console.log(this.userImage); 
+
+        
     this.userService.register(this.username, this.password, this.firstname, 
-      this.lastname,this.type, this.address, this.phone, this.email, "na cekanju", userImage ).subscribe(
+      this.lastname,this.type, this.address, this.phone, this.email, "na cekanju", this.userImage ).subscribe(
         respObj=>{
           if(respObj['message']=='ok'){
             this.successMessage='Korisnik je dodat'; 
