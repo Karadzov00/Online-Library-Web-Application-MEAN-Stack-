@@ -106,6 +106,10 @@ export class UserService {
 
   }
 
+  getNoUserImage(){
+    return this.http.get(`${this.uri}/users/getNoUserImage`)
+  }
+
 
   public uploadImage(image: File) {
     const formData = new FormData();
