@@ -58,7 +58,17 @@ export class UserController{
     }
 
     
+    updatePassword = (req: express.Request, res: express.Response)=>{
+        let username= req.body.username;
+        let password= req.body.password;
 
+        User.updateOne({'kor_ime':username}, {$set: {'lozinka':password}}, (err, resp)=>{
+            if(err) console.log(err)
+            else {
+                res.json({'message': 'ok'})
+            }
+        })
+    }
 
 
 }

@@ -119,6 +119,15 @@ export class UserService {
     return this.http.post('/api/v1/image-upload', formData);
   }
 
+  updatePassword(username, password){
+    const data={
+      username:username,
+      password:password
+    }
+    return this.http.post(`${this.uri}/users/updatePassword`, data)
+
+  }
+
 
 
 }

@@ -15,6 +15,11 @@ userRouter.route('/register').post(
 userRouter.route('/findUser').post(
     (req, res) => new UserController().findUser(req, res)
 )
+
+userRouter.route('/updatePassword').post(
+    (req, res) => new UserController().updatePassword(req, res)
+)
+
 userRouter.route('/getNoUserImage').get(
     (req, res) => new UserController().getNoUserImage(req, res)
 )

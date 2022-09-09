@@ -58,6 +58,17 @@ class UserController {
                     res.json({ "message": "ok" });
             });
         };
+        this.updatePassword = (req, res) => {
+            let username = req.body.username;
+            let password = req.body.password;
+            user_1.default.updateOne({ 'kor_ime': username }, { $set: { 'lozinka': password } }, (err, resp) => {
+                if (err)
+                    console.log(err);
+                else {
+                    res.json({ 'message': 'ok' });
+                }
+            });
+        };
     }
 }
 exports.UserController = UserController;

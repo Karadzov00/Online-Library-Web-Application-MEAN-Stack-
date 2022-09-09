@@ -54,9 +54,27 @@ export class ChangePasswordComponent implements OnInit {
       return;
     }
 
-    //updatePassword(); 
+    if(this.userService.checkPassword(this.password2)==false){
+      this.message="Uneta lozinka nije u dobrom formatu!"; 
+      this.showAlert=true; 
+      this.passwordChanged=false; 
+      return;
+    }
 
-
+    this.userService.updatePassword(this.user.kor_ime, this.password2).subscribe(
+      respObj=>{
+        if(respObj['message']=='ok'){
+          this.showAlert=true; 
+          this.passwordChanged=true; 
+          this.message='Lozinka je uspesno promenjena'; 
+        }
+        else{
+          this.showAlert=true; 
+          this.passwordChanged=true; 
+          this.message='Greska!'
+        }
+      }
+    )
 
   }
 }
