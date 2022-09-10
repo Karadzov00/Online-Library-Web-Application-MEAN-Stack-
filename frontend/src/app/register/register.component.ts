@@ -141,4 +141,15 @@ export class RegisterComponent implements OnInit {
     reader.readAsDataURL(file);
   }
 
+  routerLogin(){
+    this.router.navigate(['login']);
+  }
+  routerHome(){
+    this.router.navigate(['']);
+  }
+  routerRegister(){
+    this.router.navigate(['register']);
+  }
+  
+
 }

@@ -8,12 +8,13 @@ import { ReaderComponent } from './reader/reader.component';
 import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
-  {path: '', component: LoginComponent},
+  {path: '', component: HomepageComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'changePassword', component: ChangePasswordComponent},
   {path: 'reader', component: ReaderComponent},
   {path: 'moderator', component: ModeratorComponent},
-  {path: 'homepage', component: HomepageComponent}
+  {path: 'homepage', component: HomepageComponent},
+  {path: 'login', component: LoginComponent}
 ];
 
 @NgModule({

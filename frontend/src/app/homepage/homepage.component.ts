@@ -30,6 +30,16 @@ export class HomepageComponent implements OnInit {
 
   books: Book[]; 
 
+  routerLogin(){
+    this.router.navigate(['login']);
+  }
+  routerHome(){
+    this.router.navigate(['']);
+  }
+  routerRegister(){
+    this.router.navigate(['register']);
+  }
+
 
 
 }

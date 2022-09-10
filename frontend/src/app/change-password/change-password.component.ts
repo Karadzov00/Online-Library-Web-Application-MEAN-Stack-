@@ -77,4 +77,14 @@ export class ChangePasswordComponent implements OnInit {
     )
 
   }
+
+  routerLogin(){
+    this.router.navigate(['']);
+  }
+  routerHome(){
+    this.router.navigate(['']);
+  }
+  routerRegister(){
+    this.router.navigate(['register']);
+  }
 }
