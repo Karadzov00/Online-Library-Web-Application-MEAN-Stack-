@@ -19,6 +19,12 @@ export class ReaderComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem('loggedUser')); 
     console.log(this.user); 
     this.userImage= this.user.slika; 
+    this.booksService.fetchAllBooks().subscribe((books:Book[])=>{
+      console.log(books)
+      let maxId = books.length; 
+      console.log("max id je");
+      console.log(maxId);
+    })
   }
 
   changePassword(){
@@ -31,6 +37,9 @@ export class ReaderComponent implements OnInit {
   image:String; 
   imageDB:String; 
   book:Book; 
+
+  maxId:number;
+  randomId:Number;  
 
 
   user:User; 

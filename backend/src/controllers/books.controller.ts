@@ -8,7 +8,7 @@ export class BooksController{
     
         Book.find().sort({'broj uzimanja':-1}).limit(3).then(books=>{
             res.json(books)
-            console.log(books); 
+            // console.log(books); 
         }).catch(err=>{
             res.json(err)
         })
@@ -21,5 +21,29 @@ export class BooksController{
             else res.json(user); 
         })
     }
+
+    getRandomBook = (req: express.Request, res: express.Response)=>{
+       
+    }
+
+    getHighestId = (req: express.Request, res: express.Response)=>{
+        Book.find().sort({'id':-1}).limit(1).then(book=>{
+            console.log("knjiga sa max id je"); 
+            console.log(book); 
+            res.json(book)
+        }).catch(err=>{
+            res.json(err)
+        })
+    }
+
+    fetchAllBooks = (req: express.Request, res: express.Response)=>{
+        Book.find({},(err, books)=>{
+            if(err)console.log(err); 
+            else res.json(books); 
+        })
+    }
+
+
+
 
 }
