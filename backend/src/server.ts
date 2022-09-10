@@ -2,6 +2,7 @@ import express, { Request } from 'express';
 import cors from 'cors'
 import mongoose from 'mongoose'
 import userRouter from './routers/user.routes';
+import booksRouter from './routers/books.routes';
 
 
 const multer = require('multer'); 
@@ -34,6 +35,7 @@ connection.once('open', ()=>{
 
 const router = express.Router();
 router.use('/users', userRouter);
+router.use('/books', booksRouter);
 router.use('/', userRouter);
 
 

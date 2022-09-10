@@ -11,6 +11,7 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { ReaderComponent } from './reader/reader.component';
 import { ModeratorComponent } from './moderator/moderator.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HomepageComponent } from './homepage/homepage.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     RegisterComponent,
     ChangePasswordComponent,
     ReaderComponent,
-    ModeratorComponent
+    ModeratorComponent,
+    HomepageComponent
   ],
   imports: [
     BrowserModule,
