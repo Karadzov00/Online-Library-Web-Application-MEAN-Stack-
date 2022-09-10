@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../model/user';
 import { UserService } from '../user.service';
+import { Image } from '../model/image';
+
 
 @Component({
   selector: 'app-login',
@@ -13,7 +15,12 @@ export class LoginComponent implements OnInit {
   constructor(private userService: UserService, private router:Router) { }
 
   ngOnInit(): void {
-    localStorage.clear(); 
+    localStorage.clear();
+    this.userService.getNoUserImage().subscribe((image:Image)=>{
+      if(image){
+        this.image=image.slika; 
+      }
+    }) 
   }
 
 
@@ -21,6 +28,7 @@ export class LoginComponent implements OnInit {
   password: string; 
   type: string; 
   errorMessage: string; 
+  image:string; 
  
 
   login(){

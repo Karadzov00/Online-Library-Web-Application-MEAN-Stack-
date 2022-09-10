@@ -29,14 +29,14 @@ export class HomepageComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem('loggedUser')); 
     this.userService.getNoUserImage().subscribe((image:Image)=>{
       if(image){
-
         this.noUserImage=image.slika; 
-        // console.log("dohvacen no user image"); 
-        // console.log(this.noUserImage); 
+        console.log("dohvacen no user image"); 
+        console.log(this.noUserImage); 
       }
     })
     if(!this.user){
       this.image=this.noUserImage;
+      console.log("setovan no user image")
     }
     else{
       this.image=this.user.slika;
@@ -65,6 +65,7 @@ export class HomepageComponent implements OnInit {
   logout(){
     localStorage.clear(); 
     this.user=null;
+    this.image=this.noUserImage; 
     this.router.navigate(['']);
   }
 
