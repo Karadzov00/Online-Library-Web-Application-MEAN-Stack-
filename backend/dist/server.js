@@ -7,6 +7,7 @@ const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const user_routes_1 = __importDefault(require("./routers/user.routes"));
+const books_routes_1 = __importDefault(require("./routers/books.routes"));
 const multer = require('multer');
 const upload = multer({ dest: 'uploads/' });
 const app = (0, express_1.default)();
@@ -27,6 +28,7 @@ connection.once('open', () => {
 });
 const router = express_1.default.Router();
 router.use('/users', user_routes_1.default);
+router.use('/books', books_routes_1.default);
 router.use('/', user_routes_1.default);
 app.use('/', router);
 app.listen(4000, () => console.log(`Express server running on port 4000`));

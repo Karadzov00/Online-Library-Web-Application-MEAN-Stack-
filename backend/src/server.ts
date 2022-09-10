@@ -22,7 +22,6 @@ interface MulterRequest extends Request {
 app.post('/profile', upload.single('avatar'), function (req, res, next) {
     // req.file is the `avatar` file
     // req.body will hold the text fields, if there were any
-    console.log("usao na backend")
     console.log((req as MulterRequest).file); 
 })
 
