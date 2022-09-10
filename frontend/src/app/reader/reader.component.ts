@@ -1,7 +1,10 @@
+import { JsonPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BooksService } from '../books.service';
 import { Book } from '../model/book';
+import { User } from '../model/user';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-reader',
@@ -10,18 +13,12 @@ import { Book } from '../model/book';
 })
 export class ReaderComponent implements OnInit {
 
-  constructor(private router:Router, private booksService:BooksService) { }
+  constructor(private router:Router, private booksService:BooksService, private userService:UserService) { }
 
   ngOnInit(): void {
-    this.booksService.getAtomicHabits().subscribe((book:Book)=>{
-      if(book){
-        this.book=book; 
-        this.imageDB=book.slika;
-        
-        console.log("knjiga dohvacena!"); 
-        console.log(book); 
-      }
-    })
+    this.user = JSON.parse(localStorage.getItem('loggedUser')); 
+    console.log(this.user); 
+    this.userImage= this.user.slika; 
   }
 
   changePassword(){
@@ -34,6 +31,10 @@ export class ReaderComponent implements OnInit {
   image:String; 
   imageDB:String; 
   book:Book; 
+
+
+  user:User; 
+  userImage: string; 
 
   processFile(imageInput: any) {
     const file: File = imageInput.files[0];
@@ -48,5 +49,18 @@ export class ReaderComponent implements OnInit {
     });
 
     reader.readAsDataURL(file);
+  }
+
+
+
+  logout(){
+    localStorage.clear(); 
+    this.router.navigate(['']);
+  }
+  routerHome(){
+    this.router.navigate(['']);
+  }
+  routerRegister(){
+    this.router.navigate(['register']);
   }
 }
