@@ -10,7 +10,7 @@ class BooksController {
         this.getTop3Books = (req, res) => {
         };
         this.getAtomicHabits = (req, res) => {
-            book_1.default.findOne({ 'naziv': 'Hari Poter i zatvorenik iz Askabana' }, (err, user) => {
+            book_1.default.findOne({ 'naziv': 'Atomske navike' }, (err, user) => {
                 if (err)
                     console.log(err);
                 else

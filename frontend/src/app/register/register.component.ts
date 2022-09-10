@@ -23,6 +23,15 @@ export class RegisterComponent implements OnInit {
     this.imageChosen=false; 
     this.userAdded=false; 
     this.exitFunc=false; 
+
+    this.userService.getNoUserImage().subscribe((image:Image)=>{
+      if(image){
+
+        this.noUserImage=image.slika; 
+        console.log("dohvacen no user image"); 
+        console.log(this.noUserImage); 
+      }
+    })
     // this.message="Greska!"
   }
 
@@ -45,6 +54,7 @@ export class RegisterComponent implements OnInit {
   exitFunc:boolean;  
   showAlert=false; 
   userImage:string; 
+  noUserImage:string; 
 
   register(){
     //provera da li su sva polja popunjena 
@@ -87,26 +97,14 @@ export class RegisterComponent implements OnInit {
     if(!this.userAdded && this.exitFunc)return; 
 
  
-    if(!this.imageChosen){
-      this.userService.getNoUserImage().subscribe((image:Image)=>{
-        if(image){
-          console.log("dohvacen no user image"); 
-          this.userImage=image.slika; 
-          console.log(this.userImage); 
-        }
-        else{
-          this.message="Greska pri dohvatanju slike!"; 
-          this.userAdded=false; 
-          this.exitFunc=true; 
-  
-          return; 
-        }
-      })
+    if(!this.selectedFile){
+      this.userImage=this.noUserImage; 
     }
     else{
       console.log("dohvacen image preko forme"); 
       this.userImage=this.image; 
     }
+
     if(this.userImage){
       console.log("dohvacen image"); 
     }
