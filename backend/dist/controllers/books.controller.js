@@ -8,6 +8,12 @@ const book_1 = __importDefault(require("../models/book"));
 class BooksController {
     constructor() {
         this.getTop3Books = (req, res) => {
+            book_1.default.find().sort({ 'broj uzimanja': -1 }).limit(3).then(books => {
+                res.json(books);
+                console.log(books);
+            }).catch(err => {
+                res.json(err);
+            });
         };
         this.getAtomicHabits = (req, res) => {
             book_1.default.findOne({ 'naziv': 'Atomske navike' }, (err, user) => {

@@ -13,6 +13,7 @@ export class BooksService {
   getTop3Books(){
     return this.http.get(`${this.uri}/books/getTop3Books`); 
   }
+  
   getAtomicHabits(){
     return this.http.get(`${this.uri}/books/getAtomicHabits`); 
   }

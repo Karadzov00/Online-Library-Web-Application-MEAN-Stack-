@@ -4,6 +4,12 @@ import Book from "../models/book"
 export class BooksController{
 
     getTop3Books = (req: express.Request, res: express.Response)=>{
+        Book.find().sort({'broj uzimanja':-1}).limit(3).then(books=>{
+            res.json(books)
+            console.log(books); 
+        }).catch(err=>{
+            res.json(err)
+        })
         
     }
 

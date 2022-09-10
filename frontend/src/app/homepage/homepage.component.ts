@@ -13,15 +13,23 @@ export class HomepageComponent implements OnInit {
   constructor(private router:Router, private booksService: BooksService ) { }
 
   ngOnInit(): void {
-    this.images = [`assets/atomic_habits`, `assets/hari_poter1`, `assets/hari_poter2`];
-    
+    this.booksService.getTop3Books().subscribe((books:Book[])=>{
+      this.books=books; 
+      console.log(books); 
+      this.images = [
+        books[0].slika,
+        books[1].slika,
+        books[2].slika
+      ]
+    })  
   }
 
   // images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
 
-  images: string[]; 
-
+  images: String[]; 
 
   books: Book[]; 
+
+
 
 }
