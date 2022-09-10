@@ -9,4 +9,5 @@ export class Book{
     broj_uzimanja:number;
     prosecna_ocena:number; 
     na_stanju: number; 
+    slika: string; 
 }

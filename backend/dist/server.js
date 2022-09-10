@@ -18,7 +18,6 @@ app.use(express_1.default.urlencoded({ limit: '100mb' }));
 app.post('/profile', upload.single('avatar'), function (req, res, next) {
     // req.file is the `avatar` file
     // req.body will hold the text fields, if there were any
-    console.log("usao na backend");
     console.log(req.file);
 });
 mongoose_1.default.connect('mongodb://localhost:27017/biblioteka');

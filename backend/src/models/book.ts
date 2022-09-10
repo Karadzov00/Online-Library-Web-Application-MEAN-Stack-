@@ -33,7 +33,10 @@ let Book = new Schema(
         },
         na_stanju:{
             type: Number
-        }     
+        },
+        slika:{
+            type:String
+        }    
     }
 )
 
