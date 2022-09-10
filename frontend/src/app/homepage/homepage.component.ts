@@ -18,7 +18,7 @@ export class HomepageComponent implements OnInit {
   ngOnInit(): void {
     this.booksService.getTop3Books().subscribe((books:Book[])=>{
       this.books=books; 
-      console.log(books); 
+      // console.log(books); 
       this.images = [
         books[0].slika,
         books[1].slika,
@@ -30,13 +30,13 @@ export class HomepageComponent implements OnInit {
     this.userService.getNoUserImage().subscribe((image:Image)=>{
       if(image){
         this.noUserImage=image.slika; 
-        console.log("dohvacen no user image"); 
-        console.log(this.noUserImage); 
+        // console.log("dohvacen no user image"); 
+        // console.log(this.noUserImage); 
       }
     })
     if(!this.user){
       this.image=this.noUserImage;
-      console.log("setovan no user image")
+      // console.log("setovan no user image")
     }
     else{
       this.image=this.user.slika;

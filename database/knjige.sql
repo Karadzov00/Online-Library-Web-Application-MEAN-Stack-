@@ -49,3 +49,15 @@
     "na stanju":"5"
 
 }
+{
+    "id":"4",
+    "naziv":"Porces",
+    "autor":"Proces",
+    "zanr":"roman",
+    "izdavac":"Delfi",
+    "godina izdavanja":"2017",
+    "jezik":"srpski",
+    "broj uzimanja":"30",
+    "prosecna ocena":"9.1",
+    "na stanju":"10"
+}

@@ -59,6 +59,7 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['login']);
   }
   routerHome(){
+    localStorage.clear(); 
     this.router.navigate(['']);
   }
   routerRegister(){
