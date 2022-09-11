@@ -4,6 +4,7 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { HomepageComponent } from './homepage/homepage.component';
 import { LoginComponent } from './login/login.component';
 import { ModeratorComponent } from './moderator/moderator.component';
+import { ProfileComponent } from './profile/profile.component';
 import { ReaderComponent } from './reader/reader.component';
 import { RegisterComponent } from './register/register.component';
 
@@ -14,7 +15,8 @@ const routes: Routes = [
   {path: 'reader', component: ReaderComponent},
   {path: 'moderator', component: ModeratorComponent},
   {path: 'homepage', component: HomepageComponent},
-  {path: 'login', component: LoginComponent}
+  {path: 'login', component: LoginComponent},
+  {path: 'profile', component: ProfileComponent}
 ];
 
 @NgModule({

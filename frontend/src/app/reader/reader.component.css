@@ -4,8 +4,9 @@
 
 
 .example-card {
-    width: 300px;
-  }
+    width: 280px;
+    margin-top: 20px;
+}
   
 #cover{
     height: 300px;

@@ -93,9 +93,11 @@ export class ReaderComponent implements OnInit {
     this.router.navigate(['']);
   }
   routerHome(){
-    this.router.navigate(['']);
+    this.router.navigate(['reader']);
   }
-  routerRegister(){
-    this.router.navigate(['register']);
+  routerProfile(){
+    this.router.navigate(['profile']);
   }
+  
+
 }
