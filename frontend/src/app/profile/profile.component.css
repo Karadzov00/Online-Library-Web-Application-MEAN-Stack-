@@ -1,0 +1,35 @@
+#avatar{
+    border-radius: 50%;
+}
+
+#main{
+    margin-top: 50px;
+
+}
+
+#image{
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+
+}
+
+#content{
+    
+}
+
+#card{
+    background-color: rgba(187, 187, 187, 0.199);
+    width: 350px;
+    height: 480px;
+}
+
+#head{
+    text-align: center;
+}
+
+#tab{
+margin-top: 30px;
+
+}

@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {  Router } from '@angular/router';
+import { BooksService } from '../books.service';
+import { User } from '../model/user';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-profile',
@@ -7,9 +11,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router, private userService: UserService,
+    private booksService: BooksService) { }
 
   ngOnInit(): void {
+    this.user = JSON.parse(localStorage.getItem('loggedUser')); 
+
+  }
+
+  user:User; 
+  
+  logout(){
+    localStorage.clear(); 
+    this.router.navigate(['']);
+  }
+  routerHome(){
+    this.router.navigate(['reader']);
+  }
+  routerProfile(){
+    this.router.navigate(['profile']);
+  }
+  changePassword(){
+    this.router.navigate(['changePassword']);
   }
 
 }

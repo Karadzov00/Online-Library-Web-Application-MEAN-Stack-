@@ -53,9 +53,7 @@ export class ReaderComponent implements OnInit {
     })
   }
 
-  changePassword(){
-    this.router.navigate(['changePassword']);
-  }
+ 
 
 
   selectedFile: File;
@@ -97,6 +95,9 @@ export class ReaderComponent implements OnInit {
   }
   routerProfile(){
     this.router.navigate(['profile']);
+  }
+  changePassword(){
+    this.router.navigate(['changePassword']);
   }
   
 
