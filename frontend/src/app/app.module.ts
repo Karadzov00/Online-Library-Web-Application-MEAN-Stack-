@@ -12,6 +12,8 @@ import { ReaderComponent } from './reader/reader.component';
 import { ModeratorComponent } from './moderator/moderator.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomepageComponent } from './homepage/homepage.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { HomepageComponent } from './homepage/homepage.component';
     AppRoutingModule, 
     FormsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    BrowserAnimationsModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

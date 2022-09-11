@@ -35,6 +35,8 @@ export class ReaderComponent implements OnInit {
         console.log("knjiga dana je ")
         console.log(book); 
         this.dailyBook=book; 
+        console.log("Prosecna ocena je");
+        console.log(this.dailyBook.prosecna_ocena);
       })
 
 

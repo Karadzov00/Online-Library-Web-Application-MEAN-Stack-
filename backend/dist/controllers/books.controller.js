@@ -43,8 +43,8 @@ class BooksController {
             });
         };
         this.getBookById = (req, res) => {
-            let id = (req.body.id).toString();
-            console.log(id);
+            let id = req.body.id;
+            // console.log(id); 
             book_1.default.findOne({ 'id': id }, (err, book) => {
                 if (err)
                     console.log(err);
