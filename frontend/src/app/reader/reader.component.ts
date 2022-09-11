@@ -34,9 +34,19 @@ export class ReaderComponent implements OnInit {
       this.booksService.getBookById(this.randomId).subscribe((book:Book)=>{
         console.log("knjiga dana je ")
         console.log(book); 
-        this.dailyBook=book; 
+        this.dailyBook=book;
+        console.log("id");
+        console.log(this.dailyBook.id);
+
+        console.log("Broj uzimanja");
+        console.log(this.dailyBook.broj_uzimanja); 
+        console.log("zanr");
+        console.log(this.dailyBook.zanr); 
         console.log("Prosecna ocena je");
         console.log(this.dailyBook.prosecna_ocena);
+        console.log("Na stanju");
+        console.log(this.dailyBook.na_stanju);
+
       })
 
 

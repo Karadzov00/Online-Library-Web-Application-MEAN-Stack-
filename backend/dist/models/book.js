@@ -40,15 +40,5 @@ let Book = new Schema({
         type: String
     }
 });
-// "id":"2",
-// "naziv":"Atomske navike",
-// "autor":"James Clear",
-// "zanr":"popularna psihologija",
-// "izdavac":"Laguna",
-// "godina izdavanja":"2019",
-// "jezik":"srpski",
-// "broj uzimanja":"10", 
-// "prosecna ocena":"9.2",
-// "na stanju":"3"
 exports.default = mongoose_1.default.model("Book", Book, "knjige");
 //# sourceMappingURL=book.js.map
