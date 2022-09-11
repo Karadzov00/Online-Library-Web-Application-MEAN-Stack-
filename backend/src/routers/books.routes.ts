@@ -23,6 +23,10 @@ booksRouter.route('/fetchAllBooks').get(
     (req, res) => new BooksController().fetchAllBooks(req, res)
 )
 
+booksRouter.route('/getBookById').post(
+    (req, res) => new BooksController().getBookById(req, res)
+)
+
 
 
 export default booksRouter; 

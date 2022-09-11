@@ -32,4 +32,12 @@ export class BooksService {
 
   }
 
+  getBookById(id){
+    const data={
+      id:id
+    }
+    return this.http.post(`${this.uri}/books/getBookById`, data)
+
+  }
+
 }

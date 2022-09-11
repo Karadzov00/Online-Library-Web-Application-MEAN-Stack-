@@ -44,6 +44,20 @@ export class BooksController{
     }
 
 
+    getBookById = (req: express.Request, res: express.Response)=>{
+        let id = req.body.id; 
+        
+
+        console.log(id); 
+        
+
+        Book.findOne({'id':id}, (err, book)=>{
+            if(err)console.log(err); 
+            else res.json(book); 
+        })
+    
+    }
+
 
 
 }

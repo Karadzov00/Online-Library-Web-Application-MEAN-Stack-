@@ -24,6 +24,20 @@ export class ReaderComponent implements OnInit {
       let maxId = books.length; 
       console.log("max id je");
       console.log(maxId);
+      this.maxId = maxId; 
+      console.log(this.maxId); 
+      
+      this.randomId=  Math.floor(Math.random() * (this.maxId + 1));
+      console.log("random id je")
+      console.log(this.randomId) 
+
+      this.booksService.getBookById(this.randomId).subscribe((book:Book)=>{
+        console.log("knjiga dana je ")
+        console.log(book); 
+        this.dailyBook=book; 
+      })
+
+
     })
   }
 
@@ -36,10 +50,10 @@ export class ReaderComponent implements OnInit {
   imageChosen:boolean=false; 
   image:String; 
   imageDB:String; 
-  book:Book; 
+  dailyBook:Book; 
 
   maxId:number;
-  randomId:Number;  
+  randomId:number;  
 
 
   user:User; 
