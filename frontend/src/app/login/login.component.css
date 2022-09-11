@@ -239,3 +239,7 @@ li:hover a {
 #avatar{
     border-radius: 50%;
 }
+
+#main{
+    margin-top: 20px;
+}

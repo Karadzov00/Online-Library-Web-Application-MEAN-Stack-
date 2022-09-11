@@ -34,7 +34,12 @@ export class AppComponent {
     this.router.navigate(['login']);
   }
   routerHome(){
-    this.router.navigate(['homepage']);
+    if(this.user){
+      this.router.navigate(['reader']);
+    }
+    else{
+      this.router.navigate(['homepage']);
+    }
   }
   routerRegister(){
     this.router.navigate(['register']);
