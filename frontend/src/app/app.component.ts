@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Image } from './model/image';
 import { User } from './model/user';
 import { UserService } from './user.service';
 
@@ -15,14 +16,18 @@ export class AppComponent {
 
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem('loggedUser')); 
-    if(!this.user){
-      this.userService.getNoUserImage().subscribe((image:any)=>{
-        this.noUserImage=image; 
-      })
+
+    this.userService.getNoUserImage().subscribe((image:Image)=>{
+      this.noUserImage=image.slika; 
+    })
+
+    if(this.user){
+      this.loggedIn=true; 
     }
     
   }
   user:User; 
+  loggedIn:boolean;
   noUserImage:String; 
 
   routerLogin(){
@@ -36,7 +41,7 @@ export class AppComponent {
   }
   logout(){
     localStorage.clear(); 
-    this.router.navigate(['']);
+    this.router.navigate(['homepage']);
   }
   routerProfile(){
     this.router.navigate(['profile']);

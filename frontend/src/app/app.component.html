@@ -1,5 +1,5 @@
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" ngIf="user">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" *ngIf="user">
     <div class="container-fluid">
       <a class="navbar-brand" role="button" (click)="routerProfile()">
             <img [src]="user.slika" alt="" width="30" height="32" id="avatar">
@@ -23,7 +23,8 @@
       </div>
     </div>
 </nav>
-<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark" *ngIf="!user">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" *ngIf="!user">
     <div class="container-fluid">
       <a class="navbar-brand" role="button" (click)="routerProfile()">
             <img [src]="noUserImage" alt="" width="30" height="32" id="avatar">
@@ -46,5 +47,5 @@
         </form>
       </div>
     </div>
-</nav> -->
+</nav>
 <router-outlet></router-outlet>
