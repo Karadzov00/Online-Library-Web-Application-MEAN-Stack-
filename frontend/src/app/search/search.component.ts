@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BooksService } from '../books.service';
+import { Book } from '../model/book';
 import { UserService } from '../user.service';
 
 @Component({
@@ -18,8 +19,24 @@ export class SearchComponent implements OnInit {
 
   name:string; 
   author:string;
+
+  message: string;
+  showAlert:boolean;
+  
+  books:Book[]; 
   
   search(){
+    if(!this.name && !this.author){
+      this.message="Morate uneti makar jedno polje!"
+      this.showAlert=true; 
+      return; 
+    }
+
+    this.booksService.searchBooks(this.name, this.author).subscribe((books:Book[])=>{
+      console.log(books);
+      this.showAlert=false; 
+
+    })
 
   }
 

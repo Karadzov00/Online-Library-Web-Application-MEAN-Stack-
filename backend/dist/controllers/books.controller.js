@@ -87,6 +87,34 @@ class BooksController {
                 }
             });
         };
+        this.searchBooks = (req, res) => {
+            let name = req.body.name;
+            let author = req.body.author;
+            if (name && !author) {
+                book_1.default.find({ 'naziv': { $regex: name } }, (err, books) => {
+                    if (err)
+                        console.log(err);
+                    else
+                        res.json(books);
+                });
+            }
+            else if (!name && author) {
+                book_1.default.find({ 'autor': { $regex: author } }, (err, books) => {
+                    if (err)
+                        console.log(err);
+                    else
+                        res.json(books);
+                });
+            }
+            else if (name && author) {
+                book_1.default.find({ 'naziv': { $regex: name }, 'autor': { $regex: author } }, (err, books) => {
+                    if (err)
+                        console.log(err);
+                    else
+                        res.json(books);
+                });
+            }
+        };
     }
 }
 exports.BooksController = BooksController;

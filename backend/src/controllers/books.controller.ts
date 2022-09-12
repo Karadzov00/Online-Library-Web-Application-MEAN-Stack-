@@ -95,5 +95,33 @@ export class BooksController{
     }
 
 
+    searchBooks = (req: express.Request, res: express.Response)=>{
+        let name = req.body.name; 
+        let author = req.body.author; 
+        
+        if(name && !author){
+            Book.find({'naziv':{$regex: name}}, (err, books)=>{
+                if(err)console.log(err)
+                else res.json(books)
+            })
+
+        }
+        else if(!name && author){
+            Book.find({'autor':{$regex: author}}, (err, books)=>{
+                if(err)console.log(err)
+                else res.json(books)
+            })
+        }
+        else if(name && author){
+            Book.find({'naziv':{$regex: name}, 'autor':{$regex:author}}, (err, books)=>{
+                if(err)console.log(err)
+                else res.json(books)
+            })
+        }
+    }
+
+
+
+
 
 }

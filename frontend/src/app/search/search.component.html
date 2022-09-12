@@ -14,6 +14,9 @@
             name="author" [(ngModel)]="author">
         </div>
     </div>
+    <div class="alert alert-danger col-md-5" *ngIf="showAlert" id="alert">
+    {{message}}
+    </div>
     <div>
         <button class="btn btn-warning" id="button" (click)="search()">Pretraži</button>
     </div>

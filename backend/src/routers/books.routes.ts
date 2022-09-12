@@ -31,6 +31,10 @@ booksRouter.route('/checkInsertDate').post(
     (req, res) => new BooksController().checkInsertDate(req, res)
 )
 
+booksRouter.route('/searchBooks').post(
+    (req, res) => new BooksController().searchBooks(req, res)
+)
+
 
 
 export default booksRouter; 

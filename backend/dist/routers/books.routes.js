@@ -13,5 +13,6 @@ booksRouter.route('/getHighestId').get((req, res) => new books_controller_1.Book
 booksRouter.route('/fetchAllBooks').get((req, res) => new books_controller_1.BooksController().fetchAllBooks(req, res));
 booksRouter.route('/getBookById').post((req, res) => new books_controller_1.BooksController().getBookById(req, res));
 booksRouter.route('/checkInsertDate').post((req, res) => new books_controller_1.BooksController().checkInsertDate(req, res));
+booksRouter.route('/searchBooks').post((req, res) => new books_controller_1.BooksController().searchBooks(req, res));
 exports.default = booksRouter;
 //# sourceMappingURL=books.routes.js.map

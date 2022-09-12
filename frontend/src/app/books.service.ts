@@ -54,6 +54,8 @@ export class BooksService {
       name:name,
       author:author
     }
+    return this.http.post(`${this.uri}/books/searchBooks`, data); 
+
   }
 
 }
