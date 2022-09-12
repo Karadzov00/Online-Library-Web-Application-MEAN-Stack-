@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserController = void 0;
 const user_1 = __importDefault(require("../models/user"));
 const image_1 = __importDefault(require("../models/image"));
+const obligation_1 = __importDefault(require("../models/obligation"));
 class UserController {
     constructor() {
         this.login = (req, res) => {
@@ -67,6 +68,15 @@ class UserController {
                 else {
                     res.json({ 'message': 'ok' });
                 }
+            });
+        };
+        this.getObligations = (req, res) => {
+            let username = req.body.username;
+            obligation_1.default.find({ 'kor_ime': username }, (err, obligations) => {
+                if (err)
+                    console.log(err);
+                else
+                    res.json(obligations);
             });
         };
     }

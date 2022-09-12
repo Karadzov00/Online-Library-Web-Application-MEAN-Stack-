@@ -18,18 +18,29 @@ export class ObligationsComponent implements OnInit {
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem('loggedUser')); 
     this.userService.getObligations(this.user.kor_ime).subscribe((obligs:Obligation[])=>{
-      this.obligations=obligs; 
-      console.log(this.obligations)
-      if(this.obligations){
-        this.obligations.forEach(elem=>{
-          
+      this.allObligations=obligs; 
+      console.log("sva zaduzenja");
+      console.log(this.allObligations)
+      if(this.allObligations){
+        this.allObligations.forEach(elem=>{
+
+          if(!elem.razduzen.localeCompare('ne')){
+            // console.log(elem.datum_zaduzivanja);
+
+            let obl: Obligation = elem;  
+            this.currObligations.push(obl)
+          }
+
         })
+        console.log("trenutna zaduzenja");
+        console.log(this.currObligations);
       }
     })
 
   }
 
-  obligations: Obligation[]; 
+  allObligations: Obligation[]; 
+  currObligations:Obligation[]=[]; 
   user: User; 
 
 }
