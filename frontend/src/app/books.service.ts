@@ -48,4 +48,12 @@ export class BooksService {
 
   }
 
+
+  searchBooks(name, author){
+    const data={
+      name:name,
+      author:author
+    }
+  }
+
 }

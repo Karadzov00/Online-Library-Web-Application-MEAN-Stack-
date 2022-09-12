@@ -6,15 +6,15 @@
         <div class="col-md-3 mb-3">
             <label for="validationCustom01">Naziv</label>
             <input type="text" class="form-control" id="validationCustom01" placeholder="Naziv"  required
-            name="name">
+            name="name" [(ngModel)]="name">
         </div>
         <div class="col-md-3 mb-3">
             <label for="validationCustom02">Autor</label>
             <input type="text" class="form-control" id="validationCustom02" placeholder="Autor"  required
-            name="author">
+            name="author" [(ngModel)]="author">
         </div>
     </div>
     <div>
-        <button class="btn btn-warning" id="button">Pretraži</button>
+        <button class="btn btn-warning" id="button" (click)="search()">Pretraži</button>
     </div>
 </mat-card>
