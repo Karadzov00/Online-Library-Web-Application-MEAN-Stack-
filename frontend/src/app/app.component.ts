@@ -54,6 +54,10 @@ export class AppComponent {
   changePassword(){
     this.router.navigate(['changePassword']);
   }
+  routerSearch(){
+    this.router.navigate(['search']);
+
+  }
 
 
 }

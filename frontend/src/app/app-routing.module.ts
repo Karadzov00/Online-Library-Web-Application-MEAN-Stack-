@@ -7,6 +7,7 @@ import { ModeratorComponent } from './moderator/moderator.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ReaderComponent } from './reader/reader.component';
 import { RegisterComponent } from './register/register.component';
+import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
   {path: '', component: HomepageComponent},
@@ -16,7 +17,8 @@ const routes: Routes = [
   {path: 'moderator', component: ModeratorComponent},
   {path: 'homepage', component: HomepageComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'profile', component: ProfileComponent}
+  {path: 'profile', component: ProfileComponent},
+  {path: 'search', component: SearchComponent}
 ];
 
 @NgModule({
