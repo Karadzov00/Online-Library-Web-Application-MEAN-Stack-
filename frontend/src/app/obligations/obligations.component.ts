@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BooksService } from '../books.service';
+import { Book } from '../model/book';
+import { BookObligation } from '../model/bookObligation';
 import { Obligation } from '../model/obligation';
 import { User } from '../model/user';
 import { UserService } from '../user.service';
@@ -24,16 +26,42 @@ export class ObligationsComponent implements OnInit {
       if(this.allObligations){
         this.allObligations.forEach(elem=>{
 
-          if(!elem.razduzen.localeCompare('ne')){
-            // console.log(elem.datum_zaduzivanja);
+          let days = this.calculateDays(elem); 
 
-            let obl: Obligation = elem;  
-            this.currObligations.push(obl)
-          }
+          var local_book:Book; 
+
+          this.booksService.getBookById(elem.id_knjige).subscribe((book:Book)=>{
+            local_book=book; 
+
+            let bookObl: BookObligation = new BookObligation(); 
+            bookObl.autor=book.autor; 
+            bookObl.naziv=book.naziv;
+            bookObl.slika=book.slika; 
+            bookObl.broj_dana=days; 
+
+            
+            console.log(bookObl); 
+
+            this.allBooks.push(local_book);
+            console.log(local_book); 
+  
+            if(!elem.razduzen.localeCompare('ne')){
+              // console.log(elem.datum_zaduzivanja);
+  
+              let obl: Obligation = elem;  
+              this.currObligations.push(obl);
+              this.currBooks.push(local_book); 
+
+              this.bookObligations.push(bookObl); 
+            }
+          })
+
 
         })
-        console.log("trenutna zaduzenja");
-        console.log(this.currObligations);
+
+      
+      
+      
       }
     })
 
@@ -41,6 +69,20 @@ export class ObligationsComponent implements OnInit {
 
   allObligations: Obligation[]; 
   currObligations:Obligation[]=[]; 
+
+  allBooks:Book[]=[]; 
+  currBooks:Book[]=[]; 
+  bookObligations:BookObligation[]=[]; 
+
   user: User; 
+
+  calculateDays(obligation:Obligation):number{
+
+    let date1: Date = new Date(obligation.datum_vracanja);
+    let date2: Date = new Date(obligation.datum_zaduzivanja);
+    let timeInMilisec: number = date1.getTime() - date2.getTime();
+    let daysBetweenDates: number = Math.ceil(timeInMilisec / (1000 * 60 * 60 * 24));
+    return daysBetweenDates; 
+  }
 
 }
