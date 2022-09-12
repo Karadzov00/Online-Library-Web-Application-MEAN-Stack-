@@ -11,10 +11,17 @@
 }
   
 #cover{
-    height: 300px;
+    max-height: 480px;
+    max-width: 300px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 10px;
+ 
+}
+
+#imgDiv{
+    margin-top: 0px;
+    padding-top: 0px;
 }
 
 #head{

@@ -9,9 +9,9 @@
       <mat-card-title>{{dailyBook.naziv}}</mat-card-title>
       <mat-card-subtitle>{{dailyBook.autor}}</mat-card-subtitle>
       <mat-card-subtitle>Prosečna ocena:</mat-card-subtitle>
-      <p>
-        {{dailyBook.prosecna_ocena}}
-      </p>
+
+      <ngb-rating [(rate)]="currentRate"></ngb-rating>
+   
     </mat-card-content>
   </mat-card>
 </div>

@@ -44,6 +44,7 @@ export class ReaderComponent implements OnInit {
 
  
   date: string; 
+  currentRate = 8;
 
   dateExists:boolean; 
 
