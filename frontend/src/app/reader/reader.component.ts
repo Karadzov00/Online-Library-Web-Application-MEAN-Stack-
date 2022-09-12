@@ -24,25 +24,20 @@ export class ReaderComponent implements OnInit {
     this.date= new Date().toLocaleDateString();
     console.log(this.date); 
 
-    this.booksService.checkInsertDate(this.date).subscribe(resp=>{
-      if(resp['message']=='date added'){
-        this.booksService.fetchAllBooks().subscribe((books:Book[])=>{
-    
-          let maxId = books.length; 
-          this.maxId = maxId; 
-    
-          this.randomId=  Math.floor(Math.random() * (this.maxId + 1));
-    
-          this.booksService.getBookById(this.randomId).subscribe((book:Book)=>{
-            console.log("knjiga dana je ")
-            console.log(book); 
-            this.dailyBook=book;
-          })
-        })
-      }
-      else if(resp['message']=='date exists'){
+    this.booksService.checkInsertDate(this.date).subscribe((id:Number)=>{
 
-      }
+      this.randomId=id.valueOf(); 
+      
+      console.log("random id je"); 
+      console.log(this.randomId); 
+     
+      this.booksService.getBookById(this.randomId).subscribe((book:Book)=>{
+        console.log("knjiga dana je ")
+        console.log(book); 
+        this.dailyBook=book;
+      })
+     
+      
     })
 
   }

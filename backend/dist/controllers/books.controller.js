@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BooksController = void 0;
 const book_1 = __importDefault(require("../models/book"));
+const date_1 = __importDefault(require("../models/date"));
 class BooksController {
     constructor() {
         this.getTop3Books = (req, res) => {
@@ -50,6 +51,40 @@ class BooksController {
                     console.log(err);
                 else
                     res.json(book);
+            });
+        };
+        this.checkInsertDate = (req, res) => {
+            let date = req.body.date;
+            date_1.default.findOne({ 'datum': date }, (err, date) => {
+                if (err)
+                    console.log(err);
+                else {
+                    if (!date) {
+                        book_1.default.find({}, (err, books) => {
+                            if (err)
+                                console.log(err);
+                            else {
+                                let maxId = books.length;
+                                let randomId = Math.floor(Math.random() * (maxId + 1));
+                                let new_date = new date_1.default({
+                                    datum: req.body.date,
+                                    id_knjige: randomId
+                                });
+                                new_date.save((err, resp) => {
+                                    if (err) {
+                                        console.log(err);
+                                        res.status(400).json({ "message": "error" });
+                                    }
+                                    else
+                                        res.json(randomId);
+                                });
+                            }
+                        });
+                    }
+                    else {
+                        res.json(date.id_knjige);
+                    }
+                }
             });
         };
     }

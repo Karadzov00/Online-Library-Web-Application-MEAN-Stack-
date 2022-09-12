@@ -12,5 +12,6 @@ booksRouter.route('/getRandomBook').get((req, res) => new books_controller_1.Boo
 booksRouter.route('/getHighestId').get((req, res) => new books_controller_1.BooksController().getHighestId(req, res));
 booksRouter.route('/fetchAllBooks').get((req, res) => new books_controller_1.BooksController().fetchAllBooks(req, res));
 booksRouter.route('/getBookById').post((req, res) => new books_controller_1.BooksController().getBookById(req, res));
+booksRouter.route('/checkInsertDate').post((req, res) => new books_controller_1.BooksController().checkInsertDate(req, res));
 exports.default = booksRouter;
 //# sourceMappingURL=books.routes.js.map
