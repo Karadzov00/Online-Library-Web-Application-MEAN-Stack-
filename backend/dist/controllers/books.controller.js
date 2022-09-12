@@ -9,7 +9,7 @@ const date_1 = __importDefault(require("../models/date"));
 class BooksController {
     constructor() {
         this.getTop3Books = (req, res) => {
-            book_1.default.find().sort({ 'broj uzimanja': -1 }).limit(3).then(books => {
+            book_1.default.find().sort({ 'broj_uzimanja': -1 }).limit(3).then(books => {
                 res.json(books);
                 // console.log(books); 
             }).catch(err => {
