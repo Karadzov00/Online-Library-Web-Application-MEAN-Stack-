@@ -64,19 +64,31 @@ export class BooksController{
             if(err)console.log(err); 
             else{
                 if(!date){
-                    let new_date = new Date({
-                        datum: req.body.date
-                    })
-                    new_date.save((err, resp)=>{
-                        if(err) {
-                            console.log(err);
-                            res.status(400).json({"message": "error"})
+
+                    Book.find({},(err, books)=>{
+                        if(err)console.log(err); 
+                        else{
+                            let maxId = books.length; 
+                            let randomId=  Math.floor(Math.random() * (maxId + 1));
+                            
+                            let new_date = new Date({
+                                datum: req.body.date,
+                                id_knjige: randomId
+                            })
+
+                            new_date.save((err, resp)=>{
+                                if(err) {
+                                    console.log(err);
+                                    res.status(400).json({"message": "error"})
+                                }
+                                else res.json(randomId)
+                            })
                         }
-                        else res.json({"message": "added date"})
                     })
+
                 }
                 else{
-                    res.json({"message": "date exists"})
+                    res.json(date.id_knjige)                    
                 }
             }
         })

@@ -6,6 +6,9 @@ let Date = new Schema(
     {       
         datum:{
             type:String
+        },
+        id_knjige:{
+            type:Number
         }
 
     }

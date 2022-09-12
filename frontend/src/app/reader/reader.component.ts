@@ -16,44 +16,41 @@ export class ReaderComponent implements OnInit {
   constructor(private router:Router, private booksService:BooksService, private userService:UserService) { }
 
   ngOnInit(): void {
-    this.date= new Date().toLocaleDateString();
-    
-
     this.user = JSON.parse(localStorage.getItem('loggedUser')); 
     console.log(this.user); 
     this.userImage= this.user.slika; 
-    this.booksService.fetchAllBooks().subscribe((books:Book[])=>{
-
-      let maxId = books.length; 
-      this.maxId = maxId; 
 
 
-      this.randomId=  Math.floor(Math.random() * (this.maxId + 1));
+    this.date= new Date().toLocaleDateString();
+    console.log(this.date); 
 
-      this.booksService.getBookById(this.randomId).subscribe((book:Book)=>{
-        console.log("knjiga dana je ")
-        console.log(book); 
-        this.dailyBook=book;
-        console.log("id");
-        console.log(this.dailyBook.id);
+    this.booksService.checkInsertDate(this.date).subscribe(resp=>{
+      if(resp['message']=='date added'){
+        this.booksService.fetchAllBooks().subscribe((books:Book[])=>{
+    
+          let maxId = books.length; 
+          this.maxId = maxId; 
+    
+          this.randomId=  Math.floor(Math.random() * (this.maxId + 1));
+    
+          this.booksService.getBookById(this.randomId).subscribe((book:Book)=>{
+            console.log("knjiga dana je ")
+            console.log(book); 
+            this.dailyBook=book;
+          })
+        })
+      }
+      else if(resp['message']=='date exists'){
 
-        console.log("Broj uzimanja");
-        console.log(this.dailyBook.broj_uzimanja); 
-        console.log("zanr");
-        console.log(this.dailyBook.zanr); 
-        console.log("Prosecna ocena je");
-        console.log(this.dailyBook.prosecna_ocena);
-        console.log("Na stanju");
-        console.log(this.dailyBook.na_stanju);
-
-      })
-
-
+      }
     })
+
   }
 
  
   date: string; 
+
+  dateExists:boolean; 
 
   selectedFile: File;
   imageChosen:boolean=false; 
