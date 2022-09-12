@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BooksService } from '../books.service';
 import { Book } from '../model/book';
+import { BookHistoryObligation } from '../model/bookHistoryObligation';
 import { BookObligation } from '../model/bookObligation';
 import { Obligation } from '../model/obligation';
 import { User } from '../model/user';
@@ -34,12 +35,23 @@ export class ObligationsComponent implements OnInit {
             
             this.allBooks.push(local_book);
             console.log(local_book); 
+
+            let historyObl: BookHistoryObligation = new BookHistoryObligation(); 
+            historyObl.id=book.id; 
+            historyObl.autor=book.autor; 
+            historyObl.naziv=book.naziv; 
+            historyObl.datum_zaduzivanja=elem.datum_zaduzivanja;
+            historyObl.datum_vracanja=elem.datum_vracanja; 
+            console.log(historyObl); 
+            
+            this.historyBookObligations.push(historyObl); 
+
             
             if(!elem.razduzen.localeCompare('ne')){
               // console.log(elem.datum_zaduzivanja);
+              let days = this.calculateDays(elem); 
               let bookObl: BookObligation = new BookObligation(); 
               
-              let days = this.calculateDays(elem); 
               bookObl.autor=book.autor; 
               bookObl.naziv=book.naziv;
               bookObl.slika=book.slika; 
@@ -71,6 +83,7 @@ export class ObligationsComponent implements OnInit {
   allBooks:Book[]=[]; 
   currBooks:Book[]=[]; 
   bookObligations:BookObligation[]=[]; 
+  historyBookObligations:BookHistoryObligation[]=[]; 
 
   user: User; 
   deadlinePassed:boolean; 
