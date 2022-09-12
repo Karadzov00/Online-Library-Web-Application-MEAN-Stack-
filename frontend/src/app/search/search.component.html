@@ -21,3 +21,52 @@
         <button class="btn btn-warning" id="button" (click)="search()">Pretraži</button>
     </div>
 </mat-card>
+<div class="d-flex " id="res" *ngIf="searched">
+    <h1 class="display-6" id="res">Rezultati pretrage:</h1>
+</div>
+<div class="d-flex flex-row gap-4" id="mainSrch">
+    <mat-card class="example-card" *ngFor="let b of books" id="cardBook">
+        <div class="d-flex justify-content-center">
+            <img [src]="b.slika" alt="Photo of a Shiba Inu" id="cover" >
+        </div>
+        <mat-card-content>
+            <mat-card-title>{{b.naziv}}</mat-card-title>
+            <div id="tab">
+                <table  class="table" >
+                    <tr>
+                        <td>Autor:</td>
+                        <td class="data">{{b.autor}}</td>
+                    </tr>
+                    <tr>
+                        <td>Žanr:</td>
+                        <td class="data">{{b.zanr}}</td>
+                    </tr>
+                    <tr>
+                        <td>Izdavač:</td>
+                        <td class="data">{{b.izdavac}}</td>
+                    </tr>
+                    <tr>
+                        <td>Godina izdavanja:</td>
+                        <td class="data">{{b.godina_izdavanja}}</td>
+                    </tr>
+                    <tr>
+                        <td>Jezik:</td>
+                        <td class="data">{{b.jezik}}</td>
+                    </tr>
+                    <tr>
+                        <td>Broj uzimanja:</td>
+                        <td class="data">{{b.broj_uzimanja}}</td>
+                    </tr>
+                    <tr>
+                        <td>Prosečna ocena:</td>
+                        <td class="data">{{b.prosecna_ocena}}</td>
+                    </tr>
+                    <tr>
+                        <td>Na stanju:</td>
+                        <td class="data">{{b.na_stanju}}</td>
+                    </tr>
+                </table>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>

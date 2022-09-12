@@ -22,6 +22,7 @@ export class SearchComponent implements OnInit {
 
   message: string;
   showAlert:boolean;
+  searched: boolean; 
   
   books:Book[]; 
   
@@ -34,7 +35,9 @@ export class SearchComponent implements OnInit {
 
     this.booksService.searchBooks(this.name, this.author).subscribe((books:Book[])=>{
       console.log(books);
+      this.books=books; 
       this.showAlert=false; 
+      this.searched=true; 
 
     })
 
