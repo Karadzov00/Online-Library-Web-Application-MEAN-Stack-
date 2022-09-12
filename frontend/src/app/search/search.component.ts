@@ -34,12 +34,19 @@ export class SearchComponent implements OnInit {
     }
 
     this.booksService.searchBooks(this.name, this.author).subscribe((books:Book[])=>{
-      console.log(books);
       this.books=books; 
       this.showAlert=false; 
       this.searched=true; 
 
     })
+
+  }
+
+  bookRedirect(book){
+    console.log("book redirect")
+    console.log(book);
+    localStorage.setItem('selectedBook', JSON.stringify(book));
+    this.router.navigate(['book']);  
 
   }
 

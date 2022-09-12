@@ -1,0 +1,55 @@
+<div class="d-flex justify-content-center" id="head">
+    <h1 class="display-5" id="head">Detalji o knjizi</h1>
+</div>
+<div class="d-flex justify-content-center">
+    <mat-card class="example-card">
+        <div class="d-flex justify-content-center">
+            <img  [src]="book.slika" alt="Photo " id="cover" >
+        </div>
+      <mat-card-content>
+        <mat-card-title>{{book.naziv}}</mat-card-title>
+        <div id="tab">
+            <table  class="table" >
+                <tr>
+                    <td>Autor:</td>
+                    <td class="data">{{book.autor}}</td>
+                </tr>
+                <tr>
+                    <td>Žanr:</td>
+                    <td class="data">{{book.zanr}}</td>
+                </tr>
+                <tr>
+                    <td>Izdavač:</td>
+                    <td class="data">{{book.izdavac}}</td>
+                </tr>
+                <tr>
+                    <td>Godina izdavanja:</td>
+                    <td class="data">{{book.godina_izdavanja}}</td>
+                </tr>
+                <tr>
+                    <td>Jezik:</td>
+                    <td class="data">{{book.jezik}}</td>
+                </tr>
+                <tr>
+                    <td>Broj uzimanja:</td>
+                    <td class="data">{{book.broj_uzimanja}}</td>
+                </tr>
+                <tr>
+                    <td>Prosečna ocena:</td>
+                    <td class="data">{{book.prosecna_ocena}}</td>
+                </tr>
+                <tr>
+                    <td>Na stanju:</td>
+                    <td class="data">{{book.na_stanju}}</td>
+                </tr>
+            </table>
+        </div>
+        
+      </mat-card-content>
+    </mat-card>
+  </div>
+  
+  
+  
+  
+  

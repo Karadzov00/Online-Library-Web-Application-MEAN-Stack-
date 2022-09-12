@@ -20,7 +20,9 @@
 }
 
 #card{
-    background-color: rgba(187, 187, 187, 0.199);
+    /* background-color: rgba(187, 187, 187, 0.199); */
+    background-color: rgba(194, 194, 194, 0.123);
+
     width: 350px;
     height: 530px;
 }

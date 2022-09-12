@@ -16,6 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { ProfileComponent } from './profile/profile.component';
 import { SearchComponent } from './search/search.component';
+import { BookPageComponent } from './book-page/book-page.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { SearchComponent } from './search/search.component';
     ModeratorComponent,
     HomepageComponent,
     ProfileComponent,
-    SearchComponent
+    SearchComponent,
+    BookPageComponent
   ],
   imports: [
     BrowserModule,
