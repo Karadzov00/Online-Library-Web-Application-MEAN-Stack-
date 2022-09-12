@@ -17,6 +17,7 @@ import { MatCardModule } from '@angular/material/card';
 import { ProfileComponent } from './profile/profile.component';
 import { SearchComponent } from './search/search.component';
 import { BookPageComponent } from './book-page/book-page.component';
+import { ObligationsComponent } from './obligations/obligations.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { BookPageComponent } from './book-page/book-page.component';
     HomepageComponent,
     ProfileComponent,
     SearchComponent,
-    BookPageComponent
+    BookPageComponent,
+    ObligationsComponent
   ],
   imports: [
     BrowserModule,

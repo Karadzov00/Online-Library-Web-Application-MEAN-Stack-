@@ -1,6 +1,7 @@
 import express from "express";
 import User from "../models/user"
 import Image from "../models/image"
+import Obligation from "../models/obligation"
 
 
 export class UserController{
@@ -70,5 +71,14 @@ export class UserController{
         })
     }
 
+    getObligations = (req: express.Request, res: express.Response)=>{
+        let username= req.body.username;
+
+        Obligation.find({'kor_ime':username}, (err, obligations)=>{
+            if(err) console.log(err)
+            else res.json(obligations); 
+        })
+        
+    }
 
 }

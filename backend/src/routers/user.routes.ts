@@ -22,8 +22,11 @@ userRouter.route('/updatePassword').post(
 
 userRouter.route('/getNoUserImage').get(
     (req, res) => new UserController().getNoUserImage(req, res)
+    )
+    
+userRouter.route('/getObligations').post(
+    (req, res) => new UserController().getObligations(req, res)
 )
-
 
 
 

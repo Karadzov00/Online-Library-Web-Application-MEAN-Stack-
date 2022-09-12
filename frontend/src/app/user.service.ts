@@ -128,6 +128,15 @@ export class UserService {
 
   }
 
+  getObligations(username){
+    const data={
+      username:username
+    }
+    return this.http.post(`${this.uri}/users/getObligations`, data)
+
+  }
+
+
 
 
 }

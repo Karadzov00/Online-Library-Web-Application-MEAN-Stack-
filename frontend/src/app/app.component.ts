@@ -56,7 +56,9 @@ export class AppComponent {
   }
   routerSearch(){
     this.router.navigate(['search']);
-
+  }
+  routerObligations(){
+    this.router.navigate(['obligations']);
   }
 
 
