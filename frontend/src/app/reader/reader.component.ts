@@ -16,20 +16,19 @@ export class ReaderComponent implements OnInit {
   constructor(private router:Router, private booksService:BooksService, private userService:UserService) { }
 
   ngOnInit(): void {
+    this.date= new Date().toLocaleDateString();
+    
+
     this.user = JSON.parse(localStorage.getItem('loggedUser')); 
     console.log(this.user); 
     this.userImage= this.user.slika; 
     this.booksService.fetchAllBooks().subscribe((books:Book[])=>{
-      console.log(books)
+
       let maxId = books.length; 
-      console.log("max id je");
-      console.log(maxId);
       this.maxId = maxId; 
-      console.log(this.maxId); 
-      
+
+
       this.randomId=  Math.floor(Math.random() * (this.maxId + 1));
-      console.log("random id je")
-      console.log(this.randomId) 
 
       this.booksService.getBookById(this.randomId).subscribe((book:Book)=>{
         console.log("knjiga dana je ")
@@ -54,7 +53,7 @@ export class ReaderComponent implements OnInit {
   }
 
  
-
+  date: string; 
 
   selectedFile: File;
   imageChosen:boolean=false; 

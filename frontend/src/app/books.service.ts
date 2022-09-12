@@ -36,7 +36,15 @@ export class BooksService {
     const data={
       id:id
     }
-    return this.http.post(`${this.uri}/books/getBookById`, data)
+    return this.http.post(`${this.uri}/books/getBookById`, data); 
+
+  }
+
+  checkInsertDate(date){
+    const data={
+      date:date
+    }
+    return this.http.post(`${this.uri}/books/checkInsertDate`, data); 
 
   }
 

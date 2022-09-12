@@ -1,5 +1,6 @@
 import express from "express";
 import Book from "../models/book"
+import Date from "../models/date"
 
 export class BooksController{
 
@@ -54,6 +55,31 @@ export class BooksController{
             else res.json(book); 
         })
     
+    }
+
+    checkInsertDate = (req: express.Request, res: express.Response)=>{
+        let date = req.body.date; 
+
+        Date.findOne({'datum':date},(err, date)=>{
+            if(err)console.log(err); 
+            else{
+                if(!date){
+                    let new_date = new Date({
+                        datum: req.body.date
+                    })
+                    new_date.save((err, resp)=>{
+                        if(err) {
+                            console.log(err);
+                            res.status(400).json({"message": "error"})
+                        }
+                        else res.json({"message": "added date"})
+                    })
+                }
+                else{
+                    res.json({"message": "date exists"})
+                }
+            }
+        })
     }
 
 
