@@ -122,8 +122,10 @@ export class BooksController{
     }
 
     returnBook = (req: express.Request, res: express.Response)=>{
-        let id = req.body.id_knjige; 
-        let username = req.body.kor_ime; 
+        let id = req.body.id; 
+        let username = req.body.username; 
+        console.log(username);
+        console.log(id);
 
         Obligation.updateOne({'id_knjige':id, 'kor_ime':username},{$set:{'razduzen':'da'}}, (err,resp)=>{
             if(err)console.log(err)
