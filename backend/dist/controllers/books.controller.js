@@ -117,12 +117,39 @@ class BooksController {
             }
         };
         this.returnBook = (req, res) => {
-            let id = req.body.id;
-            obligation_1.default.updateOne({ 'id_knjige': id }, { $set: { 'razduzen': 'da' } }, (err, resp) => {
+            let id = req.body.id_knjige;
+            let username = req.body.kor_ime;
+            obligation_1.default.updateOne({ 'id_knjige': id, 'kor_ime': username }, { $set: { 'razduzen': 'da' } }, (err, resp) => {
                 if (err)
                     console.log(err);
                 else
                     res.json({ 'message': 'uspesno_vracena' });
+            });
+        };
+        this.makeObligation = (req, res) => {
+            obligation_1.default.find({}, (err, obligs) => {
+                if (err)
+                    console.log(err);
+                else {
+                    let idO = obligs.length + 1;
+                    let obligation = new obligation_1.default({
+                        id: idO,
+                        kor_ime: req.body.obligation.kor_ime,
+                        id_knjige: req.body.obligation.id_knjige,
+                        datum_zaduzivanja: req.body.obligation.datum_zaduzivanja,
+                        datum_vracanja: req.body.obligation.datum_vracanja,
+                        razduzen: req.body.obligation.razduzen
+                    });
+                    console.log(obligation);
+                    obligation.save((err, resp) => {
+                        if (err) {
+                            console.log(err);
+                            res.status(400).json({ "message": "error" });
+                        }
+                        else
+                            res.json({ "message": "obligation_added" });
+                    });
+                }
             });
         };
     }

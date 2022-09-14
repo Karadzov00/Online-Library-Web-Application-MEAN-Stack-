@@ -40,7 +40,7 @@ booksRouter.route('/returnBook').post(
 )
 
 booksRouter.route('/makeObligation').post(
-    (req, res) => new BooksController().returnBook(req, res)
+    (req, res) => new BooksController().makeObligation(req, res)
 )
 
 

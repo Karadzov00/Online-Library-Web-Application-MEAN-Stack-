@@ -122,33 +122,31 @@ export class BooksController{
     }
 
     returnBook = (req: express.Request, res: express.Response)=>{
-        let id = req.body.id; 
+        let id = req.body.id_knjige; 
+        let username = req.body.kor_ime; 
 
-        Obligation.updateOne({'id_knjige':id},{$set:{'razduzen':'da'}}, (err,resp)=>{
+        Obligation.updateOne({'id_knjige':id, 'kor_ime':username},{$set:{'razduzen':'da'}}, (err,resp)=>{
             if(err)console.log(err)
             else res.json({'message': 'uspesno_vracena'})
         })
     }
 
     makeObligation = (req: express.Request, res: express.Response)=>{
-        let username= req.body.kor_ime; 
-        let book_id = req.body.id_knjige; 
-        let reserve_date= req.body.datum_zaduzivanja; 
-        let return_date= req.body.datum_vracanja;
-        let returned = req.body.razduzen; 
-        
+  
         Obligation.find({},(err, obligs)=>{
             if(err)console.log(err)
             else{
                 let idO = obligs.length+1; 
                 let obligation = new Obligation({
                     id:idO,
-                    kor_ime:username,
-                    id_knjige:book_id,
-                    datum_zaduzivanja:reserve_date,
-                    datum_vracanja:return_date,
-                    razduzen:returned
+                    kor_ime:req.body.obligation.kor_ime,
+                    id_knjige:req.body.obligation.id_knjige,
+                    datum_zaduzivanja:req.body.obligation.datum_zaduzivanja,
+                    datum_vracanja:req.body.obligation.datum_vracanja,
+                    razduzen:req.body.obligation.razduzen
                 })
+
+                console.log(obligation); 
 
                 obligation.save((err, resp)=>{
                     if(err) {

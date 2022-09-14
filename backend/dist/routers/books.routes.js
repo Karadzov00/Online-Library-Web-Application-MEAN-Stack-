@@ -15,5 +15,6 @@ booksRouter.route('/getBookById').post((req, res) => new books_controller_1.Book
 booksRouter.route('/checkInsertDate').post((req, res) => new books_controller_1.BooksController().checkInsertDate(req, res));
 booksRouter.route('/searchBooks').post((req, res) => new books_controller_1.BooksController().searchBooks(req, res));
 booksRouter.route('/returnBook').post((req, res) => new books_controller_1.BooksController().returnBook(req, res));
+booksRouter.route('/makeObligation').post((req, res) => new books_controller_1.BooksController().makeObligation(req, res));
 exports.default = booksRouter;
 //# sourceMappingURL=books.routes.js.map

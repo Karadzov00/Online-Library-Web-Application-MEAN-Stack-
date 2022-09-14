@@ -196,6 +196,7 @@ export class BookPageComponent implements OnInit {
     console.log(returnDate);
 
     let obligation  = new Obligation(); 
+    obligation.id=0; 
     obligation.id_knjige=this.book.id; 
     obligation.kor_ime=this.user.kor_ime; 
     obligation.razduzen='ne';

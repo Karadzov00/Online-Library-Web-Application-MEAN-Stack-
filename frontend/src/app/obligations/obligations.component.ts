@@ -71,9 +71,6 @@ export class ObligationsComponent implements OnInit {
 
         })
 
-      
-      
-      
       }
     })
 
@@ -124,7 +121,7 @@ export class ObligationsComponent implements OnInit {
   }
 
   returnBook(id){
-    this.booksService.returnBook(id).subscribe(res=>{
+    this.booksService.returnBook(id, this.user.kor_ime).subscribe(res=>{
       alert(res['message']); 
     })
   }
