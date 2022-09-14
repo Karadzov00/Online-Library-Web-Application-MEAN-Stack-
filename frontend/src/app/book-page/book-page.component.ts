@@ -186,9 +186,9 @@ export class BookPageComponent implements OnInit {
     }
 
     let date1 = new Date(); 
-    let reserveDate = date1.getFullYear()+'-'+date1.getMonth()+'-'+date1.getDate(); 
+    let reserveDate = date1.getFullYear()+'-'+(date1.getMonth()+1)+'-'+date1.getDate(); 
     let date2 = new Date(Date.now() + 12096e5);
-    let returnDate = date2.getFullYear()+'-'+date2.getMonth()+'-'+date2.getDate(); 
+    let returnDate = date2.getFullYear()+'-'+(date2.getMonth()+1)+'-'+date2.getDate(); 
 
     console.log("datum rezervisanja")
     console.log(reserveDate);
