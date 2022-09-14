@@ -38,6 +38,9 @@ let Book = new Schema({
     },
     slika: {
         type: String
+    },
+    komentari: {
+        type: Array
     }
 });
 exports.default = mongoose_1.default.model("Book", Book, "knjige");

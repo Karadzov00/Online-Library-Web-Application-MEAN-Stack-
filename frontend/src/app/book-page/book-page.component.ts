@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {  Router } from '@angular/router';
+import { BlockLike } from 'typescript';
 import { BooksService } from '../books.service';
 import { Book } from '../model/book';
 import { BookHistoryObligation } from '../model/bookHistoryObligation';
 import { BookObligation } from '../model/bookObligation';
+import { Comment } from '../model/comment';
 import { Obligation } from '../model/obligation';
 import { User } from '../model/user';
 import { UserService } from '../user.service';
@@ -93,6 +95,13 @@ export class BookPageComponent implements OnInit {
   cannotReserve:boolean=false; 
   message:string; 
   showAlert:boolean; 
+
+  comment:string; 
+  rating:number; 
+  allComments:Comment[]=[]; 
+
+  leftComment:boolean=true; 
+  reservedBook:boolean=false; 
 
   reserveBook(){
 
@@ -231,6 +240,47 @@ export class BookPageComponent implements OnInit {
     }
     return daysBetweenDates; 
     
+  }
+
+  
+
+
+  addComment(){
+    // id:number; 
+    // kor_ime:string; 
+    // id_knjige:number; 
+    // ocena:number;
+    // tekst:string; 
+    // datum_vreme:string; 
+
+    this.historyBookObligations.forEach(obligation=>{
+      if(obligation.id==this.book.id){
+        this.reservedBook=true; 
+      }
+    })
+
+    if(!this.reservedBook)return;
+
+    let commentsLeft; 
+    
+    this.allComments.forEach(comment=>{
+      if(!comment.kor_ime.localeCompare(this.user.kor_ime)){
+        commentsLeft++; 
+      }
+    })
+    if(commentsLeft>=1)return; 
+
+    
+    let comm = new Comment(); 
+    comm.kor_ime = this.user.kor_ime; 
+    comm.id_knjige=this.book.id; 
+    comm.ocena= this.rating; 
+    comm.tekst = this.comment; 
+    comm.datum_vreme = new Date().toLocaleString();
+
+    console.log(comm); 
+
+
   }
 
 }

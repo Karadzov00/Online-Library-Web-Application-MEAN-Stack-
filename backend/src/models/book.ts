@@ -36,7 +36,10 @@ let Book = new Schema(
         },
         slika:{
             type:String
-        }    
+        },
+        komentari:{
+            type:Array
+        }
     }
 )
 

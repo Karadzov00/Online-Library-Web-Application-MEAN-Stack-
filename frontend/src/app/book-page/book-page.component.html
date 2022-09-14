@@ -54,6 +54,26 @@
 <div class="alert alert-danger" *ngIf="showAlert">
     {{message}}
 </div>
+<hr>
+<div class="d-flex">
+    <h1 class="display-5" id="head2">Komentari i ocene: </h1>
+</div>
+<div class="d-flex flex-column col-md-9 col-sm-12" id="comment">
+    Unesite komentar:
+    <textarea name="comment" id="" cols="20" rows="10" maxlength="1000" [(ngModel)]="comment"></textarea>
+    <br>
+    <div class="d-flex flex-row">
+        Ocena:
+        <ngb-rating [(rate)]="rating"></ngb-rating>
+    </div>
+    <div id="addCom">
+        <button class="btn btn-warning col-md-2 col-sm-4" (click)="addComment()">Dodaj komentar</button>
+    </div>
+</div>
+<hr>
+<div class="d-flex">
+    <h1 class="display-5" id="head2">Prethodni komentari: </h1>
+</div>
   
   
   
