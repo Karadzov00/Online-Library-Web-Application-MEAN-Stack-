@@ -76,6 +76,14 @@ export class BooksService {
 
   }
 
+  addComment(comment){
+    const data={
+      comment:comment
+    }
+    return this.http.post(`${this.uri}/books/addComment`, data); 
+
+  }
+
 
 
 

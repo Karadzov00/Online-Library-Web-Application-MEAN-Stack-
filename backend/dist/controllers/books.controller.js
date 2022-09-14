@@ -181,6 +181,17 @@ class BooksController {
                 }
             });
         };
+        this.addComment = (req, res) => {
+            let comment = req.body.comment;
+            console.log(comment);
+            book_1.default.updateOne({ 'id': comment.id_knjige }, { $push: { 'komentari': comment } }, (err, resp) => {
+                if (err)
+                    console.log(err);
+                else {
+                    res.json({ 'message': 'ok' });
+                }
+            });
+        };
     }
 }
 exports.BooksController = BooksController;

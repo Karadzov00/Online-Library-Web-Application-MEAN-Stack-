@@ -188,6 +188,20 @@ export class BooksController{
         })
     }
 
+    addComment = (req: express.Request, res: express.Response)=>{
+        let comment = req.body.comment; 
+        console.log(comment); 
+
+        Book.updateOne({'id':comment.id_knjige}, {$push: {'komentari': comment}}, (err, resp)=>{
+            if(err) console.log(err)
+            else {
+                res.json({'message': 'ok'})
+            }
+        })
+
+    }
+
+
 
 
 }

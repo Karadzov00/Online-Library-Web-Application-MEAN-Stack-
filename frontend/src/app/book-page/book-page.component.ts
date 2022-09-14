@@ -259,7 +259,10 @@ export class BookPageComponent implements OnInit {
       }
     })
 
-    if(!this.reservedBook)return;
+    if(!this.reservedBook){
+      console.log("Niste zaduzivali ovu knjigu!")
+      return;
+    }
 
     let commentsLeft; 
     
@@ -268,7 +271,10 @@ export class BookPageComponent implements OnInit {
         commentsLeft++; 
       }
     })
-    if(commentsLeft>=1)return; 
+    if(commentsLeft>=1){
+      console.log("Vec ste ostavili komentar!")
+      return; 
+    }
 
     
     let comm = new Comment(); 
@@ -280,6 +286,9 @@ export class BookPageComponent implements OnInit {
 
     console.log(comm); 
 
+    this.booksService.addComment(comm).subscribe(res=>{
+      
+    })
 
   }
 
