@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.BooksController = void 0;
 const book_1 = __importDefault(require("../models/book"));
 const date_1 = __importDefault(require("../models/date"));
+const obligation_1 = __importDefault(require("../models/obligation"));
 class BooksController {
     constructor() {
         this.getTop3Books = (req, res) => {
@@ -114,6 +115,15 @@ class BooksController {
                         res.json(books);
                 });
             }
+        };
+        this.returnBook = (req, res) => {
+            let id = req.body.id;
+            obligation_1.default.updateOne({ 'id_knjige': id }, { $set: { 'razduzen': 'da' } }, (err, res) => {
+                if (err)
+                    console.log(err);
+                else
+                    res.json({ 'message': 'Knjiga je uspesno vracena' });
+            });
         };
     }
 }

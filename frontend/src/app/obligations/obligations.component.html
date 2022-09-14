@@ -1,1 +1,33 @@
-<p>obligations works!</p>
+<mat-card class="example-card" id="card">
+    <div class="d-flex justify-content-center" id="head">
+        <h1 class="display-5" id="head">Pregled zaduženih knjiga</h1>
+    </div>
+</mat-card>
+<div class="d-flex flex-row gap-4" id="mainSrch">
+    <mat-card class="example-card" *ngFor="let o of bookObligations" id="cardBook">
+        <div class="d-flex justify-content-center">
+                <img [src]="o.slika" alt="Photo" id="cover" >
+        </div>
+        <mat-card-content>
+            <mat-card-title>{{o.naziv}}</mat-card-title>
+            <div id="tab">
+                <table  class="table" >
+                    <tr>
+                        <td>Autor:</td>
+                        <td class="data">{{o.autor}}</td>
+                    </tr>
+                    <tr>
+                        <td>Broj dana do vraćanja:</td>
+                        <td class="data" *ngIf="o.broj_dana>=0">{{o.broj_dana}}</td>
+                        <td class="data" *ngIf="!(o.broj_dana>=0)" id="late">Kasnite {{-o.broj_dana}} dana</td>
+                    </tr>
+                </table>
+            </div>
+            <div  class="d-flex flex-row gap-2" >
+                <button (click)="redirectBook(o.id)" class="btn btn-outline-success">Detalji o knjizi</button>
+                <button (click)="returnBook(o.id)" class="btn btn-outline-success">Razduzi knjigu</button>
+                
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>

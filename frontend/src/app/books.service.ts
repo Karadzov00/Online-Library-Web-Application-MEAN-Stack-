@@ -40,6 +40,14 @@ export class BooksService {
 
   }
 
+  returnBook(id){
+    const data={
+      id:id
+    }
+    return this.http.post(`${this.uri}/books/returnBook`, data); 
+
+  }
+
   checkInsertDate(date){
     const data={
       date:date

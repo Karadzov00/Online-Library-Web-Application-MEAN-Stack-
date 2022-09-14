@@ -35,6 +35,10 @@ booksRouter.route('/searchBooks').post(
     (req, res) => new BooksController().searchBooks(req, res)
 )
 
+booksRouter.route('/returnBook').post(
+    (req, res) => new BooksController().returnBook(req, res)
+)
+
 
 
 export default booksRouter; 

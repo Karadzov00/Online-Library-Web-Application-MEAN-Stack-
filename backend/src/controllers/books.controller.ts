@@ -1,6 +1,7 @@
 import express from "express";
 import Book from "../models/book"
 import Date from "../models/date"
+import Obligation from "../models/obligation";
 
 export class BooksController{
 
@@ -120,6 +121,14 @@ export class BooksController{
         }
     }
 
+    returnBook = (req: express.Request, res: express.Response)=>{
+        let id = req.body.id; 
+
+        Obligation.updateOne({'id_knjige':id},{$set:{'razduzen':'da'}}, (err,res)=>{
+            if(err)console.log(err)
+            else res.json({'message': 'Knjiga je uspesno vracena'})
+        })
+    }
 
 
 

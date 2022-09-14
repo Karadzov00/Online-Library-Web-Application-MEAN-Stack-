@@ -56,6 +56,7 @@ export class ObligationsComponent implements OnInit {
               bookObl.naziv=book.naziv;
               bookObl.slika=book.slika; 
               bookObl.broj_dana=days; 
+              bookObl.id=book.id; 
               console.log(bookObl); 
               
               let obl: Obligation = elem;  
@@ -63,6 +64,7 @@ export class ObligationsComponent implements OnInit {
               this.currBooks.push(local_book); 
 
               this.bookObligations.push(bookObl); 
+              this.haveObligations=true; 
             }
           })
 
@@ -87,6 +89,7 @@ export class ObligationsComponent implements OnInit {
 
   user: User; 
   deadlinePassed:boolean; 
+  haveObligations:boolean; 
 
   calculateDays(obligation:Obligation):number{
     let today= new Date();
@@ -97,7 +100,7 @@ export class ObligationsComponent implements OnInit {
     let daysBetweenDates: number
 
     if(date1<=today){
-      let timeInMilisec: number = today.getTime() - date1.getTime();
+      let timeInMilisec: number =  date1.getTime()-today.getTime();
       daysBetweenDates = Math.ceil(timeInMilisec / (1000 * 60 * 60 * 24));
       this.deadlinePassed=true; 
     }
@@ -108,6 +111,22 @@ export class ObligationsComponent implements OnInit {
     }
     return daysBetweenDates; 
     
+  }
+
+  redirectBook(id){
+    this.booksService.getBookById(id).subscribe((book:Book)=>{
+      console.log("book redirect")
+      console.log(book);
+      localStorage.setItem('selectedBook', JSON.stringify(book));
+      this.router.navigate(['book']);  
+    })
+
+  }
+
+  returnBook(id){
+    this.booksService.returnBook(id).subscribe(res=>{
+      alert(res['message']); 
+    })
   }
 
 }

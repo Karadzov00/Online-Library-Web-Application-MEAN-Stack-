@@ -41,4 +41,15 @@ let Book = new Schema({
     }
 });
 exports.default = mongoose_1.default.model("Book", Book, "knjige");
+//     id:number;
+//     naziv:string;
+//     autor:string;
+//     zanr:string;
+//     izdavac:string;
+//     godina_izdavanja:number;
+//     jezik:string;
+//     broj_uzimanja:number;
+//     prosecna_ocena:number; 
+//     na_stanju: number; 
+//     slika: string; 
 //# sourceMappingURL=book.js.map
