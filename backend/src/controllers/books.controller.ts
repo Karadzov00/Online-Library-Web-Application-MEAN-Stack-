@@ -130,6 +130,36 @@ export class BooksController{
         })
     }
 
+    makeObligation = (req: express.Request, res: express.Response)=>{
+        let username= req.body.kor_ime; 
+        let book_id = req.body.id_knjige; 
+        let reserve_date= req.body.datum_zaduzivanja; 
+        let return_date= req.body.datum_vracanja;
+        let returned = req.body.razduzen; 
+        
+        Obligation.find({},(err, obligs)=>{
+            if(err)console.log(err)
+            else{
+                let idO = obligs.length+1; 
+                let obligation = new Obligation({
+                    id:idO,
+                    kor_ime:username,
+                    id_knjige:book_id,
+                    datum_zaduzivanja:reserve_date,
+                    datum_vracanja:return_date,
+                    razduzen:returned
+                })
+
+                obligation.save((err, resp)=>{
+                    if(err) {
+                        console.log(err);
+                        res.status(400).json({"message": "error"})
+                    }
+                    else res.json({"message": "obligation_added"})
+                })
+            }
+        })
+    }
 
 
 

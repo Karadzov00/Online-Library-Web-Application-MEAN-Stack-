@@ -202,6 +202,11 @@ export class BookPageComponent implements OnInit {
     obligation.datum_zaduzivanja=reserveDate;
     obligation.datum_vracanja=returnDate; 
 
+    console.log(obligation); 
+
+    this.booksService.makeObligation(obligation).subscribe(resp=>{
+      alert(resp['message'])
+    })
 
   }
 
