@@ -136,7 +136,7 @@ export class BooksController{
                         let na_stanju = book.na_stanju+1;
                         Book.updateOne({'id':book.id}, {$set:{'na_stanju':na_stanju}}, (err, resp)=>{
                             if(err)console.log(err)
-                            res.json({'message': 'uspesno_vracena'})
+                            else res.json({'message': 'uspesno_vracena'})
                         })
                     }
 
@@ -168,7 +168,21 @@ export class BooksController{
                         console.log(err);
                         res.status(400).json({"message": "error"})
                     }
-                    else res.json({"message": "obligation_added"})
+                    else {
+                        Book.findOne({'id':req.body.obligation.id_knjige},(err, book)=>{
+                            if(err)console.log(err)
+                            else{
+                                let na_stanju = book.na_stanju-1;
+                                let broj_uzimanja= book.broj_uzimanja+1; 
+                                Book.updateOne({'id':book.id}, {$set:{'na_stanju':na_stanju, 'broj_uzimanja':broj_uzimanja}}, (err, resp)=>{
+                                    if(err)console.log(err)
+                                    else res.json({"message": "obligation_added"})
+                                })
+                            }
+        
+                        })
+                    }
+                        
                 })
             }
         })
