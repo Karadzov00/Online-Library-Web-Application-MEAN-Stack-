@@ -124,9 +124,9 @@ export class BooksController{
     returnBook = (req: express.Request, res: express.Response)=>{
         let id = req.body.id; 
 
-        Obligation.updateOne({'id_knjige':id},{$set:{'razduzen':'da'}}, (err,res)=>{
+        Obligation.updateOne({'id_knjige':id},{$set:{'razduzen':'da'}}, (err,resp)=>{
             if(err)console.log(err)
-            else res.json({'message': 'Knjiga je uspesno vracena'})
+            else res.json({'message': 'uspesno_vracena'})
         })
     }
 

@@ -118,11 +118,11 @@ class BooksController {
         };
         this.returnBook = (req, res) => {
             let id = req.body.id;
-            obligation_1.default.updateOne({ 'id_knjige': id }, { $set: { 'razduzen': 'da' } }, (err, res) => {
+            obligation_1.default.updateOne({ 'id_knjige': id }, { $set: { 'razduzen': 'da' } }, (err, resp) => {
                 if (err)
                     console.log(err);
                 else
-                    res.json({ 'message': 'Knjiga je uspesno vracena' });
+                    res.json({ 'message': 'uspesno_vracena' });
             });
         };
     }
