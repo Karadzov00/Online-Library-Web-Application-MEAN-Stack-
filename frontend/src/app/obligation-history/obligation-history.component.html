@@ -1,1 +1,71 @@
-<p>obligation-history works!</p>
+<!-- 
+    <table class="table table-bordered text-center table-dark table-striped ">
+        <tr >
+            <th>Naziv knjige</th>
+            <th>Autor</th>
+            <th>Datum zaduživanja</th>
+            <th>Datum vraćanja</th>  
+        </tr>
+        <tr *ngFor="let o of historyBookObligations" >
+            <td>{{o.naziv}}</td>
+            <td>{{o.autor}}</td>
+            <td>{{o.datum_zaduzivanja}}</td>
+            <td>{{o.datum_vracanja}}</td>
+            <td>
+                <button (click)="redirectBook(o.id)" class="btn btn-outline-success">Detalji o knjizi</button>
+            </td>
+        </tr>
+    </table> -->
+    
+    <div class="col-md-9 col-sm-12" id="table">
+
+        <table class="table table-striped">
+            <thead class="table table-info">
+                <tr>
+                    <th scope="col">Naziv knjige</th>
+                    <th scope="col">Autor</th>
+                    <th scope="col">Datum zaduživanja</th>
+                    <th scope="col">Datum vraćanja</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let o of historyBookObligations" >
+                    <td>{{o.naziv}}</td>
+                    <td>{{o.autor}}</td>
+                    <td>{{o.datum_zaduzivanja}}</td>
+                    <td>{{o.datum_vracanja}}</td>
+                    <td>
+                        <button (click)="redirectBook(o.id)" class="btn btn-success">Detalji o knjizi</button>
+                    </td>
+                </tr>
+                
+            </tbody>
+        </table>
+        <div class="col-md-3 col-sm-6">
+            Sortirajte po:
+            <select class="form-select" aria-label="Default select example" [(ngModel)]="sortCriteria">
+                <option selected>Odaberite kriterijum sortiranja</option>
+                <option value="1">
+                            Nazivu
+                </option>
+                <option value="2">
+                            Autoru
+                </option>
+                <option value="3">
+                            Datumu zaduživanja
+                </option>
+                <option value="4">
+                            Datumu vraćanja
+
+                </option>
+            </select>
+        </div>
+        <button class="btn btn-warning" (click)="sort()">
+            Sortiraj
+        </button>
+    </div>
+        
+
+
+
