@@ -18,6 +18,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { SearchComponent } from './search/search.component';
 import { BookPageComponent } from './book-page/book-page.component';
 import { ObligationsComponent } from './obligations/obligations.component';
+import { ObligationHistoryComponent } from './obligation-history/obligation-history.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ObligationsComponent } from './obligations/obligations.component';
     ProfileComponent,
     SearchComponent,
     BookPageComponent,
-    ObligationsComponent
+    ObligationsComponent,
+    ObligationHistoryComponent
   ],
   imports: [
     BrowserModule,

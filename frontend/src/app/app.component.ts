@@ -60,6 +60,9 @@ export class AppComponent {
   routerObligations(){
     this.router.navigate(['obligations']);
   }
+  routerObligationHistory(){
+    this.router.navigate(['obligationHistory']);
+  }
 
 
 }
