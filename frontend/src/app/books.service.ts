@@ -67,6 +67,15 @@ export class BooksService {
   }
 
 
+  makeObligation(obligation){
+    const data={
+      obligation:obligation
+    }
+    return this.http.post(`${this.uri}/books/makeObligation`, data); 
+
+  }
+
+
 
 
 }

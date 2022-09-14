@@ -44,10 +44,16 @@
                 </tr>
             </table>
         </div>
+        <div>
+            <button class="btn btn-success" (click)="reserveBook()">Zaduži knjigu</button>
+        </div>
         
       </mat-card-content>
     </mat-card>
-  </div>
+</div>
+<div class="alert alert-danger" *ngIf="showAlert">
+    {{message}}
+</div>
   
   
   
