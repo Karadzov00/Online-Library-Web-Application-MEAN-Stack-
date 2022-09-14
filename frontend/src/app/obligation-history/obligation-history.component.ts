@@ -108,10 +108,20 @@ export class ObligationHistoryComponent implements OnInit {
   sortByName(){
     this.historyBookObligations.sort((a,b)=>{
       if ( a.naziv < b.naziv ){
-        return -1;
+        if(this.sortType==1){
+          return -1;
+        }
+        else{
+          return 1; 
+        }
       }
       if ( a.naziv > b.naziv ){
-        return 1;
+        if(this.sortType==1){
+          return 1;
+        }
+        else{
+          return -1; 
+        }
       }
       return 0;
     })
@@ -120,10 +130,20 @@ export class ObligationHistoryComponent implements OnInit {
   sortByAuthor(){
     this.historyBookObligations.sort((a,b)=>{
       if ( a.autor < b.autor ){
-        return -1;
+        if(this.sortType==1){
+          return -1;
+        }
+        else{
+          return 1; 
+        }
       }
       if ( a.autor > b.autor ){
-        return 1;
+        if(this.sortType==1){
+          return 1;
+        }
+        else{
+          return -1; 
+        }
       }
       return 0;
     })
@@ -135,10 +155,20 @@ export class ObligationHistoryComponent implements OnInit {
       let date1 = new Date(a.datum_zaduzivanja); 
       let date2 = new Date(b.datum_zaduzivanja); 
       if ( date1 < date2 ){
-        return -1;
+        if(this.sortType==1){
+          return -1;
+        }
+        else{
+          return 1; 
+        }
       }
       if ( date1 > date2 ){
-        return 1;
+        if(this.sortType==1){
+          return 1;
+        }
+        else{
+          return -1; 
+        }
       }
       return 0;
     })
@@ -147,10 +177,20 @@ export class ObligationHistoryComponent implements OnInit {
   sortByDateReturned(){
     this.historyBookObligations.sort((a,b)=>{
       if ( a.datum_vracanja < b.datum_vracanja ){
-        return -1;
+        if(this.sortType==1){
+          return -1;
+        }
+        else{
+          return 1; 
+        }
       }
       if ( a.datum_vracanja > b.datum_vracanja ){
-        return 1;
+        if(this.sortType==1){
+          return 1;
+        }
+        else{
+          return -1; 
+        }
       }
       return 0;
     })

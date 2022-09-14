@@ -42,26 +42,40 @@
                 
             </tbody>
         </table>
-        <div class="col-md-3 col-sm-6">
-            Sortirajte po:
-            <select class="form-select" aria-label="Default select example" [(ngModel)]="sortCriteria">
-                <option selected>Odaberite kriterijum sortiranja</option>
-                <option value="1">
-                            Nazivu
-                </option>
-                <option value="2">
-                            Autoru
-                </option>
-                <option value="3">
-                            Datumu zaduživanja
-                </option>
-                <option value="4">
-                            Datumu vraćanja
-
-                </option>
-            </select>
-        </div>
-        <button class="btn btn-warning" (click)="sort()">
+        <div class="d-flex flex-row gap-3">
+            <div class="col-md-3 col-sm-6">
+                Sortirajte po:
+                <select class="form-select" aria-label="Default select example" [(ngModel)]="sortCriteria">
+                    <option selected>Odaberite kriterijum sortiranja</option>
+                    <option value="1">
+                        Nazivu
+                    </option>
+                    <option value="2">
+                        Autoru
+                    </option>
+                    <option value="3">
+                        Datumu zaduživanja
+                    </option>
+                    <option value="4">
+                        Datumu vraćanja
+                        
+                    </option>
+                </select>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                Način sortiranja:
+                <select class="form-select" aria-label="Default select example" [(ngModel)]="sortType">
+                    <option selected>Odaberite način sortiranja</option>
+                    <option value="1">
+                        Rastuće
+                    </option>
+                    <option value="2">
+                        Opadajuće
+                    </option>
+                </select>
+            </div>
+         </div>
+        <button class="btn btn-warning" (click)="sort()" id="button">
             Sortiraj
         </button>
     </div>
