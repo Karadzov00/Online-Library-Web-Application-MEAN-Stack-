@@ -124,8 +124,20 @@ class BooksController {
             obligation_1.default.updateOne({ 'id_knjige': id, 'kor_ime': username }, { $set: { 'razduzen': 'da' } }, (err, resp) => {
                 if (err)
                     console.log(err);
-                else
-                    res.json({ 'message': 'uspesno_vracena' });
+                else {
+                    book_1.default.findOne({ 'id': id }, (err, book) => {
+                        if (err)
+                            console.log(err);
+                        else {
+                            let na_stanju = book.na_stanju + 1;
+                            book_1.default.updateOne({ 'id': book.id }, { $set: { 'na_stanju': na_stanju } }, (err, resp) => {
+                                if (err)
+                                    console.log(err);
+                                res.json({ 'message': 'uspesno_vracena' });
+                            });
+                        }
+                    });
+                }
             });
         };
         this.makeObligation = (req, res) => {

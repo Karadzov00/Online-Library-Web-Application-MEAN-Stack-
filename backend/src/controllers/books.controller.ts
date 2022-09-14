@@ -129,7 +129,20 @@ export class BooksController{
 
         Obligation.updateOne({'id_knjige':id, 'kor_ime':username},{$set:{'razduzen':'da'}}, (err,resp)=>{
             if(err)console.log(err)
-            else res.json({'message': 'uspesno_vracena'})
+            else {
+                Book.findOne({'id':id},(err, book)=>{
+                    if(err)console.log(err)
+                    else{
+                        let na_stanju = book.na_stanju+1;
+                        Book.updateOne({'id':book.id}, {$set:{'na_stanju':na_stanju}}, (err, resp)=>{
+                            if(err)console.log(err)
+                            res.json({'message': 'uspesno_vracena'})
+                        })
+                    }
+
+                })
+            
+            }
         })
     }
 
