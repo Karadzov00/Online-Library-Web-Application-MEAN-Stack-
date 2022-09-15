@@ -1,0 +1,70 @@
+<div class="col-md-9 col-sm-12" id="table">
+    <table class="table table-striped">
+        <thead class="table table-dark">
+            <tr>
+                <th scope="col">Korisničko ime</th>
+                <th scope="col">Ime</th>
+                <th scope="col">Prezime</th>
+                <th scope="col">Tip</th>
+                <th scope="col">Adresa</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let u of users" >
+                <td>{{u.kor_ime}}</td>
+                <td>{{u.ime}}</td>
+                <td>{{u.prezime}}</td>
+                <td>{{u.tip}}</td>
+                <td>{{u.adresa}}</td>
+                <td>
+                    <button  class="btn btn-success" (click)="addUser(u)">Dodaj</button>
+                </td>
+                <td>
+                    <button  class="btn btn-warning" (click)="updateUser(u)">Ažuriraj</button>
+                </td>
+                <td>
+                    <button  class="btn btn-danger" (click)="deleteUser(u)">Obriši</button>
+                </td>
+            </tr>
+            
+        </tbody>
+    </table>
+</div>
+<div class="col-md-9 col-sm-12" id="table">
+    <table class="table table-striped">
+        <thead class="table table-primary">
+            <tr>
+                <th scope="col">Naziv knjige</th>
+                <th scope="col">Autor</th>
+                <th scope="col">Žanr</th>
+                <th scope="col">Izdavač</th>
+                <th scope="col">Prosečna ocena</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let b of books" >
+                <td>{{b.naziv}}</td>
+                <td>{{b.autor}}</td>
+                <td>{{b.zanr}}</td>
+                <td>{{b.izdavac}}</td>
+                <td>{{b.prosecna_ocena}}</td>
+                <td>
+                    <button  class="btn btn-success" (click)="addBook(b)">Dodaj</button>
+                </td>
+                <td>
+                    <button  class="btn btn-warning" (click)="updateBook(b)">Ažuriraj</button>
+                </td>
+                <td>
+                    <button  class="btn btn-danger" (click)="deleteBook(b)">Obriši</button>
+                </td>
+            </tr>
+            
+        </tbody>
+    </table>
+</div>

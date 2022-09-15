@@ -136,6 +136,11 @@ export class UserService {
 
   }
 
+  fetchAllUsers(){
+    return this.http.get(`${this.uri}/users/fetchAllUsers`)
+
+  }
+
 
 
 

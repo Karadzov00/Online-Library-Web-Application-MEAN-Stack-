@@ -80,5 +80,12 @@ export class UserController{
         })
         
     }
+    
+    fetchAllUsers = (req: express.Request, res: express.Response)=>{
+        User.find({}, (err, users)=>{
+            if(err) console.log(err)
+            else res.json(users); 
+        })
+    }
 
 }

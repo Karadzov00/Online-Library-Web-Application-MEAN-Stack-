@@ -79,6 +79,14 @@ class UserController {
                     res.json(obligations);
             });
         };
+        this.fetchAllUsers = (req, res) => {
+            user_1.default.find({}, (err, users) => {
+                if (err)
+                    console.log(err);
+                else
+                    res.json(users);
+            });
+        };
     }
 }
 exports.UserController = UserController;

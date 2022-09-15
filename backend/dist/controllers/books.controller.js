@@ -194,7 +194,7 @@ class BooksController {
                         else {
                             let ratings = book.komentari.length;
                             console.log(ratings);
-                            let rating = ((book.prosecna_ocena + comment.ocena) / ratings).toFixed(3);
+                            let rating = ((book.prosecna_ocena + comment.ocena) / ratings);
                             console.log(rating);
                             book_1.default.updateOne({ 'id': comment.id_knjige }, { $set: { 'prosecna_ocena': rating } }, (err, resp) => {
                                 if (err)
