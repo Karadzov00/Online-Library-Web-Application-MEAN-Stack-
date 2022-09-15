@@ -88,4 +88,30 @@ export class UserController{
         })
     }
 
+    fetchAllObligations = (req: express.Request, res: express.Response)=>{
+        Obligation.find({}, (err, users)=>{
+            if(err) console.log(err)
+            else res.json(users); 
+        })
+    }
+
+    addUser = (req: express.Request, res: express.Response)=>{
+        let username = req.body.user.kor_ime; 
+        User.updateOne({'kor_ime':username}, {$set:{'status':'odobren'}},(err, user)=>{
+            if(err) console.log(err)
+            else {
+                res.json({'message': 'korisnik je dodat'})
+            }
+        })
+    }
+
+    deleteUser = (req: express.Request, res: express.Response)=>{
+        let username = req.body.user.kor_ime; 
+        User.deleteOne({'kor_ime':username}, (err, resp)=>{
+            if(err) console.log(err);
+            else res.json({'message': 'korisnik je obrisan'})
+        })
+    }
+
+
 }

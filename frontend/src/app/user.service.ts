@@ -138,7 +138,24 @@ export class UserService {
 
   fetchAllUsers(){
     return this.http.get(`${this.uri}/users/fetchAllUsers`)
+  }
 
+  fetchAllObligations(){
+    return this.http.get(`${this.uri}/users/fetchAllObligations`)
+  }
+
+  addUser(user){
+    const data={
+      user:user
+    }
+    return this.http.post(`${this.uri}/users/addUser`, data)
+  }
+
+  deleteUser(user){
+    const data={
+      user:user
+    }
+    return this.http.post(`${this.uri}/users/deleteUser`, data)
   }
 
 

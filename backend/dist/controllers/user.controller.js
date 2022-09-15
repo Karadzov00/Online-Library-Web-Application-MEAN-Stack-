@@ -87,6 +87,33 @@ class UserController {
                     res.json(users);
             });
         };
+        this.fetchAllObligations = (req, res) => {
+            obligation_1.default.find({}, (err, users) => {
+                if (err)
+                    console.log(err);
+                else
+                    res.json(users);
+            });
+        };
+        this.addUser = (req, res) => {
+            let username = req.body.user.kor_ime;
+            user_1.default.updateOne({ 'kor_ime': username }, { $set: { 'status': 'odobren' } }, (err, user) => {
+                if (err)
+                    console.log(err);
+                else {
+                    res.json({ 'message': 'korisnik je dodat' });
+                }
+            });
+        };
+        this.deleteUser = (req, res) => {
+            let username = req.body.user.kor_ime;
+            user_1.default.deleteOne({ 'kor_ime': username }, (err, resp) => {
+                if (err)
+                    console.log(err);
+                else
+                    res.json({ 'message': 'korisnik je obrisan' });
+            });
+        };
     }
 }
 exports.UserController = UserController;
