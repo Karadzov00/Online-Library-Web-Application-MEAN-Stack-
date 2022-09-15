@@ -20,6 +20,7 @@ import { BookPageComponent } from './book-page/book-page.component';
 import { ObligationsComponent } from './obligations/obligations.component';
 import { ObligationHistoryComponent } from './obligation-history/obligation-history.component';
 import { UpdateBookComponent } from './update-book/update-book.component';
+import { AddBookComponent } from './add-book/add-book.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { UpdateBookComponent } from './update-book/update-book.component';
     BookPageComponent,
     ObligationsComponent,
     ObligationHistoryComponent,
-    UpdateBookComponent
+    UpdateBookComponent,
+    AddBookComponent
   ],
   imports: [
     BrowserModule,

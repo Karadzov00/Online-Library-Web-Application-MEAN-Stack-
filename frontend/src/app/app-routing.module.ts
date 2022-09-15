@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddBookComponent } from './add-book/add-book.component';
 import { BookPageComponent } from './book-page/book-page.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { HomepageComponent } from './homepage/homepage.component';
@@ -27,6 +28,7 @@ const routes: Routes = [
   {path: 'obligations', component: ObligationsComponent},
   {path: 'obligationHistory', component: ObligationHistoryComponent},
   {path: 'updateBook', component: UpdateBookComponent},
+  {path: 'addBook', component: AddBookComponent}
 ];
 
 @NgModule({

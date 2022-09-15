@@ -50,6 +50,9 @@ booksRouter.route('/addComment').post(
 booksRouter.route('/updateBook').post(
     (req, res) => new BooksController().updateBook(req, res)
 )
+booksRouter.route('/addBook').post(
+    (req, res) => new BooksController().addBook(req, res)
+)
 
 
 

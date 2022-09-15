@@ -228,5 +228,36 @@ export class BooksController{
         })
     }
 
+    addBook = (req: express.Request, res: express.Response)=>{
+        Book.find({}, (err,books)=>{
+            if(err) console.log(err)
+            else{
+                let new_id = books.length+1; 
+                let newBook = new Book({
+                    id: new_id,
+                    naziv:req.body.book.naziv,
+                    autor:req.body.book.autor,
+                    zanr:req.body.book.zanr,
+                    izdavac:req.body.book.izdavac,
+                    godina_izdavanja:req.body.book.godina_izdavanja,
+                    jezik:req.body.book.jezik,
+                    broj_uzimanja:req.body.book.broj_uzimanja,
+                    prosecna_ocena:req.body.book.prosecna_ocena,
+                    na_stanju:req.body.book.na_stanju,
+                    slika:req.body.book.slika
+                })
+
+                newBook.save((err, resp)=>{
+                    if(err) {
+                        console.log(err);
+                        res.status(400).json({"message": "error"})
+                    }
+                    else res.json({"message": "book_added"})
+                })
+            }
+        })
+
+    }
+
 
 }

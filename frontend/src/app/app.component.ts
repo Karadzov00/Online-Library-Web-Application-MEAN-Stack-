@@ -64,5 +64,9 @@ export class AppComponent {
     this.router.navigate(['obligationHistory']);
   }
 
+  addBook(){
+    this.router.navigate(['addBook']);
+  }
+
 
 }

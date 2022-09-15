@@ -6,11 +6,11 @@ import { User } from '../model/user';
 import { UserService } from '../user.service';
 
 @Component({
-  selector: 'app-update-book',
-  templateUrl: './update-book.component.html',
-  styleUrls: ['./update-book.component.css']
+  selector: 'app-add-book',
+  templateUrl: './add-book.component.html',
+  styleUrls: ['./add-book.component.css']
 })
-export class UpdateBookComponent implements OnInit {
+export class AddBookComponent implements OnInit {
 
   constructor(private router:Router, private booksService:BooksService,
     private userService:UserService) { }
@@ -52,25 +52,26 @@ export class UpdateBookComponent implements OnInit {
     reader.readAsDataURL(file);
   }
 
-  update(){
-    let updatedBook = new Book(); 
-    updatedBook.id=this.book.id; 
-    updatedBook.naziv=this.naziv!=null?this.naziv:this.book.naziv; 
-    updatedBook.autor=this.autor!=null?this.autor:this.book.autor; 
-    updatedBook.zanr=this.zanr!=null?this.zanr:this.book.zanr; 
-    updatedBook.izdavac=this.izdavac; 
-    updatedBook.godina_izdavanja=this.godina_izdavanja; 
-    updatedBook.jezik=this.jezik; 
-    updatedBook.broj_uzimanja=this.broj_uzimanja; 
-    updatedBook.prosecna_ocena=this.prosecna_ocena; 
-    updatedBook.na_stanju=this.na_stanju; 
-    updatedBook.slika=(this.slika!=null)?this.slika:this.book.slika; 
+  addBook(){
+    let newBook = new Book(); 
+    newBook.id=0; 
+    newBook.naziv=this.naziv!=null?this.naziv:this.book.naziv; 
+    newBook.autor=this.autor!=null?this.autor:this.book.autor; 
+    newBook.zanr=this.zanr!=null?this.zanr:this.book.zanr; 
+    newBook.izdavac=this.izdavac; 
+    newBook.godina_izdavanja=this.godina_izdavanja; 
+    newBook.jezik=this.jezik; 
+    newBook.broj_uzimanja=this.broj_uzimanja; 
+    newBook.prosecna_ocena=this.prosecna_ocena; 
+    newBook.na_stanju=this.na_stanju; 
+    newBook.slika=(this.slika!=null)?this.slika:this.book.slika; 
 
-    console.log(updatedBook); 
+    console.log(newBook); 
 
-    this.booksService.updateBook(updatedBook).subscribe(resp=>{
+    this.booksService.addBook(newBook).subscribe(resp=>{
       alert(resp['message'])
     })
-  }
 
+    
+  }
 }

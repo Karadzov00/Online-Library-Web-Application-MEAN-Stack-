@@ -92,6 +92,14 @@ export class BooksService {
 
   }
 
+  addBook(book){
+    const data={
+      book:book
+    }
+    return this.http.post(`${this.uri}/books/addBook`, data); 
+
+  }
+
 
 
 
