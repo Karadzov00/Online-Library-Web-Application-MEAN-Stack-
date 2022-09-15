@@ -19,5 +19,6 @@ booksRouter.route('/makeObligation').post((req, res) => new books_controller_1.B
 booksRouter.route('/addComment').post((req, res) => new books_controller_1.BooksController().addComment(req, res));
 booksRouter.route('/updateBook').post((req, res) => new books_controller_1.BooksController().updateBook(req, res));
 booksRouter.route('/addBook').post((req, res) => new books_controller_1.BooksController().addBook(req, res));
+booksRouter.route('/deleteBook').post((req, res) => new books_controller_1.BooksController().deleteBook(req, res));
 exports.default = booksRouter;
 //# sourceMappingURL=books.routes.js.map

@@ -56,7 +56,7 @@ export class AdminComponent implements OnInit {
 
   deleteUser(user:User){
     this.obligations.forEach(elem=>{
-      if(!elem.kor_ime.localeCompare(user.kor_ime) && !elem.razduzen.localeCompare('da')){
+      if(!elem.kor_ime.localeCompare(user.kor_ime) && !elem.razduzen.localeCompare('ne')){
         this.message="Ne moze se brisati korisnik koji ima zaduzenu knjigu!"
         this.showAlert=true; 
         this.cannotDeleteUser=true; 
@@ -95,6 +95,10 @@ export class AdminComponent implements OnInit {
       this.cannotDeleteBook=false; 
       return; 
     }
+
+    this.booksService.deleteBook(book).subscribe(resp=>{
+      alert(resp['message'])
+    })
   }
 
 }

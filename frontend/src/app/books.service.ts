@@ -100,6 +100,14 @@ export class BooksService {
 
   }
 
+  deleteBook(book){
+    const data={
+      book:book
+    }
+    return this.http.post(`${this.uri}/books/deleteBook`, data); 
+
+  }
+
 
 
 

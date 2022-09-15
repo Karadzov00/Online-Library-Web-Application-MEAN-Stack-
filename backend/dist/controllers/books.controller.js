@@ -248,6 +248,15 @@ class BooksController {
                 }
             });
         };
+        this.deleteBook = (req, res) => {
+            let idB = req.body.book.id;
+            book_1.default.deleteOne({ 'id': idB }, (err, resp) => {
+                if (err)
+                    console.log(err);
+                else
+                    res.json({ 'message': 'knjiga je obrisana' });
+            });
+        };
     }
 }
 exports.BooksController = BooksController;

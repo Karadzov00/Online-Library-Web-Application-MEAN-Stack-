@@ -53,6 +53,9 @@ booksRouter.route('/updateBook').post(
 booksRouter.route('/addBook').post(
     (req, res) => new BooksController().addBook(req, res)
 )
+booksRouter.route('/deleteBook').post(
+    (req, res) => new BooksController().deleteBook(req, res)
+)
 
 
 
