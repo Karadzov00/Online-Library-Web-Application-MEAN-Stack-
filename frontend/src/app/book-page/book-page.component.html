@@ -75,22 +75,32 @@
     <h1 class="display-5" id="head2">Prethodni komentari: </h1>
 </div>
 
-<div class="d-flex flex-row col-md-9" id="comms">
-    <mat-card class="example-card col-md-9" id="commentCard">
+<div class="d-flex flex-row col-md-9 gap-3" id="comms">
+    <mat-card class="example-card col-md-9" id="commentCard" *ngFor="let c of book.komentari">
         <mat-card-content>
-            <div class="d-flex flex-row">
-                <div>
-                    Korisnicko ime: 
-                </div>
-                <div>
-                    Ocena: 
+            <div class="d-flex flex-row gap-5 mx-3" id="comHeader">
+                    <h4 id="head3">
+                        {{c.kor_ime}}
+                    </h4>
+
+                <div class="d-flex flex-row gap-2" id="rating">
+                    <span >
+                        Ocena:
+                    </span>
+                    <div class="badge bg-warning">
+                        {{c.ocena}}
+                    </div>
                 </div>
             </div>
-            <div>
-                Komentar:
+            <hr>
+            <div class="d-flex flex-column mx-3" id="comm">
+
+                <div>
+                    {{c.tekst}}
+                </div>
             </div>
-            <div>
-                Datum:
+            <div class="text-right mx-3" id="date">
+              {{c.datum_vreme}}
             </div>
         </mat-card-content>
     </mat-card>

@@ -52,3 +52,28 @@
     margin-top: 10px;
     margin-left: 50px;
 }
+
+#comm{
+    margin-top: 10px;
+
+}
+
+#rating{
+    margin-top: 10px;
+    margin-left: 20%;
+    padding-bottom: 15px;
+
+}
+
+#date{
+    margin-top: 20px;
+}
+
+#comHeader{
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
+#head3{
+    margin-top: 10px;
+}
