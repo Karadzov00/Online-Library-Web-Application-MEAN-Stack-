@@ -1,0 +1,72 @@
+
+    <div id="main">
+        <div class="row">
+            <div  class="d-flex flex-row gap-3 " >
+                <div class="col-md-4">
+                    <label for="name">Naziv knjige</label>
+                    <input type="text" class="form-control"id="name" placeholder="{{book.naziv}}">
+                </div>
+                <div class="col-md-4">
+                    <label for="author">Autor</label>
+                    <input type="text" class="form-control"id="author" placeholder="{{book.autor}}">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div  class="d-flex flex-row gap-3 " >
+                <div class="col-md-4">
+                    <label for="genre">Zanr</label>
+                    <input type="text" class="form-control"id="genre" placeholder="{{book.zanr}}">
+                </div>
+                <div class="col-md-3">
+                    <label for="publisher">Izdavac</label>
+                    <input type="text" class="form-control"id="publisher" placeholder="{{book.izdavac}}">
+                </div>
+                <div class="col-md-2">
+                    <label for="year">Godina izdavanja</label>
+                    <input type="text" class="form-control"id="year" placeholder="{{book.godina_izdavanja}}">
+                </div>
+            </div>
+        </div>        
+        <div class="row">
+            <div  class="d-flex flex-row gap-3 " >
+                <div class="col-md-3">
+                    <label for="language">Jezik</label>
+                    <input type="text" class="form-control"id="language" placeholder="{{book.jezik}}">
+                </div>
+                <div class="col-md-1">
+                    <label for="number">Broj uzimanja</label>
+                    <input type="text" class="form-control"id="number" placeholder="{{book.broj_uzimanja}}">
+                </div>
+                <div class="col-md-1">
+                    <label for="rating">Prosecna ocena</label>
+                    <input type="text" class="form-control"id="rating" placeholder="{{book.prosecna_ocena}}">
+                </div>
+                <div class="col-md-1">
+                    <label for="amount">Na stanju</label>
+                    <input type="text" class="form-control"id="amount" placeholder="{{book.na_stanju}}">
+                </div>
+            </div>
+        </div>  
+        <div class="row">
+            <div  class="d-flex flex-row gap-3 " >
+                <div class="form-group">
+                    <label class="image-upload-container btn btn-bwm" id="validationCustom06">
+                        <label for="validationCustom06">Izaberite sliku</label>
+                        <input #imageInput
+                        type="file"
+                        accept="image/*"
+                        (change)="processFile(imageInput)" 
+                        class="form-control"
+                        name="image">
+                    </label>
+                </div>      
+                <div class="col-md-6" id="btn">
+                    <button class="btn btn-warning col-md-6">Azuriraj knjigu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+        
+        

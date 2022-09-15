@@ -294,4 +294,8 @@ export class BookPageComponent implements OnInit {
 
   }
 
+  updateBook(){
+    this.router.navigate(['updateBook'])
+  }
+
 }

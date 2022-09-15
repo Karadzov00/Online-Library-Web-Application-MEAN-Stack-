@@ -44,8 +44,10 @@
                 </tr>
             </table>
         </div>
-        <div>
+        <div class="d-flex flex-row gap-3">
             <button class="btn btn-success" (click)="reserveBook()">Zaduži knjigu</button>
+            <button class="btn btn-success" (click)="updateBook()"
+            *ngIf="user.tip=='moderator' ">Ažuriraj knjigu</button>
         </div>
         
       </mat-card-content>

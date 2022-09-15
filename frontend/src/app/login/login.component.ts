@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['reader']);
         }
         else if(user.tip='moderator'){
-          this.router.navigate(['moderator']);
+          this.router.navigate(['reader']);
 
         }
         else{

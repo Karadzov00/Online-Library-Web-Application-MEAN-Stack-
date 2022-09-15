@@ -11,6 +11,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ReaderComponent } from './reader/reader.component';
 import { RegisterComponent } from './register/register.component';
 import { SearchComponent } from './search/search.component';
+import { UpdateBookComponent } from './update-book/update-book.component';
 
 const routes: Routes = [
   {path: '', component: HomepageComponent},
@@ -24,7 +25,8 @@ const routes: Routes = [
   {path: 'search', component: SearchComponent},
   {path: 'book', component: BookPageComponent},
   {path: 'obligations', component: ObligationsComponent},
-  {path: 'obligationHistory', component: ObligationHistoryComponent}
+  {path: 'obligationHistory', component: ObligationHistoryComponent},
+  {path: 'updateBook', component: UpdateBookComponent},
 ];
 
 @NgModule({
