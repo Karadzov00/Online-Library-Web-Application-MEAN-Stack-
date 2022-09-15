@@ -192,10 +192,22 @@ export class BooksController{
         let comment = req.body.comment; 
         console.log(comment); 
 
-        Book.updateOne({'id':comment.id_knjige}, {$push: {'komentari': comment}}, (err, resp)=>{
+        Book.updateOne({'id':comment.id_knjige}, {$push: {'komentari': comment}}, (err, book)=>{
             if(err) console.log(err)
             else {
-                res.json({'message': 'ok'})
+                Book.findOne({'id':comment.id_knjige}, (err, book)=>{
+                    if(err) console.log(err)
+                    else{
+                        let ratings = book.komentari.length;
+                        console.log(ratings);
+                        let rating = (book.prosecna_ocena+comment.ocena)/ratings; 
+                        console.log(rating); 
+                        Book.updateOne({'id':comment.id_knjige}, {$set: {'prosecna_ocena': rating}}, (err, resp)=>{
+                            if(err) console.log(err)
+                            res.json({'message': 'ok'})
+                        })
+                    }
+                })
             }
         })
 
