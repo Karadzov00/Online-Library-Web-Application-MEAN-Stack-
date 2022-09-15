@@ -84,6 +84,14 @@ export class BooksService {
 
   }
 
+  updateBook(book){
+    const data={
+      book:book
+    }
+    return this.http.post(`${this.uri}/books/updateBook`, data); 
+
+  }
+
 
 
 

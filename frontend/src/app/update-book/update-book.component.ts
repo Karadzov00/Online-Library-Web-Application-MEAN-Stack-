@@ -18,6 +18,7 @@ export class UpdateBookComponent implements OnInit {
   ngOnInit(): void {
     this.book = JSON.parse(localStorage.getItem('selectedBook')); 
     this.user = JSON.parse(localStorage.getItem('loggedUser')); 
+    
   }
 
   book:Book; 
@@ -49,6 +50,27 @@ export class UpdateBookComponent implements OnInit {
     });
 
     reader.readAsDataURL(file);
+  }
+
+  update(){
+    let updatedBook = new Book(); 
+    updatedBook.id=this.book.id; 
+    updatedBook.naziv=this.naziv; 
+    updatedBook.autor=this.autor; 
+    updatedBook.zanr=this.zanr; 
+    updatedBook.izdavac=this.izdavac; 
+    updatedBook.godina_izdavanja=this.godina_izdavanja; 
+    updatedBook.jezik=this.jezik; 
+    updatedBook.broj_uzimanja=this.broj_uzimanja; 
+    updatedBook.prosecna_ocena=this.prosecna_ocena; 
+    updatedBook.na_stanju=this.na_stanju; 
+    updatedBook.slika=(this.slika!=null)?this.slika:this.book.slika; 
+
+    console.log(updatedBook); 
+
+    this.booksService.updateBook(updatedBook).subscribe(resp=>{
+      alert(resp['message'])
+    })
   }
 
 }

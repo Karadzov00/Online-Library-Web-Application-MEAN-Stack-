@@ -206,6 +206,18 @@ class BooksController {
                 }
             });
         };
+        this.updateBook = (req, res) => {
+            let book = req.body.book;
+            book_1.default.updateOne({ 'id': book.id }, { $set: { 'naziv': book.naziv, 'autor': book.autor, 'zanr': book.zanr,
+                    'izdavac': book.izdavac, 'godina_izdavanja': book.godina_izdavanja, 'jezik': book.jezik,
+                    'broj_uzimanja': book.broj_uzimanja, 'prosecna_ocena': book.prosecna_ocena,
+                    'na_stanju': book.na_stanju, 'slika': book.slika } }, (err, resp) => {
+                if (err)
+                    console.log(err);
+                else
+                    res.json({ 'message': 'book_updated' });
+            });
+        };
     }
 }
 exports.BooksController = BooksController;

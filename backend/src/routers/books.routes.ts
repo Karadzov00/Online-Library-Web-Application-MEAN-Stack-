@@ -47,6 +47,10 @@ booksRouter.route('/addComment').post(
     (req, res) => new BooksController().addComment(req, res)
 )
 
+booksRouter.route('/updateBook').post(
+    (req, res) => new BooksController().updateBook(req, res)
+)
+
 
 
 export default booksRouter; 
