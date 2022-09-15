@@ -199,7 +199,7 @@ class BooksController {
                             book_1.default.updateOne({ 'id': comment.id_knjige }, { $set: { 'prosecna_ocena': rating } }, (err, resp) => {
                                 if (err)
                                     console.log(err);
-                                res.json({ 'message': 'ok' });
+                                res.json({ 'message': 'comment_added' });
                             });
                         }
                     });

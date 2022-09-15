@@ -25,6 +25,11 @@ export class BookPageComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem('loggedUser')); 
     console.log("komentari")
     console.log(this.book.komentari); 
+    if(this.book.komentari.length==0){
+      this.commentMessage="Trenutno nema komentara za ovu knjigu"
+      this.showMessage=true; 
+    }
+
     this.userService.getObligations(this.user.kor_ime).subscribe((obligs:Obligation[])=>{
       this.allObligations=obligs; 
       console.log("sva zaduzenja");
@@ -104,6 +109,8 @@ export class BookPageComponent implements OnInit {
 
   leftComment:boolean=true; 
   reservedBook:boolean=false; 
+
+  
 
   reserveBook(){
 
@@ -245,6 +252,8 @@ export class BookPageComponent implements OnInit {
   }
 
   
+  commentMessage:string;
+  showMessage:boolean;
 
 
   addComment(){
@@ -263,6 +272,8 @@ export class BookPageComponent implements OnInit {
 
     if(!this.reservedBook){
       console.log("Niste zaduzivali ovu knjigu!")
+      this.showMessage=true; 
+      this.commentMessage="Niste zaduzivali ovu knjigu!";
       return;
     }
 
@@ -275,6 +286,8 @@ export class BookPageComponent implements OnInit {
     })
     if(commentsLeft>=1){
       console.log("Vec ste ostavili komentar!")
+      this.showMessage=true; 
+      this.commentMessage="Vec ste ostavili komentar!";
       return; 
     }
 
@@ -288,8 +301,10 @@ export class BookPageComponent implements OnInit {
 
     console.log(comm); 
 
-    this.booksService.addComment(comm).subscribe(res=>{
+    this.book.komentari.push(comm); 
 
+    this.booksService.addComment(comm).subscribe(resp=>{
+      alert(resp['message']); 
     })
 
   }

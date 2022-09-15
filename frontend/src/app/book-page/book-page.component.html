@@ -71,6 +71,7 @@
     <div id="addCom">
         <button class="btn btn-warning col-md-2 col-sm-4" (click)="addComment()">Dodaj komentar</button>
     </div>
+    <div class="alert alert-danger" *ngIf="showMessage">{{commentMessage}}</div>
 </div>
 <hr class="col-md-11 col-sm-11 mx-auto me-auto">
 <div class="d-flex mx-3">

@@ -204,7 +204,7 @@ export class BooksController{
                         console.log(rating); 
                         Book.updateOne({'id':comment.id_knjige}, {$set: {'prosecna_ocena': rating}}, (err, resp)=>{
                             if(err) console.log(err)
-                            res.json({'message': 'ok'})
+                            res.json({'message': 'comment_added'})
                         })
                     }
                 })
