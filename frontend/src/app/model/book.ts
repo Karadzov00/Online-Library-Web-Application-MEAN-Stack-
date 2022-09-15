@@ -1,3 +1,5 @@
+import { Comment } from "./comment";
+
 export class Book{
     id:number;
     naziv:string;
@@ -10,4 +12,5 @@ export class Book{
     prosecna_ocena:number; 
     na_stanju: number; 
     slika: string; 
+    komentari: Array<Comment>;
 }

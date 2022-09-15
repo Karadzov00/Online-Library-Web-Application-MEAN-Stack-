@@ -23,6 +23,8 @@ export class BookPageComponent implements OnInit {
   ngOnInit(): void {
     this.book = JSON.parse(localStorage.getItem('selectedBook')); 
     this.user = JSON.parse(localStorage.getItem('loggedUser')); 
+    console.log("komentari")
+    console.log(this.book.komentari); 
     this.userService.getObligations(this.user.kor_ime).subscribe((obligs:Obligation[])=>{
       this.allObligations=obligs; 
       console.log("sva zaduzenja");
@@ -287,7 +289,7 @@ export class BookPageComponent implements OnInit {
     console.log(comm); 
 
     this.booksService.addComment(comm).subscribe(res=>{
-      
+
     })
 
   }
