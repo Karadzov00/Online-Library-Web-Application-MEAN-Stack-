@@ -42,6 +42,10 @@ userRouter.route('/deleteUser').post(
     (req, res) => new UserController().deleteUser(req, res)
 )
 
+userRouter.route('/updateUser').post(
+    (req, res) => new UserController().updateUser(req, res)
+)
+
 
 
 export default userRouter; 

@@ -16,5 +16,6 @@ userRouter.route('/fetchAllObligations').get((req, res) => new user_controller_1
 userRouter.route('/getObligations').post((req, res) => new user_controller_1.UserController().getObligations(req, res));
 userRouter.route('/addUser').post((req, res) => new user_controller_1.UserController().addUser(req, res));
 userRouter.route('/deleteUser').post((req, res) => new user_controller_1.UserController().deleteUser(req, res));
+userRouter.route('/updateUser').post((req, res) => new user_controller_1.UserController().updateUser(req, res));
 exports.default = userRouter;
 //# sourceMappingURL=user.routes.js.map

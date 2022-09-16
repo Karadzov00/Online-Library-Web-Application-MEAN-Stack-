@@ -22,6 +22,7 @@ import { ObligationHistoryComponent } from './obligation-history/obligation-hist
 import { UpdateBookComponent } from './update-book/update-book.component';
 import { AddBookComponent } from './add-book/add-book.component';
 import { AdminComponent } from './admin/admin.component';
+import { UpdateUserComponent } from './update-user/update-user.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { AdminComponent } from './admin/admin.component';
     ObligationHistoryComponent,
     UpdateBookComponent,
     AddBookComponent,
-    AdminComponent
+    AdminComponent,
+    UpdateUserComponent
   ],
   imports: [
     BrowserModule,

@@ -113,5 +113,26 @@ export class UserController{
         })
     }
 
+    updateUser= (req: express.Request, res: express.Response)=>{
+        let kor_ime: string= req.body.user.kor_ime;
+        let lozinka: string= req.body.user.lozinka; 
+        let ime: string= req.body.user.ime;
+        let prezime: string= req.body.user.prezime;
+        let tip: string= req.body.user.tip;
+        let adresa: string= req.body.user.adresa;
+        let telefon: string= req.body.user.telefon;
+        let email: string= req.body.user.email;
+        let status: string= req.body.user.status; 
+        let slika: string= req.body.user.slika; 
+
+        User.updateOne({'kor_ime':kor_ime}, {$set:{'lozinka':lozinka,'ime':ime,
+            'prezime':prezime,'tip':tip,'adresa':adresa,'telefon':telefon,
+            'email':email,'status':status, 'slika':slika}}, (err, resp)=>{
+
+                if(err) console.log(err)
+                else res.json({'message': 'korisnik azuriran'})
+            })
+    }
+
 
 }

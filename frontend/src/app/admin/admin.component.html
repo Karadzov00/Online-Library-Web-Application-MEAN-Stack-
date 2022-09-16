@@ -33,6 +33,9 @@
         </tbody>
     </table>
 </div>
+<div  class="d-flex justify-content-center btns" >
+    <button  class="btn btn-success col-md-3 " (click)="addNewUser()">Dodaj novog korisnika</button>
+</div>
 <div class="alert alert-danger" *ngIf="showAlert">
     {{message}}
 </div>
@@ -47,7 +50,6 @@
                 <th scope="col">Prosečna ocena</th>
                 <th scope="col"></th>
                 <th scope="col"></th>
-                <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
@@ -58,9 +60,6 @@
                 <td>{{b.izdavac}}</td>
                 <td>{{b.prosecna_ocena}}</td>
                 <td>
-                    <button  class="btn btn-success" (click)="addBook(b)">Dodaj</button>
-                </td>
-                <td>
                     <button  class="btn btn-warning" (click)="updateBook(b)">Ažuriraj</button>
                 </td>
                 <td>
@@ -70,4 +69,13 @@
             
         </tbody>
     </table>
+</div>
+<div  class="d-flex flex-row justify-content-center btns gap-3" >
+    <button  class="btn btn-success col-md-3 " (click)="addBook()" id="btn2">Dodaj novu knjigu</button>
+    <div >
+        <div >
+            <label for="days">Maksimalan broj dana na zaduženju knjige:</label>
+        </div>
+        <input type="text" [(ngModel)]="maxDays" class="form-control" id="days">
+    </div>
 </div>

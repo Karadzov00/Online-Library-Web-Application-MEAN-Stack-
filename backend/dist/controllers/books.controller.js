@@ -249,7 +249,7 @@ class BooksController {
             });
         };
         this.deleteBook = (req, res) => {
-            let idB = req.body.book.id;
+            let idB = req.body.bookId;
             book_1.default.deleteOne({ 'id': idB }, (err, resp) => {
                 if (err)
                     console.log(err);

@@ -44,6 +44,8 @@ export class AdminComponent implements OnInit {
   cannotDeleteUser:boolean;
   cannotDeleteBook:boolean;
 
+  maxDays:number; 
+
   addUser(user:User){
     this.userService.addUser(user).subscribe(resp=>{
       alert(resp['message'])
@@ -74,12 +76,17 @@ export class AdminComponent implements OnInit {
 
   }
 
-  addBook(book:Book){
+  addBook(){
+    this.router.navigate(['addBook']); 
+  }
 
+  addNewUser(){
+    this.router.navigate(['register']);  
   }
 
   updateBook(book:Book){
-
+    localStorage.setItem('selectedBook', JSON.stringify(book));
+    this.router.navigate(['updateBook']);  
   }
 
   deleteBook(book:Book){
@@ -96,7 +103,7 @@ export class AdminComponent implements OnInit {
       return; 
     }
 
-    this.booksService.deleteBook(book).subscribe(resp=>{
+    this.booksService.deleteBook(book.id).subscribe(resp=>{
       alert(resp['message'])
     })
   }

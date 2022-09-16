@@ -100,9 +100,9 @@ export class BooksService {
 
   }
 
-  deleteBook(book){
+  deleteBook(bookId){
     const data={
-      book:book
+      bookId:bookId
     }
     return this.http.post(`${this.uri}/books/deleteBook`, data); 
 

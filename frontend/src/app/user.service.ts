@@ -158,6 +158,13 @@ export class UserService {
     return this.http.post(`${this.uri}/users/deleteUser`, data)
   }
 
+  updateUser(user){
+    const data={
+      user:user
+    }
+    return this.http.post(`${this.uri}/users/updateUser`, data)
+  }
+
 
 
 

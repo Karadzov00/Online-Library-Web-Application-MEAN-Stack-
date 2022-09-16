@@ -260,7 +260,7 @@ export class BooksController{
     }
 
     deleteBook= (req: express.Request, res: express.Response)=>{
-        let idB = req.body.book.id;
+        let idB = req.body.bookId;
         Book.deleteOne({'id':idB}, (err, resp)=>{
             if(err) console.log(err);
             else res.json({'message': 'knjiga je obrisana'})

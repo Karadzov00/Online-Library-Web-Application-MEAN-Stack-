@@ -114,6 +114,26 @@ class UserController {
                     res.json({ 'message': 'korisnik je obrisan' });
             });
         };
+        this.updateUser = (req, res) => {
+            let kor_ime = req.body.user.kor_ime;
+            let lozinka = req.body.user.lozinka;
+            let ime = req.body.user.ime;
+            let prezime = req.body.user.prezime;
+            let tip = req.body.user.tip;
+            let adresa = req.body.user.adresa;
+            let telefon = req.body.user.telefon;
+            let email = req.body.user.email;
+            let status = req.body.user.status;
+            let slika = req.body.user.slika;
+            user_1.default.updateOne({ 'kor_ime': kor_ime }, { $set: { 'lozinka': lozinka, 'ime': ime,
+                    'prezime': prezime, 'tip': tip, 'adresa': adresa, 'telefon': telefon,
+                    'email': email, 'status': status, 'slika': slika } }, (err, resp) => {
+                if (err)
+                    console.log(err);
+                else
+                    res.json({ 'message': 'korisnik azuriran' });
+            });
+        };
     }
 }
 exports.UserController = UserController;
