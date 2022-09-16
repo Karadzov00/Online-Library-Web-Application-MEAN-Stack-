@@ -13,6 +13,7 @@ userRouter.route('/updatePassword').post((req, res) => new user_controller_1.Use
 userRouter.route('/getNoUserImage').get((req, res) => new user_controller_1.UserController().getNoUserImage(req, res));
 userRouter.route('/fetchAllUsers').get((req, res) => new user_controller_1.UserController().fetchAllUsers(req, res));
 userRouter.route('/fetchAllObligations').get((req, res) => new user_controller_1.UserController().fetchAllObligations(req, res));
+userRouter.route('/getAdmin').get((req, res) => new user_controller_1.UserController().getAdmin(req, res));
 userRouter.route('/getObligations').post((req, res) => new user_controller_1.UserController().getObligations(req, res));
 userRouter.route('/addUser').post((req, res) => new user_controller_1.UserController().addUser(req, res));
 userRouter.route('/deleteUser').post((req, res) => new user_controller_1.UserController().deleteUser(req, res));

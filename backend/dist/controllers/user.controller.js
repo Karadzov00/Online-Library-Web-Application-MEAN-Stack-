@@ -134,6 +134,14 @@ class UserController {
                     res.json({ 'message': 'korisnik azuriran' });
             });
         };
+        this.getAdmin = (req, res) => {
+            user_1.default.findOne({ 'tip': 'admin' }, (err, admin) => {
+                if (err)
+                    console.log(err);
+                else
+                    res.json(admin);
+            });
+        };
     }
 }
 exports.UserController = UserController;

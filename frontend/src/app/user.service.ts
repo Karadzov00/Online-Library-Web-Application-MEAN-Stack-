@@ -110,6 +110,10 @@ export class UserService {
     return this.http.get(`${this.uri}/users/getNoUserImage`)
   }
 
+  getAdmin(){
+    return this.http.get(`${this.uri}/users/getAdmin`)
+  }
+
 
   public uploadImage(image: File) {
     const formData = new FormData();

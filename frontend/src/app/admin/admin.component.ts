@@ -17,6 +17,14 @@ export class AdminComponent implements OnInit {
     private booksService:BooksService) { }
 
   ngOnInit(): void {
+
+    this.userService.getAdmin().subscribe((admin:User)=>{
+      this.user=admin; 
+      localStorage.setItem('loggedUser', JSON.stringify(this.user)); 
+
+      console.log(this.user); 
+    })
+
     this.userService.fetchAllUsers().subscribe((allUsers:User[])=>{
       this.users=allUsers; 
       console.log(this.users)
@@ -34,6 +42,8 @@ export class AdminComponent implements OnInit {
 
     })
   }
+
+  user:User; 
 
   users:User[]=[]; 
   books:Book[]=[]; 

@@ -20,6 +20,12 @@ export class ProfileComponent implements OnInit {
   }
 
   user:User; 
+
+
+  updateInfo(){
+    this.router.navigate(['updateUser']);
+
+  }
   
   logout(){
     localStorage.clear(); 

@@ -31,6 +31,8 @@ export class UpdateUserComponent implements OnInit {
     // this.message="Greska!"
   }
 
+  loggedUser:User; 
+
   username: string; 
   password: string; 
   password2: string; 
@@ -108,7 +110,13 @@ export class UpdateUserComponent implements OnInit {
 
         
     let user = new User();
-    user.kor_ime=this.username;
+    
+    if(!this.loggedUser.tip.localeCompare('admin')){
+      user.kor_ime=this.username;
+    }
+    else{
+      user.kor_ime=this.loggedUser.kor_ime; 
+    }
     user.lozinka=this.password;
     user.ime=this.firstname;
     user.prezime=this.lastname;

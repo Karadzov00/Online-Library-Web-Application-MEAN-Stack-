@@ -134,5 +134,10 @@ export class UserController{
             })
     }
 
-
+    getAdmin=(req: express.Request, res: express.Response)=>{
+        User.findOne({'tip':'admin'}, (err, admin)=>{
+            if(err) console.log(err)
+            else res.json(admin);
+        })
+    }
 }

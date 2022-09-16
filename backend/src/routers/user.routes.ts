@@ -30,6 +30,10 @@ userRouter.route('/fetchAllObligations').get(
     (req, res) => new UserController().fetchAllObligations(req, res)
 )
     
+userRouter.route('/getAdmin').get(
+    (req, res) => new UserController().getAdmin(req, res)
+)
+    
 userRouter.route('/getObligations').post(
     (req, res) => new UserController().getObligations(req, res)
 )
