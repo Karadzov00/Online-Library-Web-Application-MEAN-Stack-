@@ -295,11 +295,31 @@ export class BooksController{
         let izdavac = req.body.searchObj.izdavac;
         let godina_od = req.body.searchObj.godina_od;
         let godina_do = req.body.searchObj.godina_do;
+
+        if(!naziv)naziv="";
+        if(!autor)autor="";
+
+        if(!izdavac)izdavac="";
+        if(!godina_od)godina_od=0;
+        if(!godina_do)godina_do=999999;
+
+
         console.log(zanr);
         console.log(naziv);
+        console.log(autor);
+        console.log(godina_do);
         console.log(izdavac);
 
-    }
+        Book.find({'naziv':{$regex: naziv},'autor':{$regex: autor},
+                    'izdavac':{$regex: izdavac}, 'godina':{$gt: godina_od, $lt: godina_od },
+                    'zanr':{$in: zanr}}, (err, books)=>{
+                        if(err)console.log(err)
+                        else{
+                            console.log(books);
+
+                        }
+                    })
+        }
 
 
 }
