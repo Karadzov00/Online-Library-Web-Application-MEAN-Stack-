@@ -2,6 +2,7 @@ import express from "express";
 import Book from "../models/book"
 import Date from "../models/date"
 import Obligation from "../models/obligation";
+import maxDays from "../models/max_days";
 
 export class BooksController{
 
@@ -265,6 +266,17 @@ export class BooksController{
             if(err) console.log(err);
             else res.json({'message': 'knjiga je obrisana'})
         })
+    }
+
+
+    changeMaxDays= (req: express.Request, res: express.Response)=>{
+        let days = req.body.days; 
+        console.log(days); 
+        maxDays.updateOne({'id':1}, {$set:{'max_broj_dana':days}}, (err, resp)=>{
+            if(err) console.log(err)
+            res.json({'message': 'max days updated'})
+        })
+        
     }
 
 

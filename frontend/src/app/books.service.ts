@@ -108,6 +108,14 @@ export class BooksService {
 
   }
 
+  changeMaxDays(days){
+    const data={
+      days:days
+    }
+    return this.http.post(`${this.uri}/books/changeMaxDays`, data); 
+
+  }
+
 
 
 

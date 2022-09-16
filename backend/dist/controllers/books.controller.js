@@ -7,6 +7,7 @@ exports.BooksController = void 0;
 const book_1 = __importDefault(require("../models/book"));
 const date_1 = __importDefault(require("../models/date"));
 const obligation_1 = __importDefault(require("../models/obligation"));
+const max_days_1 = __importDefault(require("../models/max_days"));
 class BooksController {
     constructor() {
         this.getTop3Books = (req, res) => {
@@ -255,6 +256,15 @@ class BooksController {
                     console.log(err);
                 else
                     res.json({ 'message': 'knjiga je obrisana' });
+            });
+        };
+        this.changeMaxDays = (req, res) => {
+            let days = req.body.days;
+            console.log(days);
+            max_days_1.default.updateOne({ 'id': 1 }, { $set: { 'max_broj_dana': days } }, (err, resp) => {
+                if (err)
+                    console.log(err);
+                res.json({ 'message': 'max days updated' });
             });
         };
     }

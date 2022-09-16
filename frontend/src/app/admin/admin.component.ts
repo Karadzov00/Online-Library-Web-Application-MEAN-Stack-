@@ -53,7 +53,8 @@ export class AdminComponent implements OnInit {
   }
 
   updateUser(user:User){
-
+    localStorage.setItem('loggedUser', JSON.stringify(user));
+    this.router.navigate(['updateUser']); 
   }
 
   deleteUser(user:User){
@@ -104,6 +105,12 @@ export class AdminComponent implements OnInit {
     }
 
     this.booksService.deleteBook(book.id).subscribe(resp=>{
+      alert(resp['message'])
+    })
+  }
+
+  changeMaxDays(){
+    this.booksService.changeMaxDays(this.maxDays).subscribe(resp=>{
       alert(resp['message'])
     })
   }
