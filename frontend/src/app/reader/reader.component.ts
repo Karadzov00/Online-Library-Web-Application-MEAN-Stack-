@@ -3,6 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BooksService } from '../books.service';
 import { Book } from '../model/book';
+import { BookHistoryObligation } from '../model/bookHistoryObligation';
+import { BookObligation } from '../model/bookObligation';
+import { Obligation } from '../model/obligation';
 import { User } from '../model/user';
 import { UserService } from '../user.service';
 
@@ -17,6 +20,7 @@ export class ReaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem('loggedUser')); 
+    this.book = JSON.parse(localStorage.getItem('selectedBook')); 
     console.log(this.user); 
     this.userImage= this.user.slika; 
 
@@ -40,9 +44,77 @@ export class ReaderComponent implements OnInit {
       
     })
 
+    //generate notifications 
+
+    this.userService.getObligations(this.user.kor_ime).subscribe((obligs:Obligation[])=>{
+      this.allObligations=obligs; 
+      // console.log("sva zaduzenja");
+      // console.log(this.allObligations)
+      if(this.allObligations){
+        this.allObligations.forEach(elem=>{
+
+          
+          var local_book:Book; 
+          
+          this.booksService.getBookById(elem.id_knjige).subscribe((book:Book)=>{
+            local_book=book; 
+            
+            this.allBooks.push(local_book);
+            // console.log(local_book); 
+
+            let historyObl: BookHistoryObligation = new BookHistoryObligation(); 
+            historyObl.id=book.id; 
+            historyObl.autor=book.autor; 
+            historyObl.naziv=book.naziv; 
+            historyObl.datum_zaduzivanja=elem.datum_zaduzivanja;
+            historyObl.datum_vracanja=elem.datum_vracanja; 
+            // console.log(historyObl); 
+            
+            this.historyBookObligations.push(historyObl); 
+
+            
+            if(!elem.razduzen.localeCompare('ne')){
+              // console.log(elem.datum_zaduzivanja);
+              let days = this.calculateDays(elem); 
+              console.log(elem.id_knjige);
+              console.log(days);
+              if(days<=2 && days>=0){
+                this.notifMessage1+="Ističe vam rok za vraćanje knjige "+book.naziv+"!   ";
+              }
+              else if(days<0){
+                this.notifMessage2+="Istekao vam je rok za vraćanje knjige "+book.naziv+"!   ";
+              }
+              let bookObl: BookObligation = new BookObligation(); 
+              
+              bookObl.autor=book.autor; 
+              bookObl.naziv=book.naziv;
+              bookObl.slika=book.slika; 
+              bookObl.broj_dana=days; 
+              bookObl.id=book.id; 
+              // console.log(bookObl); 
+              
+              let obl: Obligation = elem;  
+              this.currObligations.push(obl);
+              this.currBooks.push(local_book); 
+
+              this.bookObligations.push(bookObl); 
+              this.haveObligations=true; 
+            }
+          })
+
+
+        })
+
+      }
+    })
+
+
   }
 
- 
+  notifMessage1:string=""; 
+  notifMessage2:string=""; 
+
+  book:Book; 
   date: string; 
   currentRate = 8;
 
@@ -61,6 +133,18 @@ export class ReaderComponent implements OnInit {
   user:User; 
   userImage: string; 
 
+
+  allObligations: Obligation[]; 
+  currObligations:Obligation[]=[]; 
+
+  allBooks:Book[]=[]; 
+  currBooks:Book[]=[]; 
+  bookObligations:BookObligation[]=[]; 
+  historyBookObligations:BookHistoryObligation[]=[]; 
+
+  deadlinePassed:boolean; 
+  haveObligations:boolean; 
+
   processFile(imageInput: any) {
     const file: File = imageInput.files[0];
     const reader = new FileReader();
@@ -70,10 +154,30 @@ export class ReaderComponent implements OnInit {
       this.selectedFile = file; 
       this.imageChosen=true; 
       this.image=event.target.result; 
-      console.log(this.image); 
+      // console.log(this.image); 
     });
 
     reader.readAsDataURL(file);
+  }
+
+  calculateDays(obligation:Obligation):number{
+    let today= new Date();
+
+    let date1: Date = new Date(obligation.datum_vracanja);
+    let date2: Date = new Date(obligation.datum_zaduzivanja);
+
+    let daysBetweenDates: number
+
+    if(date1<=today){
+      let timeInMilisec: number =  date1.getTime()-today.getTime();
+      daysBetweenDates = Math.ceil(timeInMilisec / (1000 * 60 * 60 * 24));
+    }
+    else{
+      let timeInMilisec: number = date1.getTime() - date2.getTime();
+      daysBetweenDates = Math.ceil(timeInMilisec / (1000 * 60 * 60 * 24));
+    }
+    return daysBetweenDates; 
+    
   }
 
 

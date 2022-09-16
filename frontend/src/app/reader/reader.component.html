@@ -18,6 +18,17 @@
     </mat-card-content>
   </mat-card>
 </div>
+<div class="col-md-10 mx-auto">
+  <div class="alert alert-danger">
+    {{notifMessage1}}
+  </div>
+  <div class="alert alert-danger">
+    {{notifMessage2}}
+  </div>
+  <div class="alert alert-danger" *ngIf="currObligations.length>=3">
+    Imete maksimalne 3 zadužene knjige!
+  </div>
+</div>
 
 
 
