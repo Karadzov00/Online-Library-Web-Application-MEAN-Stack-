@@ -137,6 +137,11 @@ export class BooksService {
 
   }
 
+  fetchBookSuggestions(){
+    return this.http.get(`${this.uri}/books/fetchBookSuggestions`); 
+
+  }
+
 
 
 

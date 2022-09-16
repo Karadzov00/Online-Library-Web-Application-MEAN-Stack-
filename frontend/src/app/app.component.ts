@@ -71,5 +71,10 @@ export class AppComponent {
     this.router.navigate(['addBook']);
   }
 
+  suggestions(){
+    this.router.navigate(['bookSuggestions']);
+
+  }
+
 
 }

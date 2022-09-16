@@ -357,5 +357,11 @@ export class BooksController{
         })
     }
 
+    fetchBookSuggestions= (req: express.Request, res: express.Response)=>{
+        BookRequest.find({},(err, requests)=>{
+            if(err)console.log(err)
+            else res.json(requests)
+        })
+    }
 
 }

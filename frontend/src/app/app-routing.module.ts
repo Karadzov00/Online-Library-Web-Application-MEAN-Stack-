@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AddBookComponent } from './add-book/add-book.component';
 import { AdminComponent } from './admin/admin.component';
 import { BookPageComponent } from './book-page/book-page.component';
+import { BookSuggestionsComponent } from './book-suggestions/book-suggestions.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { LoginComponent } from './login/login.component';
@@ -32,7 +33,8 @@ const routes: Routes = [
   {path: 'updateBook', component: UpdateBookComponent},
   {path: 'addBook', component: AddBookComponent},
   {path: 'admin', component: AdminComponent},
-  {path: 'updateUser', component: UpdateUserComponent}
+  {path: 'updateUser', component: UpdateUserComponent},
+  {path: 'bookSuggestions', component: BookSuggestionsComponent}
 ];
 
 @NgModule({

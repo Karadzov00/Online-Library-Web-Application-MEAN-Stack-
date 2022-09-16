@@ -24,6 +24,9 @@
             <li class="nav-item" >
                 <a class="nav-link" role="button" (click)="addBook()">Dodaj knjigu</a>
             </li>
+            <li class="nav-item" >
+                <a class="nav-link" role="button" (click)="suggestions()" *ngIf="user.tip=='moderator'">Zahtevi za knjige</a>
+            </li>
 
         </ul>
         <div class="me-3">

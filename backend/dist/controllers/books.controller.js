@@ -344,6 +344,14 @@ class BooksController {
                 }
             });
         };
+        this.fetchBookSuggestions = (req, res) => {
+            book_request_1.default.find({}, (err, requests) => {
+                if (err)
+                    console.log(err);
+                else
+                    res.json(requests);
+            });
+        };
     }
 }
 exports.BooksController = BooksController;

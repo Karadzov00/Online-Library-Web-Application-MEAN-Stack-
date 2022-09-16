@@ -26,6 +26,7 @@ import { UpdateUserComponent } from './update-user/update-user.component';
 import { MatFormFieldModule, MatLabel } from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
+import { BookSuggestionsComponent } from './book-suggestions/book-suggestions.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { MatOptionModule } from '@angular/material/core';
     UpdateBookComponent,
     AddBookComponent,
     AdminComponent,
-    UpdateUserComponent
+    UpdateUserComponent,
+    BookSuggestionsComponent
   ],
   imports: [
     BrowserModule,
