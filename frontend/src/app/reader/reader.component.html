@@ -1,9 +1,9 @@
 
-  <div class="d-flex flex-row col-md-10 mx-auto gap-2" id="notif">
-    <div class="alert alert-danger">
+  <div class="d-flex flex-row col-md-10 mx-auto gap-2 justify-content-center" id="notif">
+    <div class="alert alert-danger" *ngIf="notifMessage1!=''">
       {{notifMessage1}}
     </div>
-    <div class="alert alert-danger">
+    <div class="alert alert-danger"*ngIf="notifMessage2!=''">
       {{notifMessage2}}
     </div>
     <div class="alert alert-danger" *ngIf="currObligations.length>=3">

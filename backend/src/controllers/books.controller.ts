@@ -125,13 +125,15 @@ export class BooksController{
     returnBook = (req: express.Request, res: express.Response)=>{
         let id = req.body.id; 
         let username = req.body.username; 
-        console.log(username);
+        let book_id = req.body.book_id; 
         console.log(id);
+        console.log(username);
+        console.log(book_id);
 
-        Obligation.updateOne({'id_knjige':id, 'kor_ime':username},{$set:{'razduzen':'da'}}, (err,resp)=>{
+        Obligation.updateOne({'id':id, 'kor_ime':username},{$set:{'razduzen':'da'}}, (err,resp)=>{
             if(err)console.log(err)
             else {
-                Book.findOne({'id':id},(err, book)=>{
+                Book.findOne({'id':book_id},(err, book)=>{
                     if(err)console.log(err)
                     else{
                         let na_stanju = book.na_stanju+1;

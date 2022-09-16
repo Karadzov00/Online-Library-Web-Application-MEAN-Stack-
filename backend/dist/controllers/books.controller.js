@@ -120,13 +120,15 @@ class BooksController {
         this.returnBook = (req, res) => {
             let id = req.body.id;
             let username = req.body.username;
-            console.log(username);
+            let book_id = req.body.book_id;
             console.log(id);
-            obligation_1.default.updateOne({ 'id_knjige': id, 'kor_ime': username }, { $set: { 'razduzen': 'da' } }, (err, resp) => {
+            console.log(username);
+            console.log(book_id);
+            obligation_1.default.updateOne({ 'id': id, 'kor_ime': username }, { $set: { 'razduzen': 'da' } }, (err, resp) => {
                 if (err)
                     console.log(err);
                 else {
-                    book_1.default.findOne({ 'id': id }, (err, book) => {
+                    book_1.default.findOne({ 'id': book_id }, (err, book) => {
                         if (err)
                             console.log(err);
                         else {
