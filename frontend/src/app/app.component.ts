@@ -46,7 +46,10 @@ export class AppComponent {
   }
   logout(){
     localStorage.clear(); 
-    this.router.navigate(['homepage']);
+    this.router.navigate(['homepage']).
+    then(() => {
+      window.location.reload();
+    });
   }
   routerProfile(){
     this.router.navigate(['profile']);

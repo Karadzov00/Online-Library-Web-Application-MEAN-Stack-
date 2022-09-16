@@ -36,10 +36,16 @@ export class LoginComponent implements OnInit {
       if(user){
         localStorage.setItem('loggedUser', JSON.stringify(user)); 
         if(user.tip=='citalac'){
-          this.router.navigate(['reader']);
+          this.router.navigate(['reader']).
+          then(() => {
+            window.location.reload();
+          });
         }
         else if(user.tip='moderator'){
-          this.router.navigate(['reader']);
+          this.router.navigate(['reader']).
+          then(() => {
+            window.location.reload();
+          });
 
         }
         else{
