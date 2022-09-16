@@ -15,7 +15,7 @@
             name="author" [(ngModel)]="author">
         </div>
     </div>
-    <div class="d-flex flex-row gap-5 justify-content-center" id="#search2">
+    <div class="d-flex flex-row gap-5 justify-content-center" id="#search2" *ngIf="user">
         <div id="slct">
             <mat-form-field appearance="fill">
                 <mat-label>Žanr</mat-label>
@@ -45,8 +45,11 @@
     <div class="alert alert-danger col-md-5" *ngIf="showAlert" id="alert">
     {{message}}
     </div>
-    <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center" *ngIf="!user">
         <button class="btn btn-warning col-md-3" id="button" (click)="search()">Pretraži</button>
+    </div>
+    <div class="d-flex justify-content-center" *ngIf="user">
+        <button class="btn btn-warning col-md-3" id="button" (click)="advancedSearch()">Napredna pretraga</button>
     </div>
     </div>
 </mat-card>

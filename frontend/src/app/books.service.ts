@@ -73,6 +73,14 @@ export class BooksService {
 
   }
 
+  advancedSearch(searchObj){
+    const data={
+      searchObj:searchObj
+    }
+    return this.http.post(`${this.uri}/books/advancedSearch`, data); 
+
+  }
+
 
   makeObligation(obligation){
     const data={

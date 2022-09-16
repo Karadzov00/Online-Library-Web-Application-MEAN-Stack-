@@ -277,6 +277,17 @@ class BooksController {
                     res.json(maxDays);
             });
         };
+        this.advancedSearch = (req, res) => {
+            let naziv = req.body.searchObj.naziv;
+            let autor = req.body.searchObj.autor;
+            let zanr = req.body.searchObj.zanr;
+            let izdavac = req.body.searchObj.izdavac;
+            let godina_od = req.body.searchObj.godina_od;
+            let godina_do = req.body.searchObj.godina_do;
+            console.log(zanr);
+            console.log(naziv);
+            console.log(izdavac);
+        };
     }
 }
 exports.BooksController = BooksController;

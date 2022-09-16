@@ -4,6 +4,8 @@ import { BooksService } from '../books.service';
 import { Book } from '../model/book';
 import { UserService } from '../user.service';
 import {FormControl} from '@angular/forms';
+import { searchBookAdvanced } from '../model/searchBookAdvanced';
+import { User } from '../model/user';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -15,7 +17,10 @@ export class SearchComponent implements OnInit {
     private userService: UserService) { }
 
   ngOnInit(): void {
+    this.user = JSON.parse(localStorage.getItem('loggedUser')); 
   }
+
+  user:User;
 
   name:string; 
   author:string;
@@ -26,8 +31,8 @@ export class SearchComponent implements OnInit {
   
   books:Book[]; 
 
-  yearFrom:string; 
-  yearTo:string; 
+  yearFrom:number; 
+  yearTo:number; 
   publisher:string; 
 
   genre = new FormControl('');
@@ -50,7 +55,24 @@ export class SearchComponent implements OnInit {
   }
 
   advancedSearch(){
+    if(!this.name && !this.author && !this.yearFrom && !this.yearTo && !this.publisher){
+      this.message="Morate uneti makar jedno polje!"
+      this.showAlert=true; 
+      return; 
+    }
 
+    let srch = new searchBookAdvanced(); 
+    srch.autor=this.author;
+    srch.naziv=this.name;
+    srch.godina_od=this.yearFrom;
+    srch.godina_do=this.yearTo;
+    srch.izdavac=this.publisher; 
+
+    console.log(this.genre.value); 
+    srch.zanr=this.genre.value; 
+    console.log(srch.zanr);
+
+    this.booksService.advancedSearch(srch).subscribe();
   }
 
   bookRedirect(book){
