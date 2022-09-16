@@ -300,7 +300,7 @@ class BooksController {
             // console.log(godina_do);
             // console.log(izdavac);
             book_1.default.find({ 'naziv': { $regex: naziv }, 'autor': { $regex: autor },
-                'izdavac': { $regex: izdavac }, 'godina': { $gt: godina_od, $lt: godina_od },
+                'izdavac': { $regex: izdavac }, 'godina_izdavanja': { $gt: godina_od, $lt: godina_do },
                 'zanr': { $in: zanr } }, (err, books) => {
                 if (err)
                     console.log(err);
