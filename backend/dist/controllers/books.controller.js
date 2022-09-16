@@ -267,6 +267,14 @@ class BooksController {
                 res.json({ 'message': 'max days updated' });
             });
         };
+        this.getMaxDays = (req, res) => {
+            max_days_1.default.findOne({ 'id': 1 }, (err, maxDays) => {
+                if (err)
+                    console.log(err);
+                else
+                    res.json(maxDays);
+            });
+        };
     }
 }
 exports.BooksController = BooksController;

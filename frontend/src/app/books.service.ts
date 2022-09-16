@@ -32,6 +32,11 @@ export class BooksService {
 
   }
 
+  getMaxDays(){
+    return this.http.get(`${this.uri}/books/getMaxDays`); 
+
+  }
+
   getBookById(id){
     const data={
       id:id

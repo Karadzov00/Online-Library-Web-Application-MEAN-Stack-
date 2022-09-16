@@ -6,6 +6,7 @@ import { Book } from '../model/book';
 import { BookHistoryObligation } from '../model/bookHistoryObligation';
 import { BookObligation } from '../model/bookObligation';
 import { Comment } from '../model/comment';
+import { MaxDays } from '../model/max_days';
 import { Obligation } from '../model/obligation';
 import { User } from '../model/user';
 import { UserService } from '../user.service';
@@ -29,6 +30,14 @@ export class BookPageComponent implements OnInit {
       this.commentMessage="Trenutno nema komentara za ovu knjigu"
       this.showMessage=true; 
     }
+
+    this.booksService.getMaxDays().subscribe((days:MaxDays)=>{
+      this.maxDays=days.max_broj_dana; 
+      console.log("max broj dana je")
+      console.log(this.maxDays)
+
+    })
+
 
     this.userService.getObligations(this.user.kor_ime).subscribe((obligs:Obligation[])=>{
       this.allObligations=obligs; 
@@ -109,6 +118,8 @@ export class BookPageComponent implements OnInit {
 
   leftComment:boolean=true; 
   reservedBook:boolean=false; 
+
+  maxDays:number; 
 
   
 
@@ -203,9 +214,13 @@ export class BookPageComponent implements OnInit {
       return; 
     }
 
+
     let date1 = new Date(); 
-    let reserveDate = date1.getFullYear()+'-'+(date1.getMonth()+1)+'-'+date1.getDate(); 
-    let date2 = new Date(Date.now() + 12096e5);
+    let reserveDate = date1.getFullYear()+'-'+(date1.getMonth()+1)+'-'+date1.getDate();
+
+
+    let date2 = new Date();
+    date2.setDate(date2.getDate() + this.maxDays);
     let returnDate = date2.getFullYear()+'-'+(date2.getMonth()+1)+'-'+date2.getDate(); 
 
     console.log("datum rezervisanja")

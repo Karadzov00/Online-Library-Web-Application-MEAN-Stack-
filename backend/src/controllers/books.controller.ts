@@ -279,5 +279,12 @@ export class BooksController{
         
     }
 
+    getMaxDays= (req: express.Request, res: express.Response)=>{
+        maxDays.findOne({'id':1}, (err, maxDays)=>{
+            if(err)console.log(err)
+            else res.json(maxDays)
+        })
+    }
+
 
 }

@@ -22,6 +22,9 @@ booksRouter.route('/getHighestId').get(
 booksRouter.route('/fetchAllBooks').get(
     (req, res) => new BooksController().fetchAllBooks(req, res)
 )
+booksRouter.route('/getMaxDays').get(
+    (req, res) => new BooksController().getMaxDays(req, res)
+)
 
 booksRouter.route('/getBookById').post(
     (req, res) => new BooksController().getBookById(req, res)
