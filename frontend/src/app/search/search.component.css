@@ -6,7 +6,7 @@
 }
 
 #button{
-    margin-left: 24%;
+ 
 }
 
 #alert{
@@ -32,4 +32,8 @@
 
 #mainSrch{
     margin-left: 20px;
+}
+
+#slct{
+    margin-top: 15px;
 }

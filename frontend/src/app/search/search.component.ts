@@ -26,12 +26,12 @@ export class SearchComponent implements OnInit {
   
   books:Book[]; 
 
-  genre:string; 
-  year:string; 
+  yearFrom:string; 
+  yearTo:string; 
   publisher:string; 
 
-  toppings = new FormControl('');
-  toppingList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
+  genre = new FormControl('');
+  genreList: string[] = ['roman', 'popularna psihologija','naucna fantastika','triler', 'klasik'];
   
   search(){
     if(!this.name && !this.author){
@@ -46,6 +46,10 @@ export class SearchComponent implements OnInit {
       this.searched=true; 
 
     })
+
+  }
+
+  advancedSearch(){
 
   }
 
