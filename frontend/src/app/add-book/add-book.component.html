@@ -4,12 +4,12 @@
             <div  class="d-flex flex-row gap-3 " >
                 <div class="col-md-4">
                     <label for="name">Naziv knjige</label>
-                    <input type="text" class="form-control"id="name" placeholder="{{book.naziv}}"
+                    <input type="text" class="form-control"id="name" placeholder="Naziv knjige"
                     [(ngModel)]="naziv">
                 </div>
                 <div class="col-md-4">
                     <label for="author">Autor</label>
-                    <input type="text" class="form-control"id="author" placeholder="{{book.autor}}"
+                    <input type="text" class="form-control"id="author" placeholder="Autor"
                     [(ngModel)]="autor">
                 </div>
             </div>
@@ -18,17 +18,17 @@
             <div  class="d-flex flex-row gap-3 " >
                 <div class="col-md-4">
                     <label for="genre">Zanr</label>
-                    <input type="text" class="form-control"id="genre" placeholder="{{book.zanr}}"
+                    <input type="text" class="form-control"id="genre" placeholder="Zanr"
                     [(ngModel)]="zanr">
                 </div>
                 <div class="col-md-3">
                     <label for="publisher">Izdavac</label>
-                    <input type="text" class="form-control"id="publisher" placeholder="{{book.izdavac}}"
+                    <input type="text" class="form-control"id="publisher" placeholder="Izdavac"
                     [(ngModel)]="izdavac">
                 </div>
                 <div class="col-md-2">
                     <label for="year">Godina izdavanja</label>
-                    <input type="text" class="form-control"id="year" placeholder="{{book.godina_izdavanja}}"
+                    <input type="text" class="form-control"id="year" placeholder="Godina izdavanja"
                     [(ngModel)]="godina_izdavanja">
                 </div>
             </div>
@@ -37,22 +37,22 @@
             <div  class="d-flex flex-row gap-3 " >
                 <div class="col-md-3">
                     <label for="language">Jezik</label>
-                    <input type="text" class="form-control"id="language" placeholder="{{book.jezik}}"
+                    <input type="text" class="form-control"id="language" placeholder="Jezik"
                     [(ngModel)]="jezik">
                 </div>
                 <div class="col-md-1">
                     <label for="number">Broj uzimanja</label>
-                    <input type="text" class="form-control"id="number" placeholder="{{book.broj_uzimanja}}"
+                    <input type="text" class="form-control"id="number" placeholder="Broj uzimanja"
                     [(ngModel)]="broj_uzimanja">
                 </div>
-                <div class="col-md-1">
+                <div class="col-md-2">
                     <label for="rating">Prosecna ocena</label>
-                    <input type="text" class="form-control"id="rating" placeholder="{{book.prosecna_ocena}}"
+                    <input type="text" class="form-control"id="rating" placeholder="Prosecna ocena"
                     [(ngModel)]="prosecna_ocena">
                 </div>
                 <div class="col-md-1">
                     <label for="amount">Na stanju</label>
-                    <input type="text" class="form-control"id="amount" placeholder="{{book.na_stanju}}"
+                    <input type="text" class="form-control"id="amount" placeholder="Na stanju"
                     [(ngModel)]="na_stanju">
                 </div>
             </div>
@@ -70,12 +70,17 @@
                         name="image">
                     </label>
                 </div>      
-                <div class="col-md-6" id="btn">
-                    <button class="btn btn-warning col-md-6" (click)="addBook()">Dodaj knjigu</button>
+                <div class="d-flex flex-row gap-3">
+                    <div id="btn" *ngIf="moderator">
+                        <button class="btn btn-warning " (click)="addBook()" >Dodaj knjigu</button>
+                    </div>
+                    <div  id="btn" >
+                        <button class="btn btn-warning " (click)="suggestBook()" >Predloži knjigu</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-        
+    
         
         

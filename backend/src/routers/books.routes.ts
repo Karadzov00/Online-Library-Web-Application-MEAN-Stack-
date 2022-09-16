@@ -65,6 +65,9 @@ booksRouter.route('/changeMaxDays').post(
 booksRouter.route('/advancedSearch').post(
     (req, res) => new BooksController().advancedSearch(req, res)
 )
+booksRouter.route('/suggestBook').post(
+    (req, res) => new BooksController().suggestBook(req, res)
+)
 
 
 

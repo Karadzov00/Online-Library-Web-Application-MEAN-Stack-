@@ -8,6 +8,7 @@ const book_1 = __importDefault(require("../models/book"));
 const date_1 = __importDefault(require("../models/date"));
 const obligation_1 = __importDefault(require("../models/obligation"));
 const max_days_1 = __importDefault(require("../models/max_days"));
+const book_request_1 = __importDefault(require("../models/book_request"));
 class BooksController {
     constructor() {
         this.getTop3Books = (req, res) => {
@@ -300,13 +301,46 @@ class BooksController {
             // console.log(godina_do);
             // console.log(izdavac);
             book_1.default.find({ 'naziv': { $regex: naziv }, 'autor': { $regex: autor },
-                'izdavac': { $regex: izdavac }, 'godina_izdavanja': { $gt: godina_od, $lt: godina_do },
+                'izdavac': { $regex: izdavac }, 'godina_izdavanja': { $gte: godina_od, $lte: godina_do },
                 'zanr': { $in: zanr } }, (err, books) => {
                 if (err)
                     console.log(err);
                 else {
                     // console.log(books);
                     res.json(books);
+                }
+            });
+        };
+        this.suggestBook = (req, res) => {
+            let book = req.body.suggestion;
+            book_request_1.default.find({}, (err, requests) => {
+                if (err)
+                    console.log(err);
+                else {
+                    let idR = requests.length + 1;
+                    let newBook = new book_request_1.default({
+                        id: idR,
+                        kor_ime: book.kor_ime,
+                        naziv: book.naziv,
+                        autor: book.autor,
+                        zanr: book.zanr,
+                        izdavac: book.izdavac,
+                        godina_izdavanja: book.godina_izdavanja,
+                        jezik: book.jezik,
+                        broj_uzimanja: 0,
+                        prosecna_ocena: 0,
+                        na_stanju: book.na_stanju,
+                        slika: book.slika,
+                        status: 'na cekanju'
+                    });
+                    newBook.save((err, resp) => {
+                        if (err) {
+                            console.log(err);
+                            res.status(400).json({ "message": "error" });
+                        }
+                        else
+                            res.json({ "message": "dodat zahtev za knjigu" });
+                    });
                 }
             });
         };

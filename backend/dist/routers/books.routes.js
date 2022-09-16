@@ -23,5 +23,6 @@ booksRouter.route('/addBook').post((req, res) => new books_controller_1.BooksCon
 booksRouter.route('/deleteBook').post((req, res) => new books_controller_1.BooksController().deleteBook(req, res));
 booksRouter.route('/changeMaxDays').post((req, res) => new books_controller_1.BooksController().changeMaxDays(req, res));
 booksRouter.route('/advancedSearch').post((req, res) => new books_controller_1.BooksController().advancedSearch(req, res));
+booksRouter.route('/suggestBook').post((req, res) => new books_controller_1.BooksController().suggestBook(req, res));
 exports.default = booksRouter;
 //# sourceMappingURL=books.routes.js.map

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BooksService } from '../books.service';
 import { Book } from '../model/book';
+import { BookRequest } from '../model/bookRequest';
 import { User } from '../model/user';
 import { UserService } from '../user.service';
 
@@ -18,6 +19,12 @@ export class AddBookComponent implements OnInit {
   ngOnInit(): void {
     this.book = JSON.parse(localStorage.getItem('selectedBook')); 
     this.user = JSON.parse(localStorage.getItem('loggedUser')); 
+    if(!this.user.tip.localeCompare('moderator')){
+      this.moderator=true; 
+      console.log(this.moderator)
+    }
+    console.log(this.user.tip)
+
     
   }
 
@@ -36,6 +43,8 @@ export class AddBookComponent implements OnInit {
 
   selectedFile: File;
   imageChosen:boolean; 
+  moderator:boolean; 
+  
 
 
   processFile(imageInput: any) {
@@ -73,5 +82,30 @@ export class AddBookComponent implements OnInit {
     })
 
     
+  }
+
+
+  suggestBook(){
+    let newBook = new BookRequest(); 
+    newBook.id=0; 
+    newBook.kor_ime=this.user.kor_ime; 
+    newBook.naziv=this.naziv!=null?this.naziv:this.book.naziv; 
+    newBook.autor=this.autor!=null?this.autor:this.book.autor; 
+    newBook.zanr=this.zanr!=null?this.zanr:this.book.zanr; 
+    newBook.izdavac=this.izdavac; 
+    newBook.godina_izdavanja=this.godina_izdavanja; 
+    newBook.jezik=this.jezik; 
+    newBook.broj_uzimanja=this.broj_uzimanja; 
+    newBook.prosecna_ocena=this.prosecna_ocena; 
+    newBook.na_stanju=this.na_stanju; 
+    newBook.slika=(this.slika!=null)?this.slika:this.book.slika; 
+
+    console.log(newBook); 
+
+    this.booksService.suggestBook(newBook).subscribe(res=>{
+      alert(res['message'])
+    })
+
+
   }
 }

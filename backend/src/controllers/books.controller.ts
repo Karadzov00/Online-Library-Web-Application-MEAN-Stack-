@@ -3,6 +3,7 @@ import Book from "../models/book"
 import Date from "../models/date"
 import Obligation from "../models/obligation";
 import maxDays from "../models/max_days";
+import BookRequest from "../models/book_request";
 
 export class BooksController{
 
@@ -311,7 +312,7 @@ export class BooksController{
         // console.log(izdavac);
 
         Book.find({'naziv':{$regex: naziv},'autor':{$regex: autor},
-                    'izdavac':{$regex: izdavac}, 'godina_izdavanja':{$gt: godina_od, $lt: godina_do },
+                    'izdavac':{$regex: izdavac}, 'godina_izdavanja':{$gte: godina_od, $lte: godina_do },
                     'zanr':{$in: zanr}}, (err, books)=>{
                         if(err)console.log(err)
                         else{
@@ -319,7 +320,42 @@ export class BooksController{
                             res.json(books); 
                         }
                     })
-        }
+    }
+
+    suggestBook = (req: express.Request, res: express.Response)=>{
+        let book = req.body.suggestion; 
+
+        BookRequest.find({}, (err, requests)=>{
+            if(err)console.log(err)
+            else{
+                let idR = requests.length+1; 
+                let newBook = new BookRequest({
+                    id: idR,
+                    kor_ime:book.kor_ime,
+                    naziv:book.naziv,
+                    autor:book.autor,
+                    zanr:book.zanr,
+                    izdavac:book.izdavac,
+                    godina_izdavanja:book.godina_izdavanja,
+                    jezik:book.jezik,
+                    broj_uzimanja:0,
+                    prosecna_ocena:0,
+                    na_stanju:book.na_stanju,
+                    slika:book.slika,
+                    status:'na cekanju'
+                })
+
+                newBook.save((err, resp)=>{
+                    if(err) {
+                        console.log(err);
+                        res.status(400).json({"message": "error"})
+                    }
+                    else res.json({"message": "dodat zahtev za knjigu"})
+                })
+
+            }
+        })
+    }
 
 
 }
