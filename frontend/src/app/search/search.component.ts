@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { BooksService } from '../books.service';
 import { Book } from '../model/book';
 import { UserService } from '../user.service';
-
+import {FormControl} from '@angular/forms';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -25,6 +25,13 @@ export class SearchComponent implements OnInit {
   searched: boolean; 
   
   books:Book[]; 
+
+  genre:string; 
+  year:string; 
+  publisher:string; 
+
+  toppings = new FormControl('');
+  toppingList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
   
   search(){
     if(!this.name && !this.author){

@@ -19,6 +19,8 @@ export class AdminComponent implements OnInit {
   ngOnInit(): void {
 
     this.userService.getAdmin().subscribe((admin:User)=>{
+
+
       this.user=admin; 
       localStorage.setItem('loggedUser', JSON.stringify(this.user)); 
 

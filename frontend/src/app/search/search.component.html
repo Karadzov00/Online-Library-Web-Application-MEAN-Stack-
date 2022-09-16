@@ -2,8 +2,9 @@
 <div class="d-flex justify-content-center" id="head">
     <h1 class="display-5" id="head">Pretraga</h1>
 </div>
-    <div class="d-flex flex-row gap-5 justify-content-center" id="#search">
-        <div class="col-md-3 mb-3">
+    <div class="search">
+        <div class="d-flex flex-row gap-5 justify-content-center" id="#search">
+            <div class="col-md-3 mb-3">
             <label for="validationCustom01">Naziv</label>
             <input type="text" class="form-control" id="validationCustom01" placeholder="Naziv"  required
             name="name" [(ngModel)]="name">
@@ -14,11 +15,32 @@
             name="author" [(ngModel)]="author">
         </div>
     </div>
+    <div class="d-flex flex-row gap-5 justify-content-center" id="#search2">
+
+        <mat-form-field appearance="fill">
+            <mat-label>Toppings</mat-label>
+            <mat-select [formControl]="toppings" multiple>
+              <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <div class="col-md-3">
+            <label for="publisher">Izdavač</label>
+            <input type="text" class="form-control"id="publisher" placeholder="Izdavač"
+            [(ngModel)]="publisher">
+        </div>
+        <div class="col-md-1">
+            <label for="year">Godina izdanja</label>
+            <input type="text" class="form-control"id="year" placeholder="Godina"
+            [(ngModel)]="year">
+            
+        </div>
+    </div>
     <div class="alert alert-danger col-md-5" *ngIf="showAlert" id="alert">
     {{message}}
     </div>
     <div>
         <button class="btn btn-warning" id="button" (click)="search()">Pretraži</button>
+    </div>
     </div>
 </mat-card>
 <div class="d-flex " id="res" *ngIf="searched">
