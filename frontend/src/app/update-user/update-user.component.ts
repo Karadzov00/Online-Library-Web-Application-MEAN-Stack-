@@ -107,7 +107,21 @@ export class UpdateUserComponent implements OnInit {
     console.log(this.userImage); 
 
         
-    
+    let user = new User();
+    user.kor_ime=this.username;
+    user.lozinka=this.password;
+    user.ime=this.firstname;
+    user.prezime=this.lastname;
+    user.tip=this.type;
+    user.adresa=this.address;
+    user.telefon=this.phone;
+    user.email=this.email;
+    user.status='na cekanju';
+    user.slika=this.userImage;
+
+    this.userService.updateUser(user).subscribe(resp=>{
+      alert(resp['message'])
+    })
   }
 
   selectedFile: File;
