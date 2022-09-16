@@ -294,18 +294,19 @@ class BooksController {
                 godina_od = 0;
             if (!godina_do)
                 godina_do = 999999;
-            console.log(zanr);
-            console.log(naziv);
-            console.log(autor);
-            console.log(godina_do);
-            console.log(izdavac);
+            // console.log(zanr);
+            // console.log(naziv);
+            // console.log(autor);
+            // console.log(godina_do);
+            // console.log(izdavac);
             book_1.default.find({ 'naziv': { $regex: naziv }, 'autor': { $regex: autor },
                 'izdavac': { $regex: izdavac }, 'godina': { $gt: godina_od, $lt: godina_od },
                 'zanr': { $in: zanr } }, (err, books) => {
                 if (err)
                     console.log(err);
                 else {
-                    console.log(books);
+                    // console.log(books);
+                    res.json(books);
                 }
             });
         };

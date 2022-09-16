@@ -55,11 +55,7 @@ export class SearchComponent implements OnInit {
   }
 
   advancedSearch(){
-    if(!this.name && !this.author && !this.yearFrom && !this.yearTo && !this.publisher){
-      this.message="Morate uneti makar jedno polje!"
-      this.showAlert=true; 
-      return; 
-    }
+    
 
     let srch = new searchBookAdvanced(); 
     srch.autor=this.author;
@@ -72,7 +68,12 @@ export class SearchComponent implements OnInit {
     srch.zanr=this.genre.value; 
     console.log(srch.zanr);
 
-    this.booksService.advancedSearch(srch).subscribe();
+    this.booksService.advancedSearch(srch).subscribe((books:Book[])=>{
+      this.books=books; 
+      console.log(this.books); 
+      this.showAlert=false; 
+      this.searched=true; 
+      });
   }
 
   bookRedirect(book){
