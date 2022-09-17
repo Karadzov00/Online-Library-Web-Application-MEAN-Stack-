@@ -46,13 +46,17 @@ export class BookSuggestionsComponent implements OnInit {
     newBook.slika=request.slika; 
 
     console.log(newBook); 
-
-    // this.booksService.acceptSuggestion(request).subscribe(resp=>{
-    //   alert(resp['message'])
-    // })
-
-    // this.booksService.addBook(newBook).subscribe(resp=>{
-    //   alert(resp['message'])
-    // })
+    
+    
+    this.booksService.acceptSuggestion(request).subscribe(resp=>{
+      alert(resp['message'])
+    })
+    let index = this.requests.indexOf(request);
+    this.requests.splice(index, 1);
+    
+    
+    this.booksService.addBook(newBook).subscribe(resp=>{
+      alert(resp['message'])
+    })
   }
 }

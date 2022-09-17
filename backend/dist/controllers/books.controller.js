@@ -352,6 +352,15 @@ class BooksController {
                     res.json(requests);
             });
         };
+        this.acceptSuggestion = (req, res) => {
+            let id = req.body.suggestion.id;
+            book_request_1.default.updateOne({ 'id': id }, { $set: { 'status': 'odobren' } }, (err, resp) => {
+                if (err)
+                    console.log(err);
+                else
+                    res.json({ "message": "obrisan predlog za knjigu" });
+            });
+        };
     }
 }
 exports.BooksController = BooksController;
