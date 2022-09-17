@@ -114,6 +114,14 @@ export class BooksService {
 
   }
 
+  acceptSuggestion(suggestion){
+    const data={
+      suggestion:suggestion
+    }
+    return this.http.post(`${this.uri}/books/acceptSuggestion`, data); 
+
+  }
+
   deleteBook(bookId){
     const data={
       bookId:bookId

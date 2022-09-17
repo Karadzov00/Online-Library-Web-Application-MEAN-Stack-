@@ -364,4 +364,13 @@ export class BooksController{
         })
     }
 
+    acceptSuggestion= (req: express.Request, res: express.Response)=>{
+        let id = req.body.suggestion.id; 
+
+        BookRequest.updateOne({'id':id}, {$set:{'status':'odobren'}}, (err, resp)=>{
+            if(err)console.log(err)
+            else res.json({"message": "obrisan predlog za knjigu"})
+        } )
+    }
+
 }

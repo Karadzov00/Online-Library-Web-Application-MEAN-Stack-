@@ -1,1 +1,26 @@
-<p>book-suggestions works!</p>
+<div class="col-md-9 col-sm-12" id="table">
+    <table class="table table-striped">
+        <thead class="table table-info">
+            <tr>
+                <th scope="col">Naziv knjige</th>
+                <th scope="col">Autor</th>
+                <th scope="col">Žanr</th>
+                <th scope="col">Izdavač</th>
+                <th scope="col">Korisničko ime</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let b of requests" >
+                <td>{{b.naziv}}</td>
+                <td>{{b.autor}}</td>
+                <td>{{b.zanr}}</td>
+                <td>{{b.izdavac}}</td>
+                <td>{{b.kor_ime}}</td>
+                <td>
+                    <button  class="btn btn-danger" (click)="addBook(b)">Dodaj</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

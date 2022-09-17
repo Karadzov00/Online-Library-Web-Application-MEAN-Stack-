@@ -71,6 +71,9 @@ booksRouter.route('/advancedSearch').post(
 booksRouter.route('/suggestBook').post(
     (req, res) => new BooksController().suggestBook(req, res)
 )
+booksRouter.route('/acceptSuggestion').post(
+    (req, res) => new BooksController().acceptSuggestion(req, res)
+)
 
 
 

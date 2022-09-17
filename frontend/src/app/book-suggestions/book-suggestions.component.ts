@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BooksService } from '../books.service';
+import { Book } from '../model/book';
 import { BookRequest } from '../model/bookRequest';
 import { UserService } from '../user.service';
 
@@ -16,10 +17,42 @@ export class BookSuggestionsComponent implements OnInit {
 
   ngOnInit(): void {
     this.booksService.fetchBookSuggestions().subscribe((books:BookRequest[])=>{
-        this.requests=books; 
-        console.log(this.requests); 
+      this.allRequests=books; 
+        books.forEach(elem=>{
+          if(!elem.status.localeCompare('na cekanju')){
+            this.requests.push(elem);
+          }
+        })
     })
   }
 
-  requests:BookRequest[]
+  requests:BookRequest[]=[]; 
+  allRequests:BookRequest[]=[]; 
+  
+
+
+  addBook(request:BookRequest){
+    let newBook = new Book(); 
+    newBook.id=0; 
+    newBook.naziv=request.naziv; 
+    newBook.autor=request.autor; 
+    newBook.zanr=request.zanr; 
+    newBook.izdavac=request.izdavac; 
+    newBook.godina_izdavanja=request.godina_izdavanja; 
+    newBook.jezik=request.jezik; 
+    newBook.broj_uzimanja=request.broj_uzimanja; 
+    newBook.prosecna_ocena=request.prosecna_ocena; 
+    newBook.na_stanju=request.na_stanju; 
+    newBook.slika=request.slika; 
+
+    console.log(newBook); 
+
+    // this.booksService.acceptSuggestion(request).subscribe(resp=>{
+    //   alert(resp['message'])
+    // })
+
+    // this.booksService.addBook(newBook).subscribe(resp=>{
+    //   alert(resp['message'])
+    // })
+  }
 }
