@@ -122,10 +122,11 @@ class BooksController {
             let id = req.body.id;
             let username = req.body.username;
             let book_id = req.body.book_id;
+            let returnDate = req.body.returnDate;
             console.log(id);
             console.log(username);
             console.log(book_id);
-            obligation_1.default.updateOne({ 'id': id, 'kor_ime': username }, { $set: { 'razduzen': 'da' } }, (err, resp) => {
+            obligation_1.default.updateOne({ 'id': id, 'kor_ime': username }, { $set: { 'razduzen': returnDate } }, (err, resp) => {
                 if (err)
                     console.log(err);
                 else {

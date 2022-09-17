@@ -126,7 +126,9 @@ export class ObligationsComponent implements OnInit {
       if(!elem.kor_ime.localeCompare(this.user.kor_ime) 
       && !elem.razduzen.localeCompare('ne') && elem.id_knjige==id){
         console.log(elem.id); 
-        this.booksService.returnBook(elem.id, this.user.kor_ime, elem.id_knjige).subscribe(res=>{
+        let date1 = new Date(); 
+        let returnDate = date1.getFullYear()+'-'+(date1.getMonth()+1)+'-'+date1.getDate();
+        this.booksService.returnBook(elem.id, this.user.kor_ime, elem.id_knjige,returnDate).subscribe(res=>{
           alert(res['message']); 
         })
 

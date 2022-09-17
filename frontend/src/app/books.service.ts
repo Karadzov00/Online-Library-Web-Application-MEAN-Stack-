@@ -45,11 +45,12 @@ export class BooksService {
 
   }
 
-  returnBook(id, username, book_id){
+  returnBook(id, username, book_id, returnDate){
     const data={
       id:id,
       username:username,
-      book_id:book_id
+      book_id:book_id,
+      returnDate:returnDate
     }
     return this.http.post(`${this.uri}/books/returnBook`, data); 
 
