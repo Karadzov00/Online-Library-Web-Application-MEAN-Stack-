@@ -4,6 +4,7 @@ import { BooksService } from '../books.service';
 import { Book } from '../model/book';
 import { BookHistoryObligation } from '../model/bookHistoryObligation';
 import { BookObligation } from '../model/bookObligation';
+import { MaxDays } from '../model/max_days';
 import { Obligation } from '../model/obligation';
 import { User } from '../model/user';
 import { UserService } from '../user.service';
@@ -88,6 +89,8 @@ export class ObligationsComponent implements OnInit {
   deadlinePassed:boolean; 
   haveObligations:boolean; 
 
+  maxDays:number; 
+
   calculateDays(obligation:Obligation):number{
     let today= new Date();
 
@@ -133,6 +136,15 @@ export class ObligationsComponent implements OnInit {
         })
 
       }
+    })
+    
+  }
+
+  extendDeadline(id){
+    this.booksService.getMaxDays().subscribe((days:MaxDays)=>{
+      this.maxDays=days.max_broj_dana; 
+      console.log("max broj dana je")
+      console.log(this.maxDays)
     })
     
   }
