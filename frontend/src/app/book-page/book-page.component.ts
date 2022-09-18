@@ -22,7 +22,10 @@ export class BookPageComponent implements OnInit {
     private userService:UserService) { }
 
   ngOnInit(): void {
-    this.book = JSON.parse(localStorage.getItem('selectedBook')); 
+    let book = JSON.parse(localStorage.getItem('selectedBook')); 
+    this.booksService.getBookById(book.id).subscribe((bookDb:Book)=>{
+      this.book=bookDb;
+    })
     this.user = JSON.parse(localStorage.getItem('loggedUser')); 
     console.log("komentari")
     console.log(this.book.komentari); 
