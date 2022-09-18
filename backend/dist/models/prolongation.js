@@ -17,6 +17,9 @@ let Prolongation = new Schema({
     },
     id_zaduzenja: {
         type: Number
+    },
+    novi_datum: {
+        type: String
     }
 });
 exports.default = mongoose_1.default.model("Prolongation", Prolongation, "produzenja");

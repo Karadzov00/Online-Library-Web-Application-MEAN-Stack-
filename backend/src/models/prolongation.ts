@@ -15,6 +15,9 @@ let Prolongation = new Schema(
         },
         id_zaduzenja:{
             type: Number
+        },
+        novi_datum:{
+            type: String
         }
     }
 );

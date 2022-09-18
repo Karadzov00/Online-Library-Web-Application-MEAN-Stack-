@@ -152,6 +152,13 @@ export class BooksService {
     return this.http.post(`${this.uri}/books/suggestBook`, data); 
 
   }
+  addProlongation(prolongation){
+    const data={
+      prolongation:prolongation
+    }
+    return this.http.post(`${this.uri}/books/addProlongation`, data); 
+
+  }
 
   fetchBookSuggestions(){
     return this.http.get(`${this.uri}/books/fetchBookSuggestions`); 

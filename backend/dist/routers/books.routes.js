@@ -28,5 +28,6 @@ booksRouter.route('/changeMaxDays').post((req, res) => new books_controller_1.Bo
 booksRouter.route('/advancedSearch').post((req, res) => new books_controller_1.BooksController().advancedSearch(req, res));
 booksRouter.route('/suggestBook').post((req, res) => new books_controller_1.BooksController().suggestBook(req, res));
 booksRouter.route('/acceptSuggestion').post((req, res) => new books_controller_1.BooksController().acceptSuggestion(req, res));
+booksRouter.route('/addProlongation').post((req, res) => new books_controller_1.BooksController().addProlongation(req, res));
 exports.default = booksRouter;
 //# sourceMappingURL=books.routes.js.map

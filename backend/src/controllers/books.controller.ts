@@ -397,4 +397,30 @@ export class BooksController{
         })
     }
 
+    addProlongation= (req: express.Request, res: express.Response)=>{
+        let prolongation=req.body.prolongation; 
+        
+        Prolongation.find({}, (err, prols)=>{
+            if(err)console.log(err)
+            else {
+                let id = prols.length+1; 
+                let new_prol = new Prolongation({
+                    id: id, 
+                    id_zaduzenja: prolongation.id_zaduzenja,
+                    kor_ime: prolongation.kor_ime,
+                    id_knjige: prolongation.id_knjige
+                })
+
+                new_prol.save((err, resp)=>{
+                    if(err)console.log(err)
+                    else{
+                        
+                    }
+                })
+            }
+        })
+
+
+    }
+
 }

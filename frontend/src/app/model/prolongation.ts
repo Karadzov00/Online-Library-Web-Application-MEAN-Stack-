@@ -3,4 +3,5 @@ export class Prolongation{
     id_zaduzenja:number; 
     kor_ime:string; 
     id_knjige:number; 
+    novi_datum:string
 }
