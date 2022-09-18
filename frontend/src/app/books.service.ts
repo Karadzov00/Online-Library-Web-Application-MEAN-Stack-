@@ -98,6 +98,13 @@ export class BooksService {
     return this.http.post(`${this.uri}/books/addComment`, data); 
 
   }
+  updateComment(comment){
+    const data={
+      comment:comment
+    }
+    return this.http.post(`${this.uri}/books/updateComment`, data); 
+
+  }
 
   updateBook(book){
     const data={

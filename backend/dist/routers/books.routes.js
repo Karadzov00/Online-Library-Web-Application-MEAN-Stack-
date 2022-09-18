@@ -19,6 +19,7 @@ booksRouter.route('/searchBooks').post((req, res) => new books_controller_1.Book
 booksRouter.route('/returnBook').post((req, res) => new books_controller_1.BooksController().returnBook(req, res));
 booksRouter.route('/makeObligation').post((req, res) => new books_controller_1.BooksController().makeObligation(req, res));
 booksRouter.route('/addComment').post((req, res) => new books_controller_1.BooksController().addComment(req, res));
+booksRouter.route('/updateComment').post((req, res) => new books_controller_1.BooksController().updateComment(req, res));
 booksRouter.route('/updateBook').post((req, res) => new books_controller_1.BooksController().updateBook(req, res));
 booksRouter.route('/addBook').post((req, res) => new books_controller_1.BooksController().addBook(req, res));
 booksRouter.route('/deleteBook').post((req, res) => new books_controller_1.BooksController().deleteBook(req, res));

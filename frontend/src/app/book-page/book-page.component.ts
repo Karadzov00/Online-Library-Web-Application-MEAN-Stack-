@@ -352,6 +352,9 @@ export class BookPageComponent implements OnInit {
     comm.azuriran='da'; 
   
     console.log(comm); 
+    this.booksService.updateComment(comm).subscribe(resp=>{
+      alert(resp['message']); 
+    });
     
   }
 

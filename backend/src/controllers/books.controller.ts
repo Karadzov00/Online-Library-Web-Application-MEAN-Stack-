@@ -220,6 +220,19 @@ export class BooksController{
 
     }
 
+    updateComment= (req: express.Request, res: express.Response)=>{
+        let comment = req.body.comment; 
+        console.log(comment); 
+
+        Book.updateOne({'id':comment.id_knjige, 'komentari.kor_ime':comment.kor_ime},
+                {$set: {'komentari.$.ocena':comment.ocena, 'komentari.$.tekst':comment.tekst,
+                'komentari.$.datum_vreme':comment.datum_vreme}}, (err, resp)=>{
+                    if(err) console.log(err)
+                    else res.json({'message': 'comment_updated'})
+                })
+
+    }
+
 
     updateBook = (req: express.Request, res: express.Response)=>{
         let book = req.body.book;

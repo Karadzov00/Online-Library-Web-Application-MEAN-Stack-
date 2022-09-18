@@ -52,6 +52,9 @@ booksRouter.route('/makeObligation').post(
 booksRouter.route('/addComment').post(
     (req, res) => new BooksController().addComment(req, res)
 )
+booksRouter.route('/updateComment').post(
+    (req, res) => new BooksController().updateComment(req, res)
+)
 
 booksRouter.route('/updateBook').post(
     (req, res) => new BooksController().updateBook(req, res)
