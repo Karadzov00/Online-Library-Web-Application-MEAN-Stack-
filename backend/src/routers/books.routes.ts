@@ -28,6 +28,9 @@ booksRouter.route('/getMaxDays').get(
 booksRouter.route('/fetchBookSuggestions').get(
     (req, res) => new BooksController().fetchBookSuggestions(req, res)
 )
+booksRouter.route('/fetchProlongations').get(
+    (req, res) => new BooksController().fetchProlongations(req, res)
+)
 
 booksRouter.route('/getBookById').post(
     (req, res) => new BooksController().getBookById(req, res)

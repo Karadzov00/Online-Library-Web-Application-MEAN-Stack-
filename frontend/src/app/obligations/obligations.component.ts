@@ -6,6 +6,7 @@ import { BookHistoryObligation } from '../model/bookHistoryObligation';
 import { BookObligation } from '../model/bookObligation';
 import { MaxDays } from '../model/max_days';
 import { Obligation } from '../model/obligation';
+import { Prolongation } from '../model/prolongation';
 import { User } from '../model/user';
 import { UserService } from '../user.service';
 
@@ -21,6 +22,12 @@ export class ObligationsComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem('loggedUser')); 
+
+    this.booksService.fetchProlongations().subscribe((prols:Prolongation[])=>{
+      this.prolongations=prols; 
+      console.log(this.prolongations); 
+    })
+
     this.userService.getObligations(this.user.kor_ime).subscribe((obligs:Obligation[])=>{
       this.allObligations=obligs; 
       console.log("sva zaduzenja");
@@ -90,6 +97,7 @@ export class ObligationsComponent implements OnInit {
   haveObligations:boolean; 
 
   maxDays:number; 
+  prolongations:Prolongation[]=[]; 
 
   calculateDays(obligation:Obligation):number{
     let today= new Date();
@@ -146,7 +154,34 @@ export class ObligationsComponent implements OnInit {
       console.log("max broj dana je")
       console.log(this.maxDays)
     })
+
+    this.allObligations.forEach(elem=>{
+      if(!elem.kor_ime.localeCompare(this.user.kor_ime) 
+      && !elem.razduzen.localeCompare('ne') && elem.id_knjige==id){
+        
+        let prolongation = new Prolongation(); 
+        prolongation.id_knjige=id; 
+        prolongation.id_zaduzenja=elem.id; 
+        prolongation.kor_ime=this.user.kor_ime; 
+        console.log(prolongation); 
+
+      }
+    })
+
     
   }
+
+  
+  checkExtended(id):boolean{
+
+    for (var fieldIndex = 0; fieldIndex < this.prolongations.length; fieldIndex ++){
+      var field = this.prolongations[fieldIndex];
+      if(field.id_knjige== id && !field.kor_ime.localeCompare(this.user.kor_ime))
+      return false; 
+    }
+    return true; 
+  }
+
+
 
 }

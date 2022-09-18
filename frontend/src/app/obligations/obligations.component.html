@@ -23,12 +23,12 @@
                     </tr>
                 </table>
             </div>
-            <div  class="d-flex flex-row gap-2" >
-                <button (click)="redirectBook(o.id)" class="btn btn-outline-success">Detalji o knjizi</button>
-                <button (click)="returnBook(o.id)" class="btn btn-outline-success">Razduzi knjigu</button>
+            <div  class="d-flex flex-row gap-2 justify-content-center" >
+                <button (click)="redirectBook(o.id)" class="btn btn-outline-success">Detalji </button>
+                <button (click)="returnBook(o.id)" class="btn btn-outline-success">Razduzi</button>
                 
             </div>
-            <div class="d-flex justify-content-center mt-2">
+            <div class="d-flex justify-content-center mt-2" *ngIf="checkExtended(o.id)">
                 <button (click)="extendDeadline(o.id)" class="btn btn-outline-secondary">Produži rok za vraćanje</button>
             </div>
         </mat-card-content>

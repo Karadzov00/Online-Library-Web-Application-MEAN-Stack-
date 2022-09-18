@@ -9,6 +9,7 @@ const date_1 = __importDefault(require("../models/date"));
 const obligation_1 = __importDefault(require("../models/obligation"));
 const max_days_1 = __importDefault(require("../models/max_days"));
 const book_request_1 = __importDefault(require("../models/book_request"));
+const prolongation_1 = __importDefault(require("../models/prolongation"));
 class BooksController {
     constructor() {
         this.getTop3Books = (req, res) => {
@@ -371,6 +372,14 @@ class BooksController {
                     console.log(err);
                 else
                     res.json({ "message": "obrisan predlog za knjigu" });
+            });
+        };
+        this.fetchProlongations = (req, res) => {
+            prolongation_1.default.find({}, (err, prols) => {
+                if (err)
+                    console.log(err);
+                else
+                    res.json(prols);
             });
         };
     }

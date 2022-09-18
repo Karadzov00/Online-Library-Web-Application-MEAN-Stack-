@@ -4,6 +4,7 @@ import Date from "../models/date"
 import Obligation from "../models/obligation";
 import maxDays from "../models/max_days";
 import BookRequest from "../models/book_request";
+import Prolongation from "../models/prolongation"
 
 export class BooksController{
 
@@ -387,6 +388,13 @@ export class BooksController{
             if(err)console.log(err)
             else res.json({"message": "obrisan predlog za knjigu"})
         } )
+    }
+
+    fetchProlongations= (req: express.Request, res: express.Response)=>{
+        Prolongation.find({}, (err, prols)=>{
+            if(err)console.log(err)
+            else res.json(prols);
+        })
     }
 
 }

@@ -158,6 +158,11 @@ export class BooksService {
 
   }
 
+  fetchProlongations(){
+    return this.http.get(`${this.uri}/books/fetchProlongations`); 
+
+  }
+
 
 
 
