@@ -28,6 +28,12 @@ export class ObligationsComponent implements OnInit {
       console.log(this.prolongations); 
     })
 
+    this.booksService.getMaxDays().subscribe((days:MaxDays)=>{
+      this.maxDays=days.max_broj_dana; 
+      console.log("max broj dana je")
+      console.log(this.maxDays)
+    })
+
     this.userService.getObligations(this.user.kor_ime).subscribe((obligs:Obligation[])=>{
       this.allObligations=obligs; 
       console.log("sva zaduzenja");
@@ -149,11 +155,7 @@ export class ObligationsComponent implements OnInit {
   }
 
   extendDeadline(id){
-    this.booksService.getMaxDays().subscribe((days:MaxDays)=>{
-      this.maxDays=days.max_broj_dana; 
-      console.log("max broj dana je")
-      console.log(this.maxDays)
-    })
+    
 
     this.allObligations.forEach(elem=>{
       if(!elem.kor_ime.localeCompare(this.user.kor_ime) 
@@ -163,7 +165,20 @@ export class ObligationsComponent implements OnInit {
         prolongation.id_knjige=id; 
         prolongation.id_zaduzenja=elem.id; 
         prolongation.kor_ime=this.user.kor_ime; 
-        console.log(prolongation); 
+
+
+        let date2 = new Date(elem.datum_vracanja);
+
+        date2.setDate(date2.getDate() + this.maxDays);
+        let returnDate = date2.getFullYear()+'-'+(date2.getMonth()+1)+'-'+date2.getDate(); 
+        console.log(returnDate); 
+        
+        prolongation.novi_datum=returnDate; 
+
+        console.log(prolongation);
+        this.booksService.addProlongation(prolongation).subscribe(resp=>{
+          alert(resp['message']); 
+        }) 
 
       }
     })

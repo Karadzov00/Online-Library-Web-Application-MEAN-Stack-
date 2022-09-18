@@ -393,12 +393,19 @@ class BooksController {
                         id: id,
                         id_zaduzenja: prolongation.id_zaduzenja,
                         kor_ime: prolongation.kor_ime,
-                        id_knjige: prolongation.id_knjige
+                        id_knjige: prolongation.id_knjige,
+                        novi_datum: prolongation.novi_datum
                     });
                     new_prol.save((err, resp) => {
                         if (err)
                             console.log(err);
                         else {
+                            obligation_1.default.updateOne({ 'id': prolongation.id_zaduzenja }, { $set: { 'datum_vracanja': prolongation.novi_datum } }, (err, resp) => {
+                                if (err)
+                                    console.log(err);
+                                else
+                                    res.json({ "message": "produzen rok za vracanje knjige" });
+                            });
                         }
                     });
                 }
