@@ -4,5 +4,6 @@ export class Comment{
     id_knjige:number; 
     ocena:number;
     tekst:string; 
-    datum_vreme:string; 
+    datum_vreme:string;
+    azuriran:string;  
 }

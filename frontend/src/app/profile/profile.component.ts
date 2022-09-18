@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {  Router } from '@angular/router';
+import { BaseChartDirective } from 'ng2-charts';
 import { BooksService } from '../books.service';
 import { Book } from '../model/book';
 import { BookHistoryObligation } from '../model/bookHistoryObligation';
@@ -8,12 +9,14 @@ import { Obligation } from '../model/obligation';
 import { User } from '../model/user';
 import { UserService } from '../user.service';
 
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+  @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
 
   constructor(private router:Router, private userService:UserService,
     private booksService: BooksService) { }
@@ -25,32 +28,45 @@ export class ProfileComponent implements OnInit {
       console.log("sva zaduzenja");
       console.log(this.allObligations)
       if(this.allObligations){
+        let ctr =0; 
         this.allObligations.forEach(elem=>{
 
-          var local_book:Book; 
-          
-          this.booksService.getBookById(elem.id_knjige).subscribe((book:Book)=>{
-            local_book=book; 
-            
-            this.allBooks.push(local_book);
-            console.log(local_book); 
+          if(elem.razduzen.localeCompare('ne')){
 
-            let historyObl: BookHistoryObligation = new BookHistoryObligation(); 
-            historyObl.id=book.id; 
-            historyObl.autor=book.autor; 
-            historyObl.naziv=book.naziv; 
-            historyObl.datum_zaduzivanja=elem.datum_zaduzivanja;
-            historyObl.datum_vracanja=elem.datum_vracanja; 
-            console.log(historyObl); 
+            var local_book:Book; 
             
-            this.historyBookObligations.push(historyObl); 
+            this.booksService.getBookById(elem.id_knjige).subscribe((book:Book)=>{
+              local_book=book; 
+              
+              this.allBooks.push(local_book);
+              console.log(local_book); 
+  
+              let historyObl: BookHistoryObligation = new BookHistoryObligation(); 
+              historyObl.id=book.id; 
+              historyObl.autor=book.autor; 
+              historyObl.naziv=book.naziv; 
+              historyObl.datum_zaduzivanja=elem.datum_zaduzivanja;
+              historyObl.datum_vracanja=elem.datum_vracanja; 
+              console.log(historyObl); 
+              
+              this.historyBookObligations.push(historyObl); 
 
-            let returnDate = new Date(elem.datum_vracanja);
-            var oldDate = new Date();
-            oldDate.setMonth(oldDate.getMonth() - 12);
-            console.log(returnDate);
-            console.log(oldDate); 
-          })    
+              this.genres.push(book.zanr); 
+              console.log(this.genres); 
+  
+              let returnDate = new Date(elem.razduzen);
+              var oldDate = new Date();
+              oldDate.setMonth(oldDate.getMonth() - 12);
+              console.log(returnDate);
+              console.log(oldDate); 
+              if(returnDate>=oldDate){
+                let month = returnDate.getMonth()+1; 
+                console.log(month); 
+                this.months.push(month);
+                console.log(this.months); 
+              }
+            })    
+          }
         })
       }
 
@@ -83,6 +99,11 @@ export class ProfileComponent implements OnInit {
   nov:number;
   dec:number;
 
+  months:number[]=[]; 
+  genres:string[]=[]; 
+
+
+ 
 
 
   updateInfo(){

@@ -27,6 +27,7 @@ import { MatFormFieldModule, MatLabel } from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import { BookSuggestionsComponent } from './book-suggestions/book-suggestions.component';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { BookSuggestionsComponent } from './book-suggestions/book-suggestions.co
     MatFormFieldModule,
     MatSelectModule,
     MatOptionModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgChartsModule
 
   ],
   providers: [],

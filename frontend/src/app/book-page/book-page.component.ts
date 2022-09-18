@@ -121,6 +121,8 @@ export class BookPageComponent implements OnInit {
 
   maxDays:number; 
 
+  updatedComment:string; 
+  updateTextarea:boolean; 
   
 
   reserveBook(){
@@ -313,6 +315,7 @@ export class BookPageComponent implements OnInit {
     comm.ocena= this.rating; 
     comm.tekst = this.comment; 
     comm.datum_vreme = new Date().toLocaleString();
+    comm.azuriran='ne'; 
 
     console.log(comm); 
 
@@ -326,6 +329,30 @@ export class BookPageComponent implements OnInit {
 
   updateBook(){
     this.router.navigate(['updateBook'])
+  }
+
+  showUpdateComment(comment:Comment){
+    if(comment.kor_ime.localeCompare(this.user.kor_ime)){
+      this.showMessage=true; 
+      this.commentMessage="Ne možete da ažurirate komentar koji nije vaš!";
+      return;
+    }
+
+    this.updateTextarea=true;
+     
+  }
+  
+  updateComment(comment:Comment){
+    let comm = new Comment(); 
+    comm.kor_ime = this.user.kor_ime; 
+    comm.id_knjige=this.book.id; 
+    comm.ocena= this.rating; 
+    comm.tekst = this.comment; 
+    comm.datum_vreme = new Date().toLocaleString();
+    comm.azuriran='da'; 
+  
+    console.log(comm); 
+    
   }
 
 }

@@ -101,8 +101,21 @@
                     {{c.tekst}}
                 </div>
             </div>
-            <div class="text-right mx-3" id="date">
-              {{c.datum_vreme}}
+            <div class="d-flex flex-row">
+                <div class="text-right mx-3" id="date">
+                    {{c.datum_vreme}}
+                </div>
+                <div >
+                    <button class="btn btn-outline-success" id="update" (click)="showUpdateComment(c)">Ažuriraj komentar</button>
+                </div>
+            </div>
+            <div class="d-flex flex-column mt-3" *ngIf="updateTextarea && c.kor_ime==user.kor_ime">
+                <textarea name="comment" id="" cols="100" rows="5" maxlength="1000" [(ngModel)]="comment"></textarea>
+                <div class="d-flex flex-column">
+                    Ocena:
+                    <ngb-rating [(rate)]="rating"></ngb-rating>
+                    <button class="btn btn-success col-md-2 mt-2"  (click)="updateComment(c)">Ažuriraj</button>
+                </div>
             </div>
         </mat-card-content>
     </mat-card>
