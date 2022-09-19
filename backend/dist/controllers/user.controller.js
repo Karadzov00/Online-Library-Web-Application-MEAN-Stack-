@@ -151,6 +151,15 @@ class UserController {
                     res.json({ 'message': 'privilegije povecane' });
             });
         };
+        this.downgradePrivilege = (req, res) => {
+            let user = req.body.user;
+            user_1.default.updateOne({ 'kor_ime': user.kor_ime }, { $set: { 'tip': 'citalac' } }, (err, resp) => {
+                if (err)
+                    console.log(err);
+                else
+                    res.json({ 'message': 'privilegije smanjene' });
+            });
+        };
     }
 }
 exports.UserController = UserController;

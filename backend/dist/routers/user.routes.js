@@ -19,5 +19,6 @@ userRouter.route('/addUser').post((req, res) => new user_controller_1.UserContro
 userRouter.route('/deleteUser').post((req, res) => new user_controller_1.UserController().deleteUser(req, res));
 userRouter.route('/updateUser').post((req, res) => new user_controller_1.UserController().updateUser(req, res));
 userRouter.route('/upgradePrivilege').post((req, res) => new user_controller_1.UserController().upgradePrivilege(req, res));
+userRouter.route('/downgradePrivilege').post((req, res) => new user_controller_1.UserController().downgradePrivilege(req, res));
 exports.default = userRouter;
 //# sourceMappingURL=user.routes.js.map

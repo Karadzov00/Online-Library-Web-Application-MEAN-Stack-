@@ -128,7 +128,7 @@ export class AdminComponent implements OnInit {
   }
 
   upgradePrivilege(user:User){
-    if(user.tip.localeCompare('moderator')){
+    if(!user.tip.localeCompare('moderator')){
       return; 
     }
 
@@ -139,7 +139,12 @@ export class AdminComponent implements OnInit {
   }
 
   downgradePrivilege(user:User){
-
+    if(!user.tip.localeCompare('citalac')){
+      return; 
+    }
+    this.userService.downgradePrivilege(user).subscribe(resp=>{
+      alert(resp['message']); 
+    })
   }
 
 }

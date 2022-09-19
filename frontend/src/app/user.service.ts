@@ -175,6 +175,12 @@ export class UserService {
     }
     return this.http.post(`${this.uri}/users/upgradePrivilege`, data)
   }
+  downgradePrivilege(user){
+    const data={
+      user:user
+    }
+    return this.http.post(`${this.uri}/users/downgradePrivilege`, data)
+  }
 
 
 
