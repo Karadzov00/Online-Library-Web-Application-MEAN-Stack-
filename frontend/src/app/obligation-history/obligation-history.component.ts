@@ -20,6 +20,18 @@ export class ObligationHistoryComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem('loggedUser')); 
+
+    if(this.user){
+      this.userService.checkBlockStatus(this.user).subscribe((blocked:string)=>{
+        if(!blocked.localeCompare('da')){
+          this.userBlocked=true; 
+        }
+        else{
+          this.userBlocked=false; 
+        }
+      })
+    }
+
     this.userService.getObligations(this.user.kor_ime).subscribe((obligs:Obligation[])=>{
       this.allObligations=obligs; 
       console.log("sva zaduzenja");
@@ -65,6 +77,8 @@ export class ObligationHistoryComponent implements OnInit {
 
   allObligations: Obligation[]; 
   currObligations:Obligation[]=[]; 
+
+  userBlocked:boolean; 
 
   allBooks:Book[]=[]; 
   currBooks:Book[]=[]; 

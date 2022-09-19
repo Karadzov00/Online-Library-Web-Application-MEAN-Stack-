@@ -18,7 +18,7 @@
                     <td>{{o.datum_zaduzivanja}}</td>
                     <td>{{o.datum_vracanja}}</td>
                     <td>
-                        <button (click)="redirectBook(o.id)" class="btn btn-success">Detalji o knjizi</button>
+                        <button (click)="redirectBook(o.id)" class="btn btn-success" *ngIf="!userBlocked">Detalji o knjizi</button>
                     </td>
                 </tr>
                 

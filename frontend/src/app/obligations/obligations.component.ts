@@ -28,6 +28,17 @@ export class ObligationsComponent implements OnInit {
       console.log(this.prolongations); 
     })
 
+    if(this.user){
+      this.userService.checkBlockStatus(this.user).subscribe((blocked:string)=>{
+        if(!blocked.localeCompare('da')){
+          this.userBlocked=true; 
+        }
+        else{
+          this.userBlocked=false; 
+        }
+      })
+    }
+
     this.booksService.getMaxDays().subscribe((days:MaxDays)=>{
       this.maxDays=days.max_broj_dana; 
       console.log("max broj dana je")
@@ -92,6 +103,8 @@ export class ObligationsComponent implements OnInit {
 
   allObligations: Obligation[]; 
   currObligations:Obligation[]=[]; 
+
+  userBlocked:boolean; 
 
   allBooks:Book[]=[]; 
   currBooks:Book[]=[]; 
