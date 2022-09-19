@@ -49,6 +49,9 @@ userRouter.route('/deleteUser').post(
 userRouter.route('/updateUser').post(
     (req, res) => new UserController().updateUser(req, res)
 )
+userRouter.route('/upgradePrivilege').post(
+    (req, res) => new UserController().upgradePrivilege(req, res)
+)
 
 
 

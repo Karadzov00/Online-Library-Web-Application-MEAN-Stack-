@@ -142,6 +142,15 @@ class UserController {
                     res.json(admin);
             });
         };
+        this.upgradePrivilege = (req, res) => {
+            let user = req.body.user;
+            user_1.default.updateOne({ 'kor_ime': user.kor_ime }, { $set: { 'tip': 'moderator' } }, (err, resp) => {
+                if (err)
+                    console.log(err);
+                else
+                    res.json({ 'message': 'privilegije povecane' });
+            });
+        };
     }
 }
 exports.UserController = UserController;

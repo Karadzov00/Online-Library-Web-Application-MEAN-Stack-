@@ -127,4 +127,19 @@ export class AdminComponent implements OnInit {
     })
   }
 
+  upgradePrivilege(user:User){
+    if(user.tip.localeCompare('moderator')){
+      return; 
+    }
+
+    this.userService.upgradePrivilege(user).subscribe(resp=>{
+      alert(resp['message']); 
+    })
+
+  }
+
+  downgradePrivilege(user:User){
+
+  }
+
 }

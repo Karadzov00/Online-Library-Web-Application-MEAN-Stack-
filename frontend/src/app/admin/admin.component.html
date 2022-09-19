@@ -10,6 +10,8 @@
                 <th scope="col"></th>
                 <th scope="col"></th>
                 <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
@@ -27,6 +29,12 @@
                 </td>
                 <td>
                     <button  class="btn btn-danger" (click)="deleteUser(u)">Obriši</button>
+                </td>
+                <td>
+                    <button  class="btn btn-outline-success" (click)="upgradePrivilege(u)">Podigni privilegije</button>
+                </td>
+                <td>
+                    <button  class="btn btn-outline-secondary" (click)="downgradePrivilege(u)">Spusti privilegije</button>
                 </td>
             </tr>
             

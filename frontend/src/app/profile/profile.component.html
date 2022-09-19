@@ -37,13 +37,13 @@
 <div class="d-flex mx-auto justify-content-center" id="button">
     <button class="btn btn-secondary col-md-2" (click)="updateInfo()" >Azuriraj podatke o sebi</button>
 </div>
-<div *ngIf="dataAvailable" class="d-flex justify-content-center">
+<div *ngIf="dataAvailable" class="d-flex justify-content-center mt-3">
 <ngx-charts-bar-vertical 
     [view]="[1000,400]"
     [results]="monthsHabits"
     [xAxisLabel]="'Meseci'"
-    [legendTitle]="'Legenda'"
-    [yAxisLabel]="'Broj pročitanih knjiga'"
+    [legendTitle]="'Meseci'"
+    [yAxisLabel]="'Broj pročitanih knjiga '"
     [legend]="true"
     [showXAxisLabel]="true"
     [showYAxisLabel]="true"
@@ -56,7 +56,7 @@
     <ngx-charts-pie-chart 
     [results]="genreHabits"
     [legend]="true"
-    [legendTitle]="'Legenda'" 
+    [legendTitle]="'Žanrovi'" 
     [view]="[1000,300]"
     [labels]="true" >
 </ngx-charts-pie-chart>

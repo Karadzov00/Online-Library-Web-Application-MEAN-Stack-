@@ -140,4 +140,14 @@ export class UserController{
             else res.json(admin);
         })
     }
+
+    upgradePrivilege=(req: express.Request, res: express.Response)=>{
+        let user = req.body.user; 
+
+        User.updateOne({'kor_ime':user.kor_ime}, {$set: {'tip':'moderator'}}, (err, resp)=>{
+            if(err) console.log(err)
+            else res.json({'message': 'privilegije povecane'})
+
+        })
+    }
 }

@@ -169,6 +169,13 @@ export class UserService {
     return this.http.post(`${this.uri}/users/updateUser`, data)
   }
 
+  upgradePrivilege(user){
+    const data={
+      user:user
+    }
+    return this.http.post(`${this.uri}/users/upgradePrivilege`, data)
+  }
+
 
 
 
