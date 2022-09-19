@@ -84,8 +84,20 @@ export class ProfileComponent implements OnInit {
 
               ctr++;
               console.log("ctr je"+ctr)
+              
+              if(returnDate>=oldDate){
+                let month = returnDate.getMonth()+1; 
+                console.log(month); 
+                this.months.push(month);
+                // console.log(this.months); 
+                console.log(this.monthsHabits[month]); 
+                this.monthsHabits[month].value=this.monthsHabits[month].value+1; 
+              }
+              
               if(not_returned===ctr){
                 console.log("finished");
+                this.dataAvailable=true; 
+
                 Object.entries(this.countData).map(([k,v]) => {
 
                   if (typeof v === 'number'){
@@ -95,19 +107,14 @@ export class ProfileComponent implements OnInit {
                   }
 
                 });
-                console.log(this.genreHabits);
-              }
-              
-              if(returnDate>=oldDate){
-                let month = returnDate.getMonth()+1; 
-                console.log(month); 
-                this.months.push(month);
-                console.log(this.months); 
+                // console.log(this.genreHabits);
               }
             })    
           }
         },
-        ()=>{console.log("finished for each")})
+        ()=>{
+          console.log("finished for each")
+        })
 
         
       }
@@ -127,6 +134,7 @@ export class ProfileComponent implements OnInit {
   }
 
   user:User; 
+  dataAvailable:boolean; 
   
   countData:any={};
   
@@ -138,6 +146,57 @@ export class ProfileComponent implements OnInit {
     {
       "name": "USA",
       "value": 5000000
+    }
+  ];
+
+  monthsHabits=[
+    {
+      "name": "januar",
+      "value": 0
+    },
+    {
+      "name": "februar",
+      "value": 0
+    },
+    {
+      "name": "mart",
+      "value": 0
+    },
+    {
+      "name": "april",
+      "value": 0
+    },
+    {
+      "name": "maj",
+      "value": 0
+    },
+    {
+      "name": "jun",
+      "value": 0
+    },
+    {
+      "name": "jul",
+      "value": 0
+    },
+    {
+      "name": "avgust",
+      "value": 0
+    },
+    {
+      "name": "septembar",
+      "value": 0
+    },
+    {
+      "name": "oktobar",
+      "value": 0
+    },
+    {
+      "name": "novembar",
+      "value": 0
+    },
+    {
+      "name": "decembar",
+      "value": 0
     }
   ];
 
