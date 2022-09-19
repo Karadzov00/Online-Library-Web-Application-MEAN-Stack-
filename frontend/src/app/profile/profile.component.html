@@ -52,3 +52,18 @@
     [gradient]="true">
 </ngx-charts-bar-vertical>
 </div>
+<div *ngIf="dataAvailable" class="d-flex justify-content-center">
+<ngx-charts-bar-vertical 
+    [view]="[1000,400]"
+    [results]="genreHabits"
+    [xAxisLabel]="'Products'"
+    [legendTitle]="'Product Sale Chart'"
+    [yAxisLabel]="'Sale'"
+    [legend]="true"
+    [showXAxisLabel]="true"
+    [showYAxisLabel]="true"
+    [xAxis]="true"
+    [yAxis]="true"
+    [gradient]="true">
+</ngx-charts-bar-vertical>
+</div>
