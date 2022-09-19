@@ -11,8 +11,8 @@ import { Obligation } from '../model/obligation';
 import { User } from '../model/user';
 import { UserService } from '../user.service';
 
-@Component({
-  selector: 'app-book-page',
+
+@Component({ selector: 'app-book-page',
   templateUrl: './book-page.component.html',
   styleUrls: ['./book-page.component.css']
 })

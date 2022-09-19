@@ -23,6 +23,7 @@
     "@angular/router": "~12.2.0",
     "@coreui/coreui": "^4.2.2",
     "@ng-bootstrap/ng-bootstrap": "^10.0.0",
+    "@swimlane/ngx-charts": "^20.1.0",
     "bootstrap": "^5.2.0",
     "bootstrap-icons": "^1.9.1",
     "chart.js": "^3.6.0",

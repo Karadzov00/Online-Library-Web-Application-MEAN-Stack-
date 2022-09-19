@@ -28,6 +28,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import { BookSuggestionsComponent } from './book-suggestions/book-suggestions.component';
 import { NgChartsModule } from 'ng2-charts';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,9 @@ import { NgChartsModule } from 'ng2-charts';
     MatSelectModule,
     MatOptionModule,
     ReactiveFormsModule,
-    NgChartsModule
+    NgChartsModule,
+    NgxChartsModule,
+    BrowserAnimationsModule 
 
   ],
   providers: [],
