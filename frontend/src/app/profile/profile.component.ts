@@ -88,10 +88,12 @@ export class ProfileComponent implements OnInit {
                 console.log("finished");
                 Object.entries(this.countData).map(([k,v]) => {
 
-                  this.genreHabits.push(
-                    { name: k, value: v }
-                  )
-                
+                  if (typeof v === 'number'){
+                    this.genreHabits.push(
+                      { "name": k, "value": v }
+                    )
+                  }
+
                 });
                 console.log(this.genreHabits);
               }
@@ -119,11 +121,25 @@ export class ProfileComponent implements OnInit {
 
   }
 
+  displayGraphs(){
+    console.log("display graphs")
+    console.log(this.genreHabits)
+  }
+
   user:User; 
   
   countData:any={};
   
-  genreHabits=[];
+  genreHabits=[
+    {
+      "name": "Germany",
+      "value": 8940000
+    },
+    {
+      "name": "USA",
+      "value": 5000000
+    }
+  ];
 
   mapped = Object.entries(this.countData).map(([k,v]) => {
 
@@ -159,7 +175,7 @@ export class ProfileComponent implements OnInit {
   months:number[]=[]; 
   genres:string[]=[]; 
 
-  genreData=[]; 
+  genreData:object[]=[]; 
 
   saleData = [
     { name: "Mobiles", value: 105000 },
