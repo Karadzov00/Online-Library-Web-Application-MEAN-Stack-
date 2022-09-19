@@ -90,8 +90,8 @@ export class ProfileComponent implements OnInit {
                 console.log(month); 
                 this.months.push(month);
                 // console.log(this.months); 
-                console.log(this.monthsHabits[month]); 
-                this.monthsHabits[month].value=this.monthsHabits[month].value+1; 
+                console.log(this.monthsHabits[month-1]); 
+                this.monthsHabits[month-1].value=this.monthsHabits[month-1].value+1; 
               }
               
               if(not_returned===ctr){
