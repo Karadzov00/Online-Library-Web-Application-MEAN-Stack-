@@ -36,6 +36,10 @@ export class BooksService {
     return this.http.get(`${this.uri}/books/getMaxDays`); 
 
   }
+  getProlongationDays(){
+    return this.http.get(`${this.uri}/books/getProlongationDays`); 
+
+  }
 
   getBookById(id){
     const data={

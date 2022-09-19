@@ -129,7 +129,9 @@ export class AdminComponent implements OnInit {
   }
 
   changeProlongationDays(){
-
+    this.booksService.changeProlongationDays(this.prolongationDays).subscribe(resp=>{
+      alert(resp['message'])
+    })
   }
 
   upgradePrivilege(user:User){

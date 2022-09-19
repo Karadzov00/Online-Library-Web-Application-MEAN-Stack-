@@ -28,6 +28,10 @@ export class ObligationsComponent implements OnInit {
       console.log(this.prolongations); 
     })
 
+    this.booksService.getProlongationDays().subscribe((days:number)=>{
+      this.prolongationDays=days; 
+    })
+
     if(this.user){
       this.userService.checkBlockStatus(this.user).subscribe((blocked:string)=>{
         if(!blocked.localeCompare('da')){
@@ -116,6 +120,7 @@ export class ObligationsComponent implements OnInit {
   haveObligations:boolean; 
 
   maxDays:number; 
+  prolongationDays:number; 
   prolongations:Prolongation[]=[]; 
 
   calculateDays(obligation:Obligation):number{
