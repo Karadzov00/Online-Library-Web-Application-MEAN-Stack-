@@ -57,6 +57,7 @@ export class AdminComponent implements OnInit {
   cannotDeleteBook:boolean;
 
   maxDays:number; 
+  prolongationDays:number; 
 
   addUser(user:User){
     this.userService.addUser(user).subscribe(resp=>{
@@ -127,6 +128,10 @@ export class AdminComponent implements OnInit {
     })
   }
 
+  changeProlongationDays(){
+
+  }
+
   upgradePrivilege(user:User){
     if(!user.tip.localeCompare('moderator')){
       return; 
@@ -158,5 +163,7 @@ export class AdminComponent implements OnInit {
       alert(resp['message']); 
     })
   }
+
+  
 
 }

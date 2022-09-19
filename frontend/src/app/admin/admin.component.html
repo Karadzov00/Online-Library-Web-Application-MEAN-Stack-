@@ -86,13 +86,22 @@
         </tbody>
     </table>
 </div>
-<div  class="d-flex flex-row justify-content-center btns gap-3" >
+<div  class="d-flex  justify-content-center" >
     <button  class="btn btn-success col-md-3 " (click)="addBook()" id="btn2">Dodaj novu knjigu</button>
-    <div >
-        <div >
+</div>
+<div class="d-flex flex-row gap-5 justify-content-center mt-3">
+    <div>
+        <div>
             <label for="days">Maksimalan broj dana na zaduženju knjige:</label>
         </div>
         <input type="text" [(ngModel)]="maxDays" class="form-control" id="days">
+        <button class="btn btn-secondary mt-1" (click)="changeMaxDays()">Azuriraj broj dana</button>
     </div>
-    <button class="btn btn-secondary" (click)="changeMaxDays()">Azuriraj broj dana</button>
+    <div>
+        <div>
+            <label for="days">Maksimalan broj dana za produženje knjige:</label>
+        </div>
+        <input type="text" [(ngModel)]="prolongationDays" class="form-control" id="days">
+        <button class="btn btn-secondary mt-1" (click)="changeProlongationDays()">Azuriraj broj dana</button>
+    </div>
 </div>

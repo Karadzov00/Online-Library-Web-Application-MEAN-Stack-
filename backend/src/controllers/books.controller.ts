@@ -299,8 +299,24 @@ export class BooksController{
         
     }
 
+    changeProlongationDays= (req: express.Request, res: express.Response)=>{
+        let days = req.body.days; 
+        console.log(days); 
+        maxDays.updateOne({'id':2}, {$set:{'max_broj_dana':days}}, (err, resp)=>{
+            if(err) console.log(err)
+            res.json({'message': 'prolongation days updated'})
+        })
+        
+    }
+
     getMaxDays= (req: express.Request, res: express.Response)=>{
         maxDays.findOne({'id':1}, (err, maxDays)=>{
+            if(err)console.log(err)
+            else res.json(maxDays)
+        })
+    }
+    getProlongationDays= (req: express.Request, res: express.Response)=>{
+        maxDays.findOne({'id':2}, (err, maxDays)=>{
             if(err)console.log(err)
             else res.json(maxDays)
         })

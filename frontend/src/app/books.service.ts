@@ -145,6 +145,13 @@ export class BooksService {
     return this.http.post(`${this.uri}/books/changeMaxDays`, data); 
 
   }
+  changeProlongationDays(days){
+    const data={
+      days:days
+    }
+    return this.http.post(`${this.uri}/books/changeProlongationDays`, data); 
+
+  }
   suggestBook(suggestion){
     const data={
       suggestion:suggestion

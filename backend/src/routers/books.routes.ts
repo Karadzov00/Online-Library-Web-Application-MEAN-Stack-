@@ -71,6 +71,9 @@ booksRouter.route('/deleteBook').post(
 booksRouter.route('/changeMaxDays').post(
     (req, res) => new BooksController().changeMaxDays(req, res)
 )
+booksRouter.route('/changeProlongationDays').post(
+    (req, res) => new BooksController().changeProlongationDays(req, res)
+)
 booksRouter.route('/advancedSearch').post(
     (req, res) => new BooksController().advancedSearch(req, res)
 )

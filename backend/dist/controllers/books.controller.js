@@ -283,8 +283,25 @@ class BooksController {
                 res.json({ 'message': 'max days updated' });
             });
         };
+        this.changeProlongationDays = (req, res) => {
+            let days = req.body.days;
+            console.log(days);
+            max_days_1.default.updateOne({ 'id': 2 }, { $set: { 'max_broj_dana': days } }, (err, resp) => {
+                if (err)
+                    console.log(err);
+                res.json({ 'message': 'prolongation days updated' });
+            });
+        };
         this.getMaxDays = (req, res) => {
             max_days_1.default.findOne({ 'id': 1 }, (err, maxDays) => {
+                if (err)
+                    console.log(err);
+                else
+                    res.json(maxDays);
+            });
+        };
+        this.getProlongationDays = (req, res) => {
+            max_days_1.default.findOne({ 'id': 2 }, (err, maxDays) => {
                 if (err)
                     console.log(err);
                 else
