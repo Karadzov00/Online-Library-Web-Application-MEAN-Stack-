@@ -20,5 +20,7 @@ userRouter.route('/deleteUser').post((req, res) => new user_controller_1.UserCon
 userRouter.route('/updateUser').post((req, res) => new user_controller_1.UserController().updateUser(req, res));
 userRouter.route('/upgradePrivilege').post((req, res) => new user_controller_1.UserController().upgradePrivilege(req, res));
 userRouter.route('/downgradePrivilege').post((req, res) => new user_controller_1.UserController().downgradePrivilege(req, res));
+userRouter.route('/blockUser').post((req, res) => new user_controller_1.UserController().blockUser(req, res));
+userRouter.route('/unblockUser').post((req, res) => new user_controller_1.UserController().unblockUser(req, res));
 exports.default = userRouter;
 //# sourceMappingURL=user.routes.js.map

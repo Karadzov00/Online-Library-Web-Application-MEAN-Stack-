@@ -147,4 +147,16 @@ export class AdminComponent implements OnInit {
     })
   }
 
+  blockUser(user:User){
+    this.userService.blockUser(user).subscribe(resp=>{
+      alert(resp['message']); 
+    })
+  }
+  
+  unblockUser(user:User){
+    this.userService.unblockUser(user).subscribe(resp=>{
+      alert(resp['message']); 
+    })
+  }
+
 }

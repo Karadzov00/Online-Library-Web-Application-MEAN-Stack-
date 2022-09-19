@@ -2,6 +2,7 @@ import express from "express";
 import User from "../models/user"
 import Image from "../models/image"
 import Obligation from "../models/obligation"
+import Blocked from "../models/blocked"
 
 
 export class UserController{
@@ -159,4 +160,45 @@ export class UserController{
 
         })
     }
+
+    blockUser=(req: express.Request, res: express.Response)=>{
+        let user = req.body.user; 
+
+        Blocked.findOne({'kor_ime':user.kor_ime},(err, person)=>{
+            if(err) console.log(err)
+            else{
+                if(person){
+                    Blocked.updateOne({'kor_ime':user.kor_ime}, {$set:{'blokiran':'da'}}, (err, resp)=>{
+                        if(err) console.log(err)
+                        else res.json({'message': 'korisnik blokiran'})
+                    })
+                }
+                else{
+                    let blocked = new Blocked({
+                        kor_ime: user.kor_ime,
+                        blokiran: 'da'
+                    })
+                    blocked.save((err, resp)=>{
+                        if(err) console.log(err)
+                        else res.json({'message': 'korisnik blokiran'})
+            
+                    })
+
+                }
+            }
+        })
+
+    }
+    
+    unblockUser=(req: express.Request, res: express.Response)=>{
+        let user = req.body.user; 
+
+        Blocked.updateOne({'kor_ime':user.kor_ime}, {$set:{'blokiran':'ne'}}, (err, resp)=>{
+            if(err) console.log(err)
+            else res.json({'message': 'korisnik deblokiran'})
+  
+        })
+    }
+
+
 }

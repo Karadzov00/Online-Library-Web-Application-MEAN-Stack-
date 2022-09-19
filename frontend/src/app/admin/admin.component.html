@@ -1,4 +1,4 @@
-<div class="col-md-9 col-sm-12" id="table">
+<div class="col-md-11 col-sm-12" id="table">
     <table class="table table-striped">
         <thead class="table table-dark">
             <tr>
@@ -7,6 +7,8 @@
                 <th scope="col">Prezime</th>
                 <th scope="col">Tip</th>
                 <th scope="col">Status</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
                 <th scope="col"></th>
                 <th scope="col"></th>
                 <th scope="col"></th>
@@ -35,6 +37,12 @@
                 </td>
                 <td>
                     <button  class="btn btn-outline-secondary" (click)="downgradePrivilege(u)">Spusti privilegije</button>
+                </td>
+                <td>
+                    <button  class="btn btn-outline-danger" (click)="blockUser(u)">Blokiraj korisnika</button>
+                </td>
+                <td>
+                    <button  class="btn btn-outline-danger" (click)="unblockUser(u)">Deblokiraj korisnika</button>
                 </td>
             </tr>
             

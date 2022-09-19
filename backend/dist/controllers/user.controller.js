@@ -7,6 +7,7 @@ exports.UserController = void 0;
 const user_1 = __importDefault(require("../models/user"));
 const image_1 = __importDefault(require("../models/image"));
 const obligation_1 = __importDefault(require("../models/obligation"));
+const blocked_1 = __importDefault(require("../models/blocked"));
 class UserController {
     constructor() {
         this.login = (req, res) => {
@@ -158,6 +159,44 @@ class UserController {
                     console.log(err);
                 else
                     res.json({ 'message': 'privilegije smanjene' });
+            });
+        };
+        this.blockUser = (req, res) => {
+            let user = req.body.user;
+            blocked_1.default.findOne({ 'kor_ime': user.kor_ime }, (err, person) => {
+                if (err)
+                    console.log(err);
+                else {
+                    if (person) {
+                        blocked_1.default.updateOne({ 'kor_ime': user.kor_ime }, { $set: { 'blokiran': 'da' } }, (err, resp) => {
+                            if (err)
+                                console.log(err);
+                            else
+                                res.json({ 'message': 'korisnik blokiran' });
+                        });
+                    }
+                    else {
+                        let blocked = new blocked_1.default({
+                            kor_ime: user.kor_ime,
+                            blokiran: 'da'
+                        });
+                        blocked.save((err, resp) => {
+                            if (err)
+                                console.log(err);
+                            else
+                                res.json({ 'message': 'korisnik blokiran' });
+                        });
+                    }
+                }
+            });
+        };
+        this.unblockUser = (req, res) => {
+            let user = req.body.user;
+            blocked_1.default.updateOne({ 'kor_ime': user.kor_ime }, { $set: { 'blokiran': 'ne' } }, (err, resp) => {
+                if (err)
+                    console.log(err);
+                else
+                    res.json({ 'message': 'korisnik deblokiran' });
             });
         };
     }

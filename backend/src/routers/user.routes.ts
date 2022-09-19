@@ -55,6 +55,12 @@ userRouter.route('/upgradePrivilege').post(
 userRouter.route('/downgradePrivilege').post(
     (req, res) => new UserController().downgradePrivilege(req, res)
 )
+userRouter.route('/blockUser').post(
+    (req, res) => new UserController().blockUser(req, res)
+)
+userRouter.route('/unblockUser').post(
+    (req, res) => new UserController().unblockUser(req, res)
+)
 
 
 

@@ -181,6 +181,18 @@ export class UserService {
     }
     return this.http.post(`${this.uri}/users/downgradePrivilege`, data)
   }
+  blockUser(user){
+    const data={
+      user:user
+    }
+    return this.http.post(`${this.uri}/users/blockUser`, data)
+  }
+  unblockUser(user){
+    const data={
+      user:user
+    }
+    return this.http.post(`${this.uri}/users/unblockUser`, data)
+  }
 
 
 
