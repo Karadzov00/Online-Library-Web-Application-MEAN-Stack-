@@ -23,13 +23,23 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem('loggedUser')); 
+    
     this.userService.getObligations(this.user.kor_ime).subscribe((obligs:Obligation[])=>{
       this.allObligations=obligs; 
       console.log("sva zaduzenja");
       console.log(this.allObligations)
       if(this.allObligations){
         let ctr =0; 
+        let not_returned=0;
+
         this.allObligations.forEach(elem=>{
+          if(elem.razduzen.localeCompare('ne')){
+            not_returned++; 
+          }
+        })
+
+        this.allObligations.forEach(elem=>{
+          
 
           if(elem.razduzen.localeCompare('ne')){
 
@@ -59,6 +69,33 @@ export class ProfileComponent implements OnInit {
               oldDate.setMonth(oldDate.getMonth() - 12);
               console.log(returnDate);
               console.log(oldDate); 
+
+              var count={};
+              this.genres.forEach(function(i) { count[i] = (count[i]||0) + 1;});
+              console.log("count"); 
+              console.log(count);
+              
+              this.countData=count; 
+             
+              
+              
+              console.log(this.genreData)
+              console.log(this.saleData)
+
+              ctr++;
+              console.log("ctr je"+ctr)
+              if(not_returned===ctr){
+                console.log("finished");
+                Object.entries(this.countData).map(([k,v]) => {
+
+                  this.genreHabits.push(
+                    { name: k, value: v }
+                  )
+                
+                });
+                console.log(this.genreHabits);
+              }
+              
               if(returnDate>=oldDate){
                 let month = returnDate.getMonth()+1; 
                 console.log(month); 
@@ -67,14 +104,34 @@ export class ProfileComponent implements OnInit {
               }
             })    
           }
-        })
+        },
+        ()=>{console.log("finished for each")})
+
+        
       }
 
+    },
+    (err)=>{console.error(err)},
+    ()=>{
+      console.log("observable complete")
     })
+    
 
   }
 
   user:User; 
+  
+  countData:any={};
+  
+  genreHabits=[];
+
+  mapped = Object.entries(this.countData).map(([k,v]) => {
+
+    this.genreData.push(
+      { name: k, value: v }
+    )
+  
+  });
 
   allObligations: Obligation[]; 
   currObligations:Obligation[]=[]; 
@@ -102,6 +159,8 @@ export class ProfileComponent implements OnInit {
   months:number[]=[]; 
   genres:string[]=[]; 
 
+  genreData=[]; 
+
   saleData = [
     { name: "Mobiles", value: 105000 },
     { name: "Laptop", value: 55000 },
@@ -111,7 +170,11 @@ export class ProfileComponent implements OnInit {
     { name: "PC", value: 25000 },
   ];
  
+  data=[]; 
 
+  on_init(){
+    
+  }
 
   updateInfo(){
     this.router.navigate(['updateUser']);
