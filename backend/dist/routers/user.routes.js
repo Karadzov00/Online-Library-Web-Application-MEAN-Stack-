@@ -22,5 +22,6 @@ userRouter.route('/upgradePrivilege').post((req, res) => new user_controller_1.U
 userRouter.route('/downgradePrivilege').post((req, res) => new user_controller_1.UserController().downgradePrivilege(req, res));
 userRouter.route('/blockUser').post((req, res) => new user_controller_1.UserController().blockUser(req, res));
 userRouter.route('/unblockUser').post((req, res) => new user_controller_1.UserController().unblockUser(req, res));
+userRouter.route('/checkBlockStatus').post((req, res) => new user_controller_1.UserController().checkBlockStatus(req, res));
 exports.default = userRouter;
 //# sourceMappingURL=user.routes.js.map

@@ -15,7 +15,18 @@ export class AppComponent {
   constructor(private router: Router, private userService:UserService) {}
 
   ngOnInit(): void {
-    this.user = JSON.parse(localStorage.getItem('loggedUser')); 
+    this.user = JSON.parse(localStorage.getItem('loggedUser'));
+    
+    if(this.user){
+      this.userService.checkBlockStatus(this.user).subscribe((blocked:string)=>{
+        if(!blocked.localeCompare('da')){
+          this.userBlocked=true; 
+        }
+        else{
+          this.userBlocked=false; 
+        }
+      })
+    }
 
     this.userService.getNoUserImage().subscribe((image:Image)=>{
       this.noUserImage=image.slika; 
@@ -29,6 +40,8 @@ export class AppComponent {
   user:User; 
   loggedIn:boolean;
   noUserImage:String; 
+
+  userBlocked:boolean; 
 
   routerLogin(){
     this.router.navigate(['login']);
@@ -55,12 +68,15 @@ export class AppComponent {
     this.router.navigate(['profile']);
   }
   changePassword(){
+    if(this.userBlocked)return; 
+
     this.router.navigate(['changePassword']);
   }
   routerSearch(){
     this.router.navigate(['search']);
   }
   routerObligations(){
+
     this.router.navigate(['obligations']);
   }
   routerObligationHistory(){
@@ -68,10 +84,14 @@ export class AppComponent {
   }
 
   addBook(){
+    if(this.userBlocked)return; 
+
     this.router.navigate(['addBook']);
   }
 
   suggestions(){
+    if(this.userBlocked)return; 
+
     this.router.navigate(['bookSuggestions']);
 
   }

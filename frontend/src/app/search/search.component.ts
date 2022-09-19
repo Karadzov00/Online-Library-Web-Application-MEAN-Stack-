@@ -6,6 +6,7 @@ import { UserService } from '../user.service';
 import {FormControl} from '@angular/forms';
 import { searchBookAdvanced } from '../model/searchBookAdvanced';
 import { User } from '../model/user';
+import { BlockLike } from 'typescript';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -18,9 +19,22 @@ export class SearchComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem('loggedUser')); 
+
+    if(this.user){
+      this.userService.checkBlockStatus(this.user).subscribe((blocked:string)=>{
+        if(!blocked.localeCompare('da')){
+          this.userBlocked=true; 
+        }
+        else{
+          this.userBlocked=false; 
+        }
+      })
+    }
   }
 
   user:User;
+
+  userBlocked:boolean; 
 
   name:string; 
   author:string;
@@ -77,6 +91,7 @@ export class SearchComponent implements OnInit {
   }
 
   bookRedirect(book){
+    if(this.userBlocked)return; 
     console.log("book redirect")
     console.log(book);
     localStorage.setItem('selectedBook', JSON.stringify(book));

@@ -199,6 +199,15 @@ class UserController {
                     res.json({ 'message': 'korisnik deblokiran' });
             });
         };
+        this.checkBlockStatus = (req, res) => {
+            let user = req.body.user;
+            blocked_1.default.findOne({ 'kor_ime': user.kor_ime }, (err, resp) => {
+                if (err)
+                    console.log(err);
+                else
+                    res.json(resp.blokiran);
+            });
+        };
     }
 }
 exports.UserController = UserController;

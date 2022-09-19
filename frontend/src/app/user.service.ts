@@ -194,6 +194,13 @@ export class UserService {
     return this.http.post(`${this.uri}/users/unblockUser`, data)
   }
 
+  checkBlockStatus(user){
+    const data={
+      user:user
+    }
+    return this.http.post(`${this.uri}/users/checkBlockStatus`, data)
+  }
+
 
 
 

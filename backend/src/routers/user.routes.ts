@@ -61,6 +61,9 @@ userRouter.route('/blockUser').post(
 userRouter.route('/unblockUser').post(
     (req, res) => new UserController().unblockUser(req, res)
 )
+userRouter.route('/checkBlockStatus').post(
+    (req, res) => new UserController().checkBlockStatus(req, res)
+)
 
 
 

@@ -199,6 +199,17 @@ export class UserController{
   
         })
     }
+    
+    
+    checkBlockStatus=(req: express.Request, res: express.Response)=>{
+        let user = req.body.user; 
+
+        Blocked.findOne({'kor_ime':user.kor_ime}, (err, resp)=>{
+            if(err) console.log(err)
+            else res.json(resp.blokiran)
+  
+        })
+    }
 
 
 }
