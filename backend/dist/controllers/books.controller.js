@@ -136,6 +136,7 @@ class BooksController {
                         if (err)
                             console.log(err);
                         else {
+                            this.checkReservations(book_id);
                             let na_stanju = book.na_stanju + 1;
                             book_1.default.updateOne({ 'id': book.id }, { $set: { 'na_stanju': na_stanju } }, (err, resp) => {
                                 if (err)
@@ -441,7 +442,7 @@ class BooksController {
                             reserv.forEach(elem => {
                                 result.push(elem.id);
                             });
-                            console.log(result[0]);
+                            // console.log(result[0]);
                             let new_id = result[0] + 1;
                             let new_reservation = new reservation_1.default({
                                 id: new_id,
@@ -473,6 +474,73 @@ class BooksController {
                 }
             });
         };
+    }
+    checkReservations(book_id) {
+        reservation_1.default.find({ 'id_knjige': book_id }).sort({ 'id': 1 }).then(reservations => {
+            let hasThatBook = false;
+            let cnt = 0;
+            let exitFor = false;
+            for (var reserv of reservations) {
+                obligation_1.default.find({ 'kor_ime': reserv.kor_ime }, (err, obligations) => {
+                    if (err)
+                        console.log(err);
+                    else {
+                        obligations.forEach(obligation => {
+                            if (!obligation.razduzen.localeCompare('ne')) {
+                                cnt++;
+                                if (obligations.id_knjige == book_id) {
+                                    hasThatBook = true;
+                                }
+                            }
+                        });
+                        if (cnt < 3 && !hasThatBook) {
+                            //break loop and assign book to the user 
+                            exitFor = true;
+                            //make obligation 
+                            let username = reserv.kor_ime;
+                            let id_knjige = book_id;
+                            let returned = 'ne';
+                            //make dates 
+                            // Obligation.find({},(err, obligs)=>{
+                            //     if(err)console.log(err)
+                            //     else{
+                            //         let idO = obligs.length+1; 
+                            //         let obligation = new Obligation({
+                            //             id:idO,
+                            //             kor_ime:req.body.obligation.kor_ime,
+                            //             id_knjige:req.body.obligation.id_knjige,
+                            //             datum_zaduzivanja:req.body.obligation.datum_zaduzivanja,
+                            //             datum_vracanja:req.body.obligation.datum_vracanja,
+                            //             razduzen:req.body.obligation.razduzen
+                            //         })
+                            //         console.log(obligation); 
+                            //         obligation.save((err, resp)=>{
+                            //             if(err) {
+                            //                 console.log(err);
+                            //                 res.status(400).json({"message": "error"})
+                            //             }
+                            //             else {
+                            //                 Book.findOne({'id':req.body.obligation.id_knjige},(err, book)=>{
+                            //                     if(err)console.log(err)
+                            //                     else{
+                            //                         let broj_uzimanja= book.broj_uzimanja+1; 
+                            //                         Book.updateOne({'id':book.id}, {$set:{'broj_uzimanja':broj_uzimanja}}, (err, resp)=>{
+                            //                             if(err)console.log(err)
+                            //                             else res.json({"message": "obligation_added"})
+                            //                         })
+                            //                     }
+                            //                 })
+                            //             }
+                            //         })
+                            //     }
+                            // })
+                        }
+                    }
+                });
+                if (exitFor)
+                    break;
+            }
+        });
     }
 }
 exports.BooksController = BooksController;

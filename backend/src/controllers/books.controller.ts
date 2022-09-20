@@ -187,43 +187,43 @@ export class BooksController{
 
                             //make dates 
 
-                            Obligation.find({},(err, obligs)=>{
-                                if(err)console.log(err)
-                                else{
-                                    let idO = obligs.length+1; 
-                                    let obligation = new Obligation({
-                                        id:idO,
-                                        kor_ime:req.body.obligation.kor_ime,
-                                        id_knjige:req.body.obligation.id_knjige,
-                                        datum_zaduzivanja:req.body.obligation.datum_zaduzivanja,
-                                        datum_vracanja:req.body.obligation.datum_vracanja,
-                                        razduzen:req.body.obligation.razduzen
-                                    })
+                            // Obligation.find({},(err, obligs)=>{
+                            //     if(err)console.log(err)
+                            //     else{
+                            //         let idO = obligs.length+1; 
+                            //         let obligation = new Obligation({
+                            //             id:idO,
+                            //             kor_ime:req.body.obligation.kor_ime,
+                            //             id_knjige:req.body.obligation.id_knjige,
+                            //             datum_zaduzivanja:req.body.obligation.datum_zaduzivanja,
+                            //             datum_vracanja:req.body.obligation.datum_vracanja,
+                            //             razduzen:req.body.obligation.razduzen
+                            //         })
                     
-                                    console.log(obligation); 
+                            //         console.log(obligation); 
                     
-                                    obligation.save((err, resp)=>{
-                                        if(err) {
-                                            console.log(err);
-                                            res.status(400).json({"message": "error"})
-                                        }
-                                        else {
-                                            Book.findOne({'id':req.body.obligation.id_knjige},(err, book)=>{
-                                                if(err)console.log(err)
-                                                else{
-                                                    let broj_uzimanja= book.broj_uzimanja+1; 
-                                                    Book.updateOne({'id':book.id}, {$set:{'broj_uzimanja':broj_uzimanja}}, (err, resp)=>{
-                                                        if(err)console.log(err)
-                                                        else res.json({"message": "obligation_added"})
-                                                    })
-                                                }
+                            //         obligation.save((err, resp)=>{
+                            //             if(err) {
+                            //                 console.log(err);
+                            //                 res.status(400).json({"message": "error"})
+                            //             }
+                            //             else {
+                            //                 Book.findOne({'id':req.body.obligation.id_knjige},(err, book)=>{
+                            //                     if(err)console.log(err)
+                            //                     else{
+                            //                         let broj_uzimanja= book.broj_uzimanja+1; 
+                            //                         Book.updateOne({'id':book.id}, {$set:{'broj_uzimanja':broj_uzimanja}}, (err, resp)=>{
+                            //                             if(err)console.log(err)
+                            //                             else res.json({"message": "obligation_added"})
+                            //                         })
+                            //                     }
                             
-                                            })
-                                        }
+                            //                 })
+                            //             }
                                             
-                                    })
-                                }
-                            })
+                            //         })
+                            //     }
+                            // })
                         }
                     }
                 })
