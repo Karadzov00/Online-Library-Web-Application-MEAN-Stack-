@@ -1,8 +1,9 @@
 
-
-<div class="container d-flex justify-content-center" id="main">
-    <mat-card class="example-card" id="card">
-        <div class="d-flex flex-column" >
+<body>
+    
+    <div class="container d-flex justify-content-center" id="main">
+        <mat-card class="example-card" id="card">
+            <div class="d-flex flex-column" >
             <img [src]="user.slika" alt="slika"  id="image">
             <div id="content">
                 <h1 class="display-5" id="head">{{user.ime}} <br> {{user.prezime}}</h1>
@@ -38,7 +39,7 @@
     <button class="btn btn-secondary col-md-2" (click)="updateInfo()" >Azuriraj podatke o sebi</button>
 </div>
 <div *ngIf="dataAvailable" class="d-flex justify-content-center mt-3">
-<ngx-charts-bar-vertical 
+    <ngx-charts-bar-vertical 
     [view]="[1000,400]"
     [results]="monthsHabits"
     [xAxisLabel]="''"
@@ -61,3 +62,4 @@
     [labels]="true" >
 </ngx-charts-pie-chart>
 </div>
+</body>

@@ -1,3 +1,4 @@
+<div id="wrapper">
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" *ngIf="user">
     <div class="container-fluid ms-2">
@@ -63,4 +64,17 @@
       </div>
     </div>
 </nav>
-<router-outlet></router-outlet>
+
+<div id="content">
+
+  <router-outlet></router-outlet>
+  
+</div>
+
+
+  
+  <div id="footer" class="d-flex justify-content-center">
+    &copy; Copyright Aleksandar Karadžov
+  </div>
+  
+</div>
