@@ -20,6 +20,9 @@ export class UpdateUserComponent implements OnInit {
     this.userAdded=false; 
     this.exitFunc=false; 
 
+    this.loggedUser = JSON.parse(localStorage.getItem('loggedUser')); 
+    
+
     this.userService.getNoUserImage().subscribe((image:Image)=>{
       if(image){
 
@@ -42,7 +45,7 @@ export class UpdateUserComponent implements OnInit {
   phone:string; 
   email:string; 
   image:string; 
-  type:string;
+  type:string="";
   message: string; 
   imageChosen: boolean; 
   status: string; 
@@ -82,15 +85,6 @@ export class UpdateUserComponent implements OnInit {
       return; 
     }
 
-    this.userService.findUser(this.username).subscribe((user:User)=>{
-      if(user!=null){
-        this.message="Vec postoji korisnik sa zadatim korisnickim imenom!"; 
-        this.userAdded=false; 
-        this.exitFunc=true; 
-
-        return; 
-      }
-    })
 
     if(!this.userAdded && this.exitFunc)return; 
 
