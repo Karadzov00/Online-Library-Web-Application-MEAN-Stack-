@@ -139,12 +139,13 @@ class BooksController {
                         else {
                             reservation_1.default.find({ 'id_knjige': book_id }).sort({ 'id': 1 }).then(reservations => {
                                 if (reservations) {
-                                    console.log(reservations);
+                                    // console.log(reservations);
                                     //if there are reservations for this book 
-                                    let hasThatBook = false;
-                                    let cnt = 0;
-                                    let exitFor = false;
-                                    for (var reserv of reservations) {
+                                    let book_given = false;
+                                    reservations.forEach(reserv => {
+                                        let hasThatBook = false;
+                                        let cnt = 0;
+                                        let exitFor = false;
                                         console.log(reserv);
                                         obligation_1.default.find({ 'kor_ime': reserv.kor_ime }, (err, obligations) => {
                                             if (err)
@@ -158,9 +159,12 @@ class BooksController {
                                                         }
                                                     }
                                                 });
-                                                if (cnt < 3 && !hasThatBook) {
+                                                console.log(reserv.kor_ime + " " + cnt + " , " + hasThatBook);
+                                                if (cnt < 3 && !hasThatBook && !book_given) {
+                                                    book_given = true;
                                                     //break loop and assign book to the user 
                                                     exitFor = true;
+                                                    console.log(reserv.kor_ime + " usao u dodavanje");
                                                     //make obligation 
                                                     max_days_1.default.findOne({ 'id': 1 }, (err, days) => {
                                                         if (err)
@@ -215,9 +219,7 @@ class BooksController {
                                                 }
                                             }
                                         });
-                                        if (exitFor)
-                                            break;
-                                    }
+                                    });
                                 }
                                 else {
                                     //if there are no reservations for this book 
