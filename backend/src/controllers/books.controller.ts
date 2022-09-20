@@ -5,6 +5,8 @@ import Obligation from "../models/obligation";
 import maxDays from "../models/max_days";
 import BookRequest from "../models/book_request";
 import Prolongation from "../models/prolongation"
+import Reservation from "../models/reservation"
+import { ReservationModel } from "../models/reservationModel";
 
 export class BooksController{
 
@@ -442,6 +444,53 @@ export class BooksController{
             }
         })
 
+
+    }
+
+    makeReservation = (req: express.Request, res: express.Response)=>{
+        let reser = req.body.reservation; 
+
+        Reservation.find({},(err, reservs)=>{
+            if(err)console.log(err)
+            else{
+                if(reservs){
+                    Reservation.find({},{_id:0, id_knjige:0, kor_ime:0}).sort({'id':-1}).limit(1).then((reserv)=>{
+                        var result=[]; 
+                        reserv.forEach(elem=>{
+                            result.push(elem.id)
+                        })  
+                        // console.log(result[0]);
+
+                        let new_id=result[0]+1; 
+
+                        let new_reservation = new Reservation({
+                            id: new_id,
+                            id_knjige:reser.id_knjige,
+                            kor_ime: reser.kor_ime
+                        })
+
+                        new_reservation.save((err, resp)=>{
+                            if(err)console.log(err)
+                            else res.json({"message": "dodata rezervacija"})
+                        })
+                    })
+                }
+                else{
+                    let new_id=1; 
+
+                    let new_reservation = new Reservation({
+                            id: new_id,
+                            id_knjige:reser.id_knjige,
+                            kor_ime: reser.kor_ime
+                        })
+
+                        new_reservation.save((err, resp)=>{
+                            if(err)console.log(err)
+                            else res.json({"message": "dodata rezervacija"})
+                        })
+                }
+            }
+        })
 
     }
 

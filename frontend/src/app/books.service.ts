@@ -171,6 +171,14 @@ export class BooksService {
 
   }
 
+  makeReservation(reservation){
+    const data={
+      reservation:reservation
+    }
+    return this.http.post(`${this.uri}/books/makeReservation`, data); 
+
+  }
+
   fetchBookSuggestions(){
     return this.http.get(`${this.uri}/books/fetchBookSuggestions`); 
 

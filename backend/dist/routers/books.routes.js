@@ -31,5 +31,6 @@ booksRouter.route('/advancedSearch').post((req, res) => new books_controller_1.B
 booksRouter.route('/suggestBook').post((req, res) => new books_controller_1.BooksController().suggestBook(req, res));
 booksRouter.route('/acceptSuggestion').post((req, res) => new books_controller_1.BooksController().acceptSuggestion(req, res));
 booksRouter.route('/addProlongation').post((req, res) => new books_controller_1.BooksController().addProlongation(req, res));
+booksRouter.route('/makeReservation').post((req, res) => new books_controller_1.BooksController().makeReservation(req, res));
 exports.default = booksRouter;
 //# sourceMappingURL=books.routes.js.map

@@ -8,6 +8,7 @@ import { BookObligation } from '../model/bookObligation';
 import { Comment } from '../model/comment';
 import { MaxDays } from '../model/max_days';
 import { Obligation } from '../model/obligation';
+import { Reservation } from '../model/reservation';
 import { User } from '../model/user';
 import { UserService } from '../user.service';
 
@@ -361,9 +362,42 @@ export class BookPageComponent implements OnInit {
     
   }
 
+  hasThisBook:boolean; 
+  bookMessage:string; 
+  passedDeadline:boolean; 
+  
 
   makeReservation(){
-    
+    if(this.bookObligations.length>2){
+      this.bookMessage="Imate maksimalne 3 zadužene knjige!";
+      return;
+    }
+    this.bookObligations.forEach(elem=>{
+      if(elem.id==this.book.id){
+        this.hasThisBook=true; 
+      }
+      if(elem.broj_dana<0){
+        this.passedDeadline=true; 
+      }
+    })
+    if(this.hasThisBook){
+      this.bookMessage="Već imate ovu knjigu!";
+      return;
+    }
+    if(this.passedDeadline){
+      this.bookMessage="Imate knjigu sa kojom kasnite!";
+      return;
+    }
+
+    let reservation = new Reservation(); 
+    reservation.id_knjige=this.book.id;
+    reservation.kor_ime=this.user.kor_ime;  
+
+    this.booksService.makeReservation(reservation).subscribe(resp=>{
+      alert(resp['message'])
+    })
+
+
   }
 
 

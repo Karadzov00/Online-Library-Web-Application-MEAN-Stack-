@@ -89,6 +89,9 @@ booksRouter.route('/acceptSuggestion').post(
 booksRouter.route('/addProlongation').post(
     (req, res) => new BooksController().addProlongation(req, res)
 )
+booksRouter.route('/makeReservation').post(
+    (req, res) => new BooksController().makeReservation(req, res)
+)
 
 
 

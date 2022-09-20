@@ -10,6 +10,7 @@ const obligation_1 = __importDefault(require("../models/obligation"));
 const max_days_1 = __importDefault(require("../models/max_days"));
 const book_request_1 = __importDefault(require("../models/book_request"));
 const prolongation_1 = __importDefault(require("../models/prolongation"));
+const reservation_1 = __importDefault(require("../models/reservation"));
 class BooksController {
     constructor() {
         this.getTop3Books = (req, res) => {
@@ -425,6 +426,50 @@ class BooksController {
                             });
                         }
                     });
+                }
+            });
+        };
+        this.makeReservation = (req, res) => {
+            let reser = req.body.reservation;
+            reservation_1.default.find({}, (err, reservs) => {
+                if (err)
+                    console.log(err);
+                else {
+                    if (reservs) {
+                        reservation_1.default.find({}, { _id: 0, id_knjige: 0, kor_ime: 0 }).sort({ 'id': -1 }).limit(1).then((reserv) => {
+                            var result = [];
+                            reserv.forEach(elem => {
+                                result.push(elem.id);
+                            });
+                            console.log(result[0]);
+                            let new_id = result[0] + 1;
+                            let new_reservation = new reservation_1.default({
+                                id: new_id,
+                                id_knjige: reser.id_knjige,
+                                kor_ime: reser.kor_ime
+                            });
+                            new_reservation.save((err, resp) => {
+                                if (err)
+                                    console.log(err);
+                                else
+                                    res.json({ "message": "dodata rezervacija" });
+                            });
+                        });
+                    }
+                    else {
+                        let new_id = 1;
+                        let new_reservation = new reservation_1.default({
+                            id: new_id,
+                            id_knjige: reser.id_knjige,
+                            kor_ime: reser.kor_ime
+                        });
+                        new_reservation.save((err, resp) => {
+                            if (err)
+                                console.log(err);
+                            else
+                                res.json({ "message": "dodata rezervacija" });
+                        });
+                    }
                 }
             });
         };
