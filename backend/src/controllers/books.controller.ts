@@ -7,6 +7,7 @@ import BookRequest from "../models/book_request";
 import Prolongation from "../models/prolongation"
 import Reservation from "../models/reservation"
 import { ReservationModel } from "../models/reservationModel";
+import book from "../models/book";
 
 export class BooksController{
 
@@ -143,6 +144,7 @@ export class BooksController{
                 Book.findOne({'id':book_id},(err, book)=>{
                     if(err)console.log(err)
                     else{
+                        this.checkReservations(book_id); 
                         let na_stanju = book.na_stanju+1;
                         Book.updateOne({'id':book.id}, {$set:{'na_stanju':na_stanju}}, (err, resp)=>{
                             if(err)console.log(err)
@@ -154,6 +156,33 @@ export class BooksController{
             
             }
         })
+    }
+
+    checkReservations(book_id){
+        Reservation.find({'id_knjige':book_id}).sort({'id':1}).then(reservations=>{
+            let hasThatBook=false; 
+            let cnt=0; 
+            reservations.forEach(reservation=>{
+                Obligation.find({'kor_ime':reservation.kor_ime},(err, obligations)=>{
+                    if(err)console.log(err)
+                    else{
+                        obligations.forEach(obligation=>{
+                            if(!obligation.razduzen.localeCompare('ne')){
+                                cnt++; 
+                                if(obligations.id_knjige==book_id){
+                                    hasThatBook=true; 
+                                }
+                            }
+                        })
+                        if(cnt<3 && !hasThatBook){
+                            //break loop and assign book to the user 
+                            
+                        }
+                    }
+                })
+            })
+        })
+        
     }
 
     makeObligation = (req: express.Request, res: express.Response)=>{
