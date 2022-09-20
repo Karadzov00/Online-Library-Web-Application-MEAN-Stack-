@@ -195,9 +195,9 @@ export class ObligationsComponent implements OnInit {
         prolongation.novi_datum=returnDate; 
 
         console.log(prolongation);
-        // this.booksService.addProlongation(prolongation).subscribe(resp=>{
-        //   alert(resp['message']); 
-        // }) 
+        this.booksService.addProlongation(prolongation).subscribe(resp=>{
+          alert(resp['message']); 
+        }) 
 
       }
     })
