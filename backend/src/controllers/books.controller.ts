@@ -148,11 +148,13 @@ export class BooksController{
                     else{
                         Reservation.find({'id_knjige':book_id}).sort({'id':1}).then(reservations=>{
                             if(reservations){
+                                console.log(reservations);
                                 //if there are reservations for this book 
                                 let hasThatBook=false; 
                                 let cnt=0;
                                 let exitFor=false; 
                                 for(var reserv of reservations){
+                                    console.log(reserv); 
                                     Obligation.find({'kor_ime':reserv.kor_ime},(err, obligations)=>{
                                         if(err)console.log(err)
                                         else{
@@ -172,14 +174,14 @@ export class BooksController{
                                                 maxDays.findOne({'id':1},(err, days)=>{
                                                     if(err)console.log(err)
                                                     else{
-                    
+                                                        
                                                         let date2 = new Date();
                                                         date2.setDate(date2.getDate() + days);
                                                         let returnDate = date2.getFullYear()+'-'+(date2.getMonth()+1)+'-'+date2.getDate(); 
                                                         
                                                         let username=reserv.kor_ime;
-                                                        let id_knjige = book_id;
-                                                        let returned = 'ne'; 
+                                                        console.log("Username je "+username)
+
                                                         let date1 = new Date(); 
                                                         let takeDate = date1.getFullYear()+'-'+(date1.getMonth()+1)+'-'+date1.getDate();
                     
@@ -191,7 +193,7 @@ export class BooksController{
                                                                 let obligation = new Obligation({
                                                                     id:new_id,
                                                                     kor_ime:username,
-                                                                    id_knjige:id_knjige,
+                                                                    id_knjige:book_id,
                                                                     datum_zaduzivanja: takeDate,
                                                                     datum_vracanja: returnDate,
                                                                     razduzen:'ne'
@@ -199,16 +201,19 @@ export class BooksController{
                                                                 obligation.save((err,resp)=>{
                                                                     if(err)console.log(err)
                                                                     else {
-                                                                        Book.findOne({'id':req.body.obligation.id_knjige},(err, book)=>{
+                                                                        Book.findOne({'id':book_id},(err, book)=>{
                                                                             if(err)console.log(err)
                                                                             else{
                                                                                 let broj_uzimanja= book.broj_uzimanja+1; 
                                                                                 Book.updateOne({'id':book.id}, {$set:{'broj_uzimanja':broj_uzimanja}}, (err, resp)=>{
                                                                                     if(err)console.log(err)
-                                                                                    else res.json({"message": "reservation accepted and obligation added"})
+                                                                                    // else res.json({"message": "reservation accepted and obligation added"})
                                                                                 })
                                                                             }
-                                                        
+                                                                        })
+                                                                        Reservation.deleteOne({'id':reserv.id}, (err, resp)=>{
+                                                                        if(err)console.log(err)
+
                                                                         })
                                                                     }
                                                                 })
