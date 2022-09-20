@@ -296,7 +296,13 @@ class BooksController {
                         else {
                             let ratings = book.komentari.length;
                             console.log(ratings);
-                            let rating = ((book.prosecna_ocena + comment.ocena) / ratings);
+                            let cnt = 0.0;
+                            let sum = 0.0;
+                            book.komentari.forEach(element => {
+                                sum += element.ocena;
+                                cnt++;
+                            });
+                            let rating = (sum / cnt).toFixed(3);
                             console.log(rating);
                             book_1.default.updateOne({ 'id': comment.id_knjige }, { $set: { 'prosecna_ocena': rating } }, (err, resp) => {
                                 if (err)
@@ -311,12 +317,31 @@ class BooksController {
         this.updateComment = (req, res) => {
             let comment = req.body.comment;
             console.log(comment);
-            book_1.default.updateOne({ 'id': comment.id_knjige, 'komentari.kor_ime': comment.kor_ime }, { $set: { 'komentari.$.ocena': comment.ocena, 'komentari.$.tekst': comment.tekst,
-                    'komentari.$.datum_vreme': comment.datum_vreme, 'komentari.$.azuriran': 'da' } }, (err, resp) => {
+            book_1.default.findOne({ 'id': comment.id_knjige }, (err, book) => {
                 if (err)
                     console.log(err);
-                else
-                    res.json({ 'message': 'comment_updated' });
+                else {
+                    let cnt = 0.0;
+                    let sum = 0.0;
+                    book.komentari.forEach(element => {
+                        if (element.kor_ime.localeCompare(comment.kor_ime)) {
+                            sum += element.ocena;
+                        }
+                        else {
+                            sum += comment.ocena;
+                        }
+                        cnt++;
+                    });
+                    let rating = (sum / cnt).toFixed(3);
+                    console.log(rating);
+                    book_1.default.updateOne({ 'id': comment.id_knjige, 'komentari.kor_ime': comment.kor_ime }, { $set: { 'prosecna_ocena': rating, 'komentari.$.ocena': comment.ocena, 'komentari.$.tekst': comment.tekst,
+                            'komentari.$.datum_vreme': comment.datum_vreme, 'komentari.$.azuriran': 'da' } }, (err, resp) => {
+                        if (err)
+                            console.log(err);
+                        else
+                            res.json({ 'message': 'comment_updated' });
+                    });
+                }
             });
         };
         this.updateBook = (req, res) => {

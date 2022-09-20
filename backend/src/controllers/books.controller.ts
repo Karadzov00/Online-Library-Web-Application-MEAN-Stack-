@@ -437,12 +437,33 @@ export class BooksController{
         let comment = req.body.comment; 
         console.log(comment); 
 
-        Book.updateOne({'id':comment.id_knjige, 'komentari.kor_ime':comment.kor_ime},
-                {$set: {'komentari.$.ocena':comment.ocena, 'komentari.$.tekst':comment.tekst,
-                'komentari.$.datum_vreme':comment.datum_vreme,'komentari.$.azuriran':'da'}}, (err, resp)=>{
-                    if(err) console.log(err)
-                    else res.json({'message': 'comment_updated'})
+        Book.findOne({'id':comment.id_knjige}, (err, book)=>{
+            if(err) console.log(err)
+            else{
+                let cnt = 0.0;
+                let  sum =0.0; 
+                book.komentari.forEach(element => {
+                    if(element.kor_ime.localeCompare(comment.kor_ime)){
+                        sum+=element.ocena; 
+                    }
+                    else{
+                        sum+=comment.ocena; 
+                    }
+                    cnt++; 
+                }); 
+
+                let rating = (sum/cnt).toFixed(3); 
+                console.log(rating); 
+                Book.updateOne({'id':comment.id_knjige, 'komentari.kor_ime':comment.kor_ime},
+                        {$set: {'prosecna_ocena':rating, 'komentari.$.ocena':comment.ocena, 'komentari.$.tekst':comment.tekst,
+                        'komentari.$.datum_vreme':comment.datum_vreme,'komentari.$.azuriran':'da'}}, (err, resp)=>{
+                            if(err) console.log(err)
+                            else res.json({'message': 'comment_updated'})
                 })
+            }
+        })
+        
+
 
     }
 

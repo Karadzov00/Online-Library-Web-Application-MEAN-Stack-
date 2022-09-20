@@ -23,17 +23,18 @@ export class BookPageComponent implements OnInit {
     private userService:UserService) { }
 
   ngOnInit(): void {
+ 
     let book = JSON.parse(localStorage.getItem('selectedBook')); 
     this.booksService.getBookById(book.id).subscribe((bookDb:Book)=>{
       this.book=bookDb;
+      console.log("komentari")
+      console.log(this.book.komentari); 
+      if(this.book.komentari.length==0){
+        this.commentMessage="Trenutno nema komentara za ovu knjigu"
+        this.showMessage=true; 
+      }
     })
     this.user = JSON.parse(localStorage.getItem('loggedUser')); 
-    console.log("komentari")
-    console.log(this.book.komentari); 
-    if(this.book.komentari.length==0){
-      this.commentMessage="Trenutno nema komentara za ovu knjigu"
-      this.showMessage=true; 
-    }
 
     this.booksService.getMaxDays().subscribe((days:MaxDays)=>{
       this.maxDays=days.max_broj_dana; 
