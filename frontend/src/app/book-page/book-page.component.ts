@@ -30,7 +30,7 @@ export class BookPageComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem('loggedUser')); 
     console.log("komentari")
     console.log(this.book.komentari); 
-    if(!this.book.komentari){
+    if(this.book.komentari.length==0){
       this.commentMessage="Trenutno nema komentara za ovu knjigu"
       this.showMessage=true; 
     }

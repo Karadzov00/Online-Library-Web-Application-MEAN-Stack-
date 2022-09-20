@@ -56,7 +56,8 @@ export class UserService {
     let upper = false;     
     let lower = false;     
     let digits = false;
-    if(password.length<6){
+    let specialChar = false; 
+    if(password.length<8 && password.length>12){
       return false;
     }
     for (let i = 0; i< password.length; i++) {
@@ -70,9 +71,12 @@ export class UserService {
       else if(/[0-9]/.test(character)){
         digits=true; 
       }
+      else if(/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(character)){
+        specialChar=true; 
+      }
 
     }
-    if(upper && lower && digits){
+    if(upper && lower && digits && specialChar){
       return true; 
     }
     return false; 

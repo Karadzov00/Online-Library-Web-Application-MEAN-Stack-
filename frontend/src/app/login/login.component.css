@@ -9,7 +9,7 @@
 
 .loginForm {
     position: relative;
-    height: 560px;
+    height: 580px;
     width: 405px;
     margin: auto;
     padding: 60px 60px;
@@ -172,7 +172,7 @@ hr {
 
 .errorClass {
     padding: 5px;
-    width: 395px;
+    width: 290px;
     background-color: rgb(255, 79, 79);
     color: white;
     margin-top: 5px;
