@@ -28,8 +28,8 @@ export class ObligationsComponent implements OnInit {
       console.log(this.prolongations); 
     })
 
-    this.booksService.getProlongationDays().subscribe((days:number)=>{
-      this.prolongationDays=days; 
+    this.booksService.getProlongationDays().subscribe((days:MaxDays)=>{
+      this.prolongationDays=days.max_broj_dana; 
     })
 
     if(this.user){
@@ -187,16 +187,17 @@ export class ObligationsComponent implements OnInit {
 
         let date2 = new Date(elem.datum_vracanja);
 
-        date2.setDate(date2.getDate() + this.maxDays);
+        date2.setDate(date2.getDate() + this.prolongationDays);
+        console.log(this.prolongationDays); 
         let returnDate = date2.getFullYear()+'-'+(date2.getMonth()+1)+'-'+date2.getDate(); 
         console.log(returnDate); 
         
         prolongation.novi_datum=returnDate; 
 
         console.log(prolongation);
-        this.booksService.addProlongation(prolongation).subscribe(resp=>{
-          alert(resp['message']); 
-        }) 
+        // this.booksService.addProlongation(prolongation).subscribe(resp=>{
+        //   alert(resp['message']); 
+        // }) 
 
       }
     })

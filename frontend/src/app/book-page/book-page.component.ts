@@ -245,9 +245,9 @@ export class BookPageComponent implements OnInit {
 
     console.log(obligation); 
 
-    // this.booksService.makeObligation(obligation).subscribe(resp=>{
-    //   alert(resp['message'])
-    // })
+    this.booksService.makeObligation(obligation).subscribe(resp=>{
+      alert(resp['message'])
+    })
 
   }
 
