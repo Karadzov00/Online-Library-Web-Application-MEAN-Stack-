@@ -30,7 +30,7 @@ export class BookPageComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem('loggedUser')); 
     console.log("komentari")
     console.log(this.book.komentari); 
-    if(this.book.komentari.length==0){
+    if(!this.book.komentari){
       this.commentMessage="Trenutno nema komentara za ovu knjigu"
       this.showMessage=true; 
     }
@@ -98,7 +98,7 @@ export class BookPageComponent implements OnInit {
     })
   }
 
-  book:Book; 
+  book:Book=new Book(); 
 
   allObligations: Obligation[]; 
   currObligations:Obligation[]=[]; 
@@ -226,6 +226,7 @@ export class BookPageComponent implements OnInit {
 
 
     let date2 = new Date();
+    console.log("max broj dana je " + this.maxDays);
     date2.setDate(date2.getDate() + this.maxDays);
     let returnDate = date2.getFullYear()+'-'+(date2.getMonth()+1)+'-'+date2.getDate(); 
 
@@ -244,9 +245,9 @@ export class BookPageComponent implements OnInit {
 
     console.log(obligation); 
 
-    this.booksService.makeObligation(obligation).subscribe(resp=>{
-      alert(resp['message'])
-    })
+    // this.booksService.makeObligation(obligation).subscribe(resp=>{
+    //   alert(resp['message'])
+    // })
 
   }
 
