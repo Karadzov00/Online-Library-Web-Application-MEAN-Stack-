@@ -17,31 +17,31 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let u of users" >
-                <td>{{u.kor_ime}}</td>
-                <td>{{u.ime}}</td>
-                <td>{{u.prezime}}</td>
-                <td>{{u.tip}}</td>
-                <td>{{u.status}}</td>
-                <td>
+            <tr *ngFor="let u of users">
+                <td *ngIf="u.tip!='admin'">{{u.kor_ime}}</td>
+                <td *ngIf="u.tip!='admin'">{{u.ime}}</td>
+                <td *ngIf="u.tip!='admin'">{{u.prezime}}</td>
+                <td *ngIf="u.tip!='admin'">{{u.tip}}</td>
+                <td *ngIf="u.tip!='admin'">{{u.status}}</td>
+                <td *ngIf="u.tip!='admin'"> 
                     <button  class="btn btn-success" (click)="addUser(u)">Dodaj</button>
                 </td>
-                <td>
+                <td *ngIf="u.tip!='admin'">
                     <button  class="btn btn-warning" (click)="updateUser(u)">Ažuriraj</button>
                 </td>
-                <td>
+                <td *ngIf="u.tip!='admin'">
                     <button  class="btn btn-danger" (click)="deleteUser(u)">Obriši</button>
                 </td>
-                <td>
+                <td *ngIf="u.tip!='admin'">
                     <button  class="btn btn-outline-success" (click)="upgradePrivilege(u)">Podigni privilegije</button>
                 </td>
-                <td>
+                <td *ngIf="u.tip!='admin'">
                     <button  class="btn btn-outline-secondary" (click)="downgradePrivilege(u)">Spusti privilegije</button>
                 </td>
-                <td>
+                <td *ngIf="u.tip!='admin'">
                     <button  class="btn btn-outline-danger" (click)="blockUser(u)">Blokiraj korisnika</button>
                 </td>
-                <td>
+                <td *ngIf="u.tip!='admin'">
                     <button  class="btn btn-outline-danger" (click)="unblockUser(u)">Deblokiraj korisnika</button>
                 </td>
             </tr>

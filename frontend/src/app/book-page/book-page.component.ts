@@ -361,4 +361,10 @@ export class BookPageComponent implements OnInit {
     
   }
 
+
+  makeReservation(){
+    
+  }
+
+
 }
