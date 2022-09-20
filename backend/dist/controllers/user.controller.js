@@ -204,8 +204,13 @@ class UserController {
             blocked_1.default.findOne({ 'kor_ime': user.kor_ime }, (err, resp) => {
                 if (err)
                     console.log(err);
-                else
-                    res.json(resp.blokiran);
+                else {
+                    if (resp) {
+                        res.json(resp.blokiran);
+                    }
+                    else
+                        res.json(resp);
+                }
             });
         };
     }

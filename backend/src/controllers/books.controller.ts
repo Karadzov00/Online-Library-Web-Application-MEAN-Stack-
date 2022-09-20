@@ -1,6 +1,6 @@
 import express from "express";
 import Book from "../models/book"
-import Date from "../models/date"
+import DateModel from "../models/date"
 import Obligation from "../models/obligation";
 import maxDays from "../models/max_days";
 import BookRequest from "../models/book_request";
@@ -68,7 +68,7 @@ export class BooksController{
     checkInsertDate = (req: express.Request, res: express.Response)=>{
         let date = req.body.date; 
 
-        Date.findOne({'datum':date},(err, date)=>{
+        DateModel.findOne({'datum':date},(err, date)=>{
             if(err)console.log(err); 
             else{
                 if(!date){
@@ -79,7 +79,7 @@ export class BooksController{
                             let maxId = books.length; 
                             let randomId=  Math.floor(Math.random() * (maxId + 1));
                             
-                            let new_date = new Date({
+                            let new_date = new DateModel({
                                 datum: req.body.date,
                                 id_knjige: randomId
                             })
@@ -142,15 +142,105 @@ export class BooksController{
         Obligation.updateOne({'id':id, 'kor_ime':username},{$set:{'razduzen':returnDate}}, (err,resp)=>{
             if(err)console.log(err)
             else {
+                //if there are no reservations for this book 
                 Book.findOne({'id':book_id},(err, book)=>{
                     if(err)console.log(err)
                     else{
-                        this.checkReservations(book_id); 
-                        let na_stanju = book.na_stanju+1;
-                        Book.updateOne({'id':book.id}, {$set:{'na_stanju':na_stanju}}, (err, resp)=>{
-                            if(err)console.log(err)
-                            else res.json({'message': 'uspesno_vracena'})
+                        Reservation.find({'id_knjige':book_id}).sort({'id':1}).then(reservations=>{
+                            if(reservations){
+                                //if there are reservations for this book 
+                                let hasThatBook=false; 
+                                let cnt=0;
+                                let exitFor=false; 
+                                for(var reserv of reservations){
+                                    Obligation.find({'kor_ime':reserv.kor_ime},(err, obligations)=>{
+                                        if(err)console.log(err)
+                                        else{
+                                            obligations.forEach(obligation=>{
+                                                if(!obligation.razduzen.localeCompare('ne')){
+                                                    cnt++; 
+                                                    if(obligations.id_knjige==book_id){
+                                                        hasThatBook=true; 
+                                                    }
+                                                }
+                                            })
+                                            if(cnt<3 && !hasThatBook){
+                                                //break loop and assign book to the user 
+                                                exitFor=true; 
+                    
+                                                //make obligation 
+                                                maxDays.findOne({'id':1},(err, days)=>{
+                                                    if(err)console.log(err)
+                                                    else{
+                    
+                                                        let date2 = new Date();
+                                                        date2.setDate(date2.getDate() + days);
+                                                        let returnDate = date2.getFullYear()+'-'+(date2.getMonth()+1)+'-'+date2.getDate(); 
+                                                        
+                                                        let username=reserv.kor_ime;
+                                                        let id_knjige = book_id;
+                                                        let returned = 'ne'; 
+                                                        let date1 = new Date(); 
+                                                        let takeDate = date1.getFullYear()+'-'+(date1.getMonth()+1)+'-'+date1.getDate();
+                    
+                                                        Obligation.find({},(err, obligations)=>{
+                                                            if(err)console.log(err)
+                                                            else{
+                                                                let new_id = obligations.length+1; 
+                            
+                                                                let obligation = new Obligation({
+                                                                    id:new_id,
+                                                                    kor_ime:username,
+                                                                    id_knjige:id_knjige,
+                                                                    datum_zaduzivanja: takeDate,
+                                                                    datum_vracanja: returnDate,
+                                                                    razduzen:'ne'
+                                                                })
+                                                                obligation.save((err,resp)=>{
+                                                                    if(err)console.log(err)
+                                                                    else {
+                                                                        Book.findOne({'id':req.body.obligation.id_knjige},(err, book)=>{
+                                                                            if(err)console.log(err)
+                                                                            else{
+                                                                                let broj_uzimanja= book.broj_uzimanja+1; 
+                                                                                Book.updateOne({'id':book.id}, {$set:{'broj_uzimanja':broj_uzimanja}}, (err, resp)=>{
+                                                                                    if(err)console.log(err)
+                                                                                    else res.json({"message": "reservation accepted and obligation added"})
+                                                                                })
+                                                                            }
+                                                        
+                                                                        })
+                                                                    }
+                                                                })
+                                                            }
+                                                        })                                                  
+                                                    
+                                                    }
+                                                })                 
+                                            }
+                                        }
+                                    })
+                                    if(exitFor)break; 
+                                } 
+                            }
+                            else{
+                                //if there are no reservations for this book 
+                                Book.findOne({'id':book_id},(err, book)=>{
+                                    if(err)console.log(err)
+                                    else{
+                                        let na_stanju = book.na_stanju+1;
+                                        Book.updateOne({'id':book.id}, {$set:{'na_stanju':na_stanju}}, (err, resp)=>{
+                                            if(err)console.log(err)
+                                            else res.json({'message': 'uspesno_vracena'})
+                                        })
+                                    }
+                
+                                })
+                            }
+                      
                         })
+
+                       
                     }
 
                 })
@@ -160,77 +250,101 @@ export class BooksController{
     }
 
     checkReservations(book_id){
-        Reservation.find({'id_knjige':book_id}).sort({'id':1}).then(reservations=>{
-            let hasThatBook=false; 
-            let cnt=0;
-            let exitFor=false; 
-            for(var reserv of reservations){
-                Obligation.find({'kor_ime':reserv.kor_ime},(err, obligations)=>{
-                    if(err)console.log(err)
-                    else{
-                        obligations.forEach(obligation=>{
-                            if(!obligation.razduzen.localeCompare('ne')){
-                                cnt++; 
-                                if(obligations.id_knjige==book_id){
-                                    hasThatBook=true; 
-                                }
-                            }
-                        })
-                        if(cnt<3 && !hasThatBook){
-                            //break loop and assign book to the user 
-                            exitFor=true; 
+        // Reservation.find({'id_knjige':book_id}).sort({'id':1}).then(reservations=>{
+        //     if(reservations){
+        //         //if there are reservations for this book 
+        //         let hasThatBook=false; 
+        //         let cnt=0;
+        //         let exitFor=false; 
+        //         for(var reserv of reservations){
+        //             Obligation.find({'kor_ime':reserv.kor_ime},(err, obligations)=>{
+        //                 if(err)console.log(err)
+        //                 else{
+        //                     obligations.forEach(obligation=>{
+        //                         if(!obligation.razduzen.localeCompare('ne')){
+        //                             cnt++; 
+        //                             if(obligations.id_knjige==book_id){
+        //                                 hasThatBook=true; 
+        //                             }
+        //                         }
+        //                     })
+        //                     if(cnt<3 && !hasThatBook){
+        //                         //break loop and assign book to the user 
+        //                         exitFor=true; 
+    
+        //                         //make obligation 
+        //                         maxDays.findOne({'id':1},(err, days)=>{
+        //                             if(err)console.log(err)
+        //                             else{
+    
+        //                                 let date2 = new Date();
+        //                                 date2.setDate(date2.getDate() + days);
+        //                                 let returnDate = date2.getFullYear()+'-'+(date2.getMonth()+1)+'-'+date2.getDate(); 
+                                        
+        //                                 let username=reserv.kor_ime;
+        //                                 let id_knjige = book_id;
+        //                                 let returned = 'ne'; 
+        //                                 let date1 = new Date(); 
+        //                                 let takeDate = date1.getFullYear()+'-'+(date1.getMonth()+1)+'-'+date1.getDate();
+    
+        //                                 Obligation.find({},(err, obligations)=>{
+        //                                     if(err)console.log(err)
+        //                                     else{
+        //                                         let new_id = obligations.length+1; 
+            
+        //                                         let obligation = new Obligation({
+        //                                             id:new_id,
+        //                                             kor_ime:username,
+        //                                             id_knjige:id_knjige,
+        //                                             datum_zaduzivanja: takeDate,
+        //                                             datum_vracanja: returnDate,
+        //                                             razduzen:'ne'
+        //                                         })
+        //                                         obligation.save((err,resp)=>{
+        //                                             if(err)console.log(err)
+        //                                             else {
+        //                                                 Book.findOne({'id':req.body.obligation.id_knjige},(err, book)=>{
+        //                                                     if(err)console.log(err)
+        //                                                     else{
+        //                                                         let broj_uzimanja= book.broj_uzimanja+1; 
+        //                                                         Book.updateOne({'id':book.id}, {$set:{'broj_uzimanja':broj_uzimanja}}, (err, resp)=>{
+        //                                                             if(err)console.log(err)
+        //                                                             else res.json({"message": "obligation_added"})
+        //                                                         })
+        //                                                     }
+                                        
+        //                                                 })
+        //                                             }
+        //                                         })
+        //                                     }
+        //                                 })                                                  
+                                    
+        //                             }
+        //                         })                 
+        //                     }
+        //                 }
+        //             })
+        //             if(exitFor)break; 
+        //         } 
+        //     }
+        //     else{
+        //         //if there are no reservations for this book 
+        //         Book.findOne({'id':book_id},(err, book)=>{
+        //             if(err)console.log(err)
+        //             else{
 
-                            //make obligation 
-                            let username=reserv.kor_ime;
-                            let id_knjige = book_id;
-                            let returned = 'ne'; 
 
-                            //make dates 
+        //                 let na_stanju = book.na_stanju+1;
+        //                 Book.updateOne({'id':book.id}, {$set:{'na_stanju':na_stanju}}, (err, resp)=>{
+        //                     if(err)console.log(err)
+        //                     else res.json({'message': 'uspesno_vracena'})
+        //                 })
+        //             }
 
-                            // Obligation.find({},(err, obligs)=>{
-                            //     if(err)console.log(err)
-                            //     else{
-                            //         let idO = obligs.length+1; 
-                            //         let obligation = new Obligation({
-                            //             id:idO,
-                            //             kor_ime:req.body.obligation.kor_ime,
-                            //             id_knjige:req.body.obligation.id_knjige,
-                            //             datum_zaduzivanja:req.body.obligation.datum_zaduzivanja,
-                            //             datum_vracanja:req.body.obligation.datum_vracanja,
-                            //             razduzen:req.body.obligation.razduzen
-                            //         })
-                    
-                            //         console.log(obligation); 
-                    
-                            //         obligation.save((err, resp)=>{
-                            //             if(err) {
-                            //                 console.log(err);
-                            //                 res.status(400).json({"message": "error"})
-                            //             }
-                            //             else {
-                            //                 Book.findOne({'id':req.body.obligation.id_knjige},(err, book)=>{
-                            //                     if(err)console.log(err)
-                            //                     else{
-                            //                         let broj_uzimanja= book.broj_uzimanja+1; 
-                            //                         Book.updateOne({'id':book.id}, {$set:{'broj_uzimanja':broj_uzimanja}}, (err, resp)=>{
-                            //                             if(err)console.log(err)
-                            //                             else res.json({"message": "obligation_added"})
-                            //                         })
-                            //                     }
-                            
-                            //                 })
-                            //             }
-                                            
-                            //         })
-                            //     }
-                            // })
-                        }
-                    }
-                })
-                if(exitFor)break; 
-            } 
+        //         })
+        //     }
       
-        })
+        // })
         
     }
 

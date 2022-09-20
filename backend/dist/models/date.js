@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
 const Schema = mongoose_1.default.Schema;
-let Date = new Schema({
+let DateModel = new Schema({
     datum: {
         type: String
     },
@@ -13,5 +13,5 @@ let Date = new Schema({
         type: Number
     }
 });
-exports.default = mongoose_1.default.model("Date", Date, "datumi");
+exports.default = mongoose_1.default.model("Date", DateModel, "datumi");
 //# sourceMappingURL=date.js.map

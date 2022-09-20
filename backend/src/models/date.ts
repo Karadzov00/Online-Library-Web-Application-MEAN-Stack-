@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 
-let Date = new Schema(
+let DateModel = new Schema(
     {       
         datum:{
             type:String
@@ -14,4 +14,4 @@ let Date = new Schema(
     }
 );
 
-export default mongoose.model("Date", Date, "datumi");
+export default mongoose.model("Date", DateModel, "datumi");
