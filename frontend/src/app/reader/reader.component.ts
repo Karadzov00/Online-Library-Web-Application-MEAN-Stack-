@@ -5,6 +5,7 @@ import { BooksService } from '../books.service';
 import { Book } from '../model/book';
 import { BookHistoryObligation } from '../model/bookHistoryObligation';
 import { BookObligation } from '../model/bookObligation';
+import { BookRequest } from '../model/bookRequest';
 import { Obligation } from '../model/obligation';
 import { User } from '../model/user';
 import { UserService } from '../user.service';
@@ -23,6 +24,26 @@ export class ReaderComponent implements OnInit {
     this.book = JSON.parse(localStorage.getItem('selectedBook')); 
     console.log(this.user); 
     this.userImage= this.user.slika; 
+
+    if(this.user){
+      this.userService.checkBlockStatus(this.user).subscribe((blocked:string)=>{
+        if(!blocked.localeCompare('da')){
+          this.userBlocked=true; 
+        }
+        else{
+          this.userBlocked=false; 
+        }
+      })
+    }
+
+    this.booksService.fetchBookSuggestions().subscribe((requests:BookRequest[])=>{
+      requests.forEach(elem=>{
+        if(!elem.kor_ime.localeCompare(this.user.kor_ime) && !elem.status.localeCompare('odobren')){
+          console.log("odobren")
+          this.bookAccepted=true; 
+        }
+      })
+    })
 
 
     this.date= new Date().toLocaleDateString();
@@ -113,6 +134,9 @@ export class ReaderComponent implements OnInit {
 
   notifMessage1:string=""; 
   notifMessage2:string=""; 
+
+  userBlocked:boolean; 
+  bookAccepted:boolean; 
 
   book:Book; 
   date: string; 

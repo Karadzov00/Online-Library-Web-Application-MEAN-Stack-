@@ -45,8 +45,10 @@
         <div class="d-flex flex-row gap-3">
             <button class="btn btn-success" (click)="reserveBook()" *ngIf="book.na_stanju>0">Zaduži knjigu</button>
             <button class="btn btn-success" (click)="makeReservation()" *ngIf="book.na_stanju==0">Rezerviši knjigu</button>
-            <button class="btn btn-success" (click)="updateBook()"
-            *ngIf="user.tip=='moderator' ">Ažuriraj knjigu</button>
+            <div *ngIf="user">
+                <button class="btn btn-success" (click)="updateBook()"
+                *ngIf="user.tip=='moderator' ">Ažuriraj knjigu</button>
+            </div>
         </div>
         
       </mat-card-content>

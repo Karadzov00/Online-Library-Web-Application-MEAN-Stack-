@@ -2,13 +2,15 @@
   <h1 class="display-5" id="head">Top 3 <br> najpopularnije knjige
   </h1>
 </div> -->
-<div class="container">
-  <div  class="d-flex justify-content-center" id="#carousel">
-    <div class="col-md-3 col-sm-6" id="images">
-      <ngb-carousel *ngIf="images">
-        <ng-template ngbSlide class="d-flex justify-content-center">
-          <div class="picsum-img-wrapper d-flex justify-content-center">
-            <img [src]="images[0]" alt="Random first slide" height="480" width="420">
+
+
+  <div class="container">
+      <div  class="d-flex justify-content-center" id="#carousel">
+        <div class="col-md-3 col-sm-6" id="images">
+          <ngb-carousel *ngIf="images">
+            <ng-template ngbSlide class="d-flex justify-content-center">
+              <div class="picsum-img-wrapper d-flex justify-content-center">
+                <img [src]="images[0]" alt="Random first slide" height="480" width="420">
           </div>
         </ng-template>
         <ng-template ngbSlide class="d-flex justify-content-center">
@@ -22,6 +24,31 @@
           </div>
         </ng-template>
       </ngb-carousel>
-        </div>
     </div>
+  </div>
 </div>
+
+<!-- <div class="col-md-4" id="carousel">
+
+  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img [src]="images[0]" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img [src]="images[1]" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img [src]="images[2]" class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div> -->

@@ -3,11 +3,32 @@
 }
 
 #images{
-    padding-top: 10px;
+    padding-top: 100px;
 }
 
 #head{
     margin-bottom: 0px;
-    margin-left: 3%;
+    margin-left: 10px;
 }
+
+#carousel{
+    height: 500px;
+    width:300px;
+    margin-bottom: 50px;
+
+}
+
+.example-card {
+    margin-top: 20px;
+    padding-bottom: 10px;
+    background-color: rgba(194, 194, 194, 0.452);
+}
+
+#backgrnd{
+    background-color: rgba(194, 194, 194, 0.123);
+}
+
+
+
+
 

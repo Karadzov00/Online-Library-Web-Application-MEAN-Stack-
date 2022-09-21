@@ -57,7 +57,7 @@ export class BookPageComponent implements OnInit {
 
     })
 
-
+    if(!this.user)return; 
     this.userService.getObligations(this.user.kor_ime).subscribe((obligs:Obligation[])=>{
       this.allObligations=obligs; 
       console.log("sva zaduzenja");

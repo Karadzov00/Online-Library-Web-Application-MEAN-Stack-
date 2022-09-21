@@ -30,6 +30,7 @@ import { BookSuggestionsComponent } from './book-suggestions/book-suggestions.co
 import { NgChartsModule } from 'ng2-charts';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,6 +50,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     AdminComponent,
     UpdateUserComponent,
     BookSuggestionsComponent
+
   ],
   imports: [
     BrowserModule,
@@ -68,6 +70,6 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent, HomepageComponent]
 })
 export class AppModule { }
