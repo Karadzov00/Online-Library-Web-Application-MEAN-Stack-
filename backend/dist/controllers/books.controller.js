@@ -171,8 +171,10 @@ class BooksController {
                                                             console.log(err);
                                                         else {
                                                             let date2 = new Date();
-                                                            date2.setDate(date2.getDate() + days.broj_dana);
+                                                            date2.setDate(date2.getDate() + days.max_broj_dana);
+                                                            console.log(date2);
                                                             let returnDate = date2.getFullYear() + '-' + (date2.getMonth() + 1) + '-' + date2.getDate();
+                                                            console.log(returnDate);
                                                             let username = reserv.kor_ime;
                                                             console.log("Username je " + username);
                                                             let date1 = new Date();
