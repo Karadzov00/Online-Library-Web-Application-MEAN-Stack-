@@ -34,6 +34,9 @@ booksRouter.route('/fetchBookSuggestions').get(
 booksRouter.route('/fetchProlongations').get(
     (req, res) => new BooksController().fetchProlongations(req, res)
 )
+booksRouter.route('/fetchAcceptedReservations').get(
+    (req, res) => new BooksController().fetchAcceptedReservations(req, res)
+)
 
 booksRouter.route('/getBookById').post(
     (req, res) => new BooksController().getBookById(req, res)

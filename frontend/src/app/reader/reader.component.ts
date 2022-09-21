@@ -2,6 +2,7 @@ import { JsonPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BooksService } from '../books.service';
+import { AcceptedReservation } from '../model/acceptedReservation';
 import { Book } from '../model/book';
 import { BookHistoryObligation } from '../model/bookHistoryObligation';
 import { BookObligation } from '../model/bookObligation';
@@ -43,6 +44,12 @@ export class ReaderComponent implements OnInit {
           this.bookAccepted=true; 
         }
       })
+    })
+
+    this.booksService.fetchAcceptedReservations().subscribe((reservs:AcceptedReservation[])=>{
+      this.acceptedReservations=reservs; 
+      console.log("Prihvacene rezervacije \n");
+      console.log(this.acceptedReservations);  
     })
 
 
@@ -112,7 +119,9 @@ export class ReaderComponent implements OnInit {
               bookObl.slika=book.slika; 
               bookObl.broj_dana=days; 
               bookObl.id=book.id; 
-              // console.log(bookObl); 
+              // console.log(bookObl);
+              
+              
               
               let obl: Obligation = elem;  
               this.currObligations.push(obl);
@@ -120,6 +129,18 @@ export class ReaderComponent implements OnInit {
 
               this.bookObligations.push(bookObl); 
               this.haveObligations=true; 
+
+
+              this.acceptedReservations.forEach(elem=>{
+                if(elem.id_knjige==book.id && !this.user.kor_ime.localeCompare(elem.kor_ime)){
+                  if(this.reservationNotification)
+                    {this.reservationNotification+="Prihvacena vam je rezervacija za knjigu "+book.naziv; }
+                  else
+                  {
+                    this.reservationNotification="Prihvacena vam je rezervacija za knjigu "+book.naziv;
+                  }
+                }
+              })
             }
           })
 
@@ -134,6 +155,8 @@ export class ReaderComponent implements OnInit {
 
   notifMessage1:string=""; 
   notifMessage2:string=""; 
+
+  reservationNotification:string; 
 
   userBlocked:boolean; 
   bookAccepted:boolean; 
@@ -156,6 +179,8 @@ export class ReaderComponent implements OnInit {
 
   user:User; 
   userImage: string; 
+
+  acceptedReservations:AcceptedReservation[]=[]; 
 
 
   allObligations: Obligation[]; 

@@ -15,6 +15,7 @@ booksRouter.route('/getMaxDays').get((req, res) => new books_controller_1.BooksC
 booksRouter.route('/getProlongationDays').get((req, res) => new books_controller_1.BooksController().getProlongationDays(req, res));
 booksRouter.route('/fetchBookSuggestions').get((req, res) => new books_controller_1.BooksController().fetchBookSuggestions(req, res));
 booksRouter.route('/fetchProlongations').get((req, res) => new books_controller_1.BooksController().fetchProlongations(req, res));
+booksRouter.route('/fetchAcceptedReservations').get((req, res) => new books_controller_1.BooksController().fetchAcceptedReservations(req, res));
 booksRouter.route('/getBookById').post((req, res) => new books_controller_1.BooksController().getBookById(req, res));
 booksRouter.route('/checkInsertDate').post((req, res) => new books_controller_1.BooksController().checkInsertDate(req, res));
 booksRouter.route('/searchBooks').post((req, res) => new books_controller_1.BooksController().searchBooks(req, res));

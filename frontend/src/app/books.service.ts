@@ -188,6 +188,10 @@ export class BooksService {
     return this.http.get(`${this.uri}/books/fetchProlongations`); 
 
   }
+  fetchAcceptedReservations(){
+    return this.http.get(`${this.uri}/books/fetchAcceptedReservations`); 
+
+  }
 
 
 
