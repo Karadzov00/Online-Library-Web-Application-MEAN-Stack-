@@ -33,6 +33,20 @@ export class BookPageComponent implements OnInit {
         this.commentMessage="Trenutno nema komentara za ovu knjigu"
         this.showMessage=true; 
       }
+      else{
+        this.book.komentari.sort((a,b)=>{
+          let date1 = new Date(a.datum_vreme);
+          let date2 = new Date(b.datum_vreme);
+          if ( date1 < date2 ){
+              return 1;
+          }
+          if ( date1 > date2 ){
+
+              return -1;
+          }
+          return 0;
+        })
+      }
     })
     this.user = JSON.parse(localStorage.getItem('loggedUser')); 
 
