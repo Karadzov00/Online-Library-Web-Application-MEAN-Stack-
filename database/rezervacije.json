@@ -1,0 +1,15 @@
+[{
+  "_id": {
+    "$oid": "6329ce187459f38526208e5a"
+  },
+  "id": 1,
+  "id_knjige": 2,
+  "kor_ime": "karadzov"
+},{
+  "_id": {
+    "$oid": "632a228e7459f38526208ecd"
+  },
+  "id": 2,
+  "id_knjige": 8,
+  "kor_ime": "neca"
+}]

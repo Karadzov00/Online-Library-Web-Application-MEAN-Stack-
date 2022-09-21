@@ -1,0 +1,335 @@
+[{
+  "_id": {
+    "$oid": "631f781053811c035225efff"
+  },
+  "id": 1,
+  "kor_ime": "pera98",
+  "id_knjige": 3,
+  "datum_zaduzivanja": "2022-09-12",
+  "datum_vracanja": "2022-12-30",
+  "razduzen": "2022-09-15"
+},{
+  "_id": {
+    "$oid": "631f781b53811c035225f000"
+  },
+  "id": 2,
+  "kor_ime": "karadzov",
+  "id_knjige": 2,
+  "datum_zaduzivanja": "2022-07-12",
+  "datum_vracanja": "2022-07-17",
+  "razduzen": "2022-07-16"
+},{
+  "_id": {
+    "$oid": "631f782753811c035225f001"
+  },
+  "id": 3,
+  "kor_ime": "karadzov",
+  "id_knjige": 5,
+  "datum_zaduzivanja": "2022-09-12",
+  "datum_vracanja": "2023-11-25",
+  "razduzen": "2022-09-17"
+},{
+  "_id": {
+    "$oid": "631f782f53811c035225f002"
+  },
+  "id": 4,
+  "kor_ime": "neca",
+  "id_knjige": 4,
+  "datum_zaduzivanja": "2022-03-12",
+  "datum_vracanja": "2023-12-15",
+  "razduzen": "2022-9-20"
+},{
+  "_id": {
+    "$oid": "6321e89a53811c035225f054"
+  },
+  "id": 5,
+  "kor_ime": "neca",
+  "id_knjige": 1,
+  "datum_zaduzivanja": "2021-03-12",
+  "datum_vracanja": "2022-3-25",
+  "razduzen": "2022-2-20"
+},{
+  "_id": {
+    "$oid": "6321e99f53811c035225f055"
+  },
+  "id": 6,
+  "kor_ime": "neca",
+  "id_knjige": 3,
+  "datum_zaduzivanja": "2021-12-12",
+  "datum_vracanja": "2023-01-15",
+  "razduzen": "2022-9-20"
+},{
+  "_id": {
+    "$oid": "6322237a53811c035225f062"
+  },
+  "id": 7,
+  "kor_ime": "neca",
+  "id_knjige": 5,
+  "datum_zaduzivanja": "2015-03-12",
+  "datum_vracanja": "2016-12-15",
+  "razduzen": "2022-9-20"
+},{
+  "_id": {
+    "$oid": "63224948fca6c0d48e4852b3"
+  },
+  "id": 8,
+  "kor_ime": "karadzov",
+  "id_knjige": 3,
+  "datum_zaduzivanja": "2022-8-14",
+  "datum_vracanja": "2022-8-28",
+  "razduzen": "2022-8-18",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632252437a7589a484a965ce"
+  },
+  "id": 9,
+  "kor_ime": "karadzov",
+  "id_knjige": 4,
+  "datum_zaduzivanja": "2022-9-15",
+  "datum_vracanja": "2022-9-29",
+  "razduzen": "2022-9-17",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632252687a7589a484a965eb"
+  },
+  "id": 10,
+  "kor_ime": "karadzov",
+  "id_knjige": 3,
+  "datum_zaduzivanja": "2022-9-15",
+  "datum_vracanja": "2022-10-19",
+  "razduzen": "ne",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6322529e7a7589a484a96602"
+  },
+  "id": 11,
+  "kor_ime": "karadzov",
+  "id_knjige": 4,
+  "datum_zaduzivanja": "2022-9-10",
+  "datum_vracanja": "2022-9-15",
+  "razduzen": "2022-8-18",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632252d67a7589a484a9661c"
+  },
+  "id": 12,
+  "kor_ime": "karadzov",
+  "id_knjige": 5,
+  "datum_zaduzivanja": "2022-9-15",
+  "datum_vracanja": "2022-9-17",
+  "razduzen": "2022-9-18",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6323327000b647beca74aeed"
+  },
+  "id": 13,
+  "kor_ime": "pera98",
+  "id_knjige": 3,
+  "datum_zaduzivanja": "2022-9-15",
+  "datum_vracanja": "2022-9-29",
+  "razduzen": "ne",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6324847104c5b39d548aa7ad"
+  },
+  "id": 14,
+  "kor_ime": "andrija",
+  "id_knjige": 2,
+  "datum_zaduzivanja": "2022-9-16",
+  "datum_vracanja": "2022-10-6",
+  "razduzen": "2022-9-20",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63249a5d453677831140a9cb"
+  },
+  "id": 15,
+  "kor_ime": "karadzov",
+  "id_knjige": 4,
+  "datum_zaduzivanja": "2022-9-16",
+  "datum_vracanja": "2022-10-26",
+  "razduzen": "ne",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6324cb0f4b533864d7d6d261"
+  },
+  "id": 16,
+  "kor_ime": "pera98",
+  "id_knjige": 7,
+  "datum_zaduzivanja": "2022-9-16",
+  "datum_vracanja": "2022-10-6",
+  "razduzen": "ne",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6324cb2a4b533864d7d6d271"
+  },
+  "id": 17,
+  "kor_ime": "pera98",
+  "id_knjige": 2,
+  "datum_zaduzivanja": "2022-9-16",
+  "datum_vracanja": "2022-10-6",
+  "razduzen": "2022-9-19",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632a0c1e7459f38526208e75"
+  },
+  "id": 19,
+  "kor_ime": "dimi",
+  "id_knjige": 8,
+  "datum_zaduzivanja": "2022-9-19",
+  "datum_vracanja": "2022-10-19",
+  "razduzen": "2022-9-20",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632a172cae9b7072fe871688"
+  },
+  "id": 20,
+  "kor_ime": "pera98",
+  "id_knjige": 8,
+  "datum_zaduzivanja": "2022-9-20",
+  "datum_vracanja": "2022-10-10",
+  "razduzen": "2022-9-20",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632a1762ae9b7072fe8716b8"
+  },
+  "id": 21,
+  "kor_ime": "neca",
+  "id_knjige": 8,
+  "datum_zaduzivanja": "2022-9-20",
+  "datum_vracanja": "NaN-NaN-NaN",
+  "razduzen": "2022-9-20",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632a18eaae9b7072fe871781"
+  },
+  "id": 22,
+  "kor_ime": "neca",
+  "id_knjige": 6,
+  "datum_zaduzivanja": "2022-9-20",
+  "datum_vracanja": "2022-10-10",
+  "razduzen": "ne",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632a1900ae9b7072fe87178f"
+  },
+  "id": 23,
+  "kor_ime": "neca",
+  "id_knjige": 7,
+  "datum_zaduzivanja": "2022-9-20",
+  "datum_vracanja": "2022-10-10",
+  "razduzen": "2022-9-20",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632a191aae9b7072fe8717ab"
+  },
+  "id": 24,
+  "kor_ime": "neca",
+  "id_knjige": 5,
+  "datum_zaduzivanja": "2022-9-20",
+  "datum_vracanja": "2022-10-10",
+  "razduzen": "ne",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632a1a1bae9b7072fe8717db"
+  },
+  "id": 25,
+  "kor_ime": "pera98",
+  "id_knjige": 8,
+  "datum_zaduzivanja": "2022-9-20",
+  "datum_vracanja": "2022-10-10",
+  "razduzen": "2022-9-20",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632a1b44ae9b7072fe8718cc"
+  },
+  "id": 26,
+  "kor_ime": "dimi",
+  "id_knjige": 8,
+  "datum_zaduzivanja": "2022-9-20",
+  "datum_vracanja": "2022-10-10",
+  "razduzen": "2022-9-20",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632a23024cc6afac37ef32f6"
+  },
+  "id": 27,
+  "kor_ime": "neca",
+  "id_knjige": 7,
+  "datum_zaduzivanja": "2022-9-20",
+  "datum_vracanja": "2022-10-17",
+  "razduzen": "ne",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632a235e4cc6afac37ef333a"
+  },
+  "id": 28,
+  "kor_ime": "karadzov",
+  "id_knjige": 8,
+  "datum_zaduzivanja": "2022-9-20",
+  "datum_vracanja": "2022-10-10",
+  "razduzen": "ne",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632a26994cc6afac37ef341a"
+  },
+  "id": 29,
+  "kor_ime": "dimi",
+  "id_knjige": 5,
+  "datum_zaduzivanja": "2022-9-20",
+  "datum_vracanja": "2022-10-17",
+  "razduzen": "ne",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632a26a54cc6afac37ef342a"
+  },
+  "id": 30,
+  "kor_ime": "dimi",
+  "id_knjige": 6,
+  "datum_zaduzivanja": "2022-9-20",
+  "datum_vracanja": "2022-10-10",
+  "razduzen": "2022-9-21",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632a2a0a4cc6afac37ef350f"
+  },
+  "id": 31,
+  "kor_ime": "dimi",
+  "id_knjige": 2,
+  "datum_zaduzivanja": "2022-9-20",
+  "datum_vracanja": "2022-10-10",
+  "razduzen": "ne",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632a46e43e48e3f5795fc405"
+  },
+  "id": 31,
+  "kor_ime": "dimi",
+  "id_knjige": 6,
+  "datum_zaduzivanja": "2022-9-21",
+  "datum_vracanja": "2022-10-11",
+  "razduzen": "ne",
+  "__v": 0
+}]

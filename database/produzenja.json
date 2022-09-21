@@ -1,0 +1,80 @@
+[{
+  "_id": {
+    "$oid": "63275b3b53811c035225f0df"
+  },
+  "id": 1,
+  "id_zaduzenja": 6,
+  "kor_ime": "neca",
+  "id_knjige": 3,
+  "novi_datum": "2022-9-22"
+},{
+  "_id": {
+    "$oid": "632775687f01791611b897be"
+  },
+  "id": 2,
+  "kor_ime": "neca",
+  "id_knjige": 5,
+  "id_zaduzenja": 7,
+  "novi_datum": "2016-12-15",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632775947f01791611b897ca"
+  },
+  "id": 3,
+  "kor_ime": "neca",
+  "id_knjige": 4,
+  "id_zaduzenja": 4,
+  "novi_datum": "2023-12-15",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6327890e7f01791611b8983d"
+  },
+  "id": 4,
+  "kor_ime": "karadzov",
+  "id_knjige": 3,
+  "id_zaduzenja": 10,
+  "novi_datum": "2022-10-19",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6327a02fecd24ffed0c8f24c"
+  },
+  "id": 5,
+  "kor_ime": "karadzov",
+  "id_knjige": 4,
+  "id_zaduzenja": 15,
+  "novi_datum": "2022-10-26",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632a26d74cc6afac37ef3444"
+  },
+  "id": 6,
+  "kor_ime": "dimi",
+  "id_knjige": 6,
+  "id_zaduzenja": 30,
+  "novi_datum": "2022-10-30",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632a2b214cc6afac37ef3546"
+  },
+  "id": 7,
+  "kor_ime": "dimi",
+  "id_knjige": 5,
+  "id_zaduzenja": 29,
+  "novi_datum": "2022-10-17",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632a2d422df4baeb4414e9b0"
+  },
+  "id": 8,
+  "kor_ime": "neca",
+  "id_knjige": 7,
+  "id_zaduzenja": 27,
+  "novi_datum": "2022-10-17",
+  "__v": 0
+}]

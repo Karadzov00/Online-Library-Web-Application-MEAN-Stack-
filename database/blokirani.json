@@ -1,0 +1,50 @@
+[{
+  "_id": {
+    "$oid": "6328c9734ebf3334a94ae7bb"
+  },
+  "kor_ime": "karadzov",
+  "blokiran": "ne",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6328c97f4ebf3334a94ae7bd"
+  },
+  "kor_ime": "neca",
+  "blokiran": "ne",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6328c9834ebf3334a94ae7bf"
+  },
+  "kor_ime": "karadzov200000",
+  "blokiran": "da",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6328c9894ebf3334a94ae7c1"
+  },
+  "kor_ime": "pera98",
+  "blokiran": "ne",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6328c98d4ebf3334a94ae7c3"
+  },
+  "kor_ime": "andrija",
+  "blokiran": "da",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6328c9974ebf3334a94ae7c7"
+  },
+  "kor_ime": "pero",
+  "blokiran": "ne",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632a65473e48e3f5795fcab4"
+  },
+  "kor_ime": "dimi",
+  "blokiran": "da",
+  "__v": 0
+}]
