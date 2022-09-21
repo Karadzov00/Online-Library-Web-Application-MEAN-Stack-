@@ -11,6 +11,7 @@ const max_days_1 = __importDefault(require("../models/max_days"));
 const book_request_1 = __importDefault(require("../models/book_request"));
 const prolongation_1 = __importDefault(require("../models/prolongation"));
 const reservation_1 = __importDefault(require("../models/reservation"));
+const acceptedReservation_1 = __importDefault(require("../models/acceptedReservation"));
 class BooksController {
     constructor() {
         this.getTop3Books = (req, res) => {
@@ -209,6 +210,15 @@ class BooksController {
                                                                                 }
                                                                             });
                                                                             reservation_1.default.deleteOne({ 'id': reserv.id }, (err, resp) => {
+                                                                                if (err)
+                                                                                    console.log(err);
+                                                                            });
+                                                                            let acceptedRes = new acceptedReservation_1.default({
+                                                                                id: reserv.id,
+                                                                                id_knjige: book_id,
+                                                                                kor_ime: username
+                                                                            });
+                                                                            acceptedRes.save((err, resp) => {
                                                                                 if (err)
                                                                                     console.log(err);
                                                                             });
@@ -593,6 +603,14 @@ class BooksController {
                         });
                     }
                 }
+            });
+        };
+        this.fetchAcceptedReservations = (req, res) => {
+            acceptedReservation_1.default.find({}, (err, reservations) => {
+                if (err)
+                    console.log(err);
+                else
+                    res.json(reservations);
             });
         };
     }

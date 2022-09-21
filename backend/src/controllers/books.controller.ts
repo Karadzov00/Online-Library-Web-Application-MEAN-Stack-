@@ -6,6 +6,7 @@ import maxDays from "../models/max_days";
 import BookRequest from "../models/book_request";
 import Prolongation from "../models/prolongation"
 import Reservation from "../models/reservation"
+import acceptedReservation from "../models/acceptedReservation"
 import { ReservationModel } from "../models/reservationModel";
 import book from "../models/book";
 import reservation from "../models/reservation";
@@ -220,6 +221,17 @@ export class BooksController{
                                                                         Reservation.deleteOne({'id':reserv.id}, (err, resp)=>{
                                                                         if(err)console.log(err)
                                                                         })
+                                                                        
+                                                                        let acceptedRes = new acceptedReservation({
+                                                                            id:reserv.id,
+                                                                            id_knjige: book_id,
+                                                                            kor_ime:username
+                                                                        })
+                                                                        acceptedRes.save((err, resp)=>{
+                                                                            if(err)console.log(err)
+
+                                                                        })
+                                                                        
                                                                     }
                                                                 })
                                                             }
@@ -725,6 +737,13 @@ export class BooksController{
             }
         })
 
+    }
+
+    fetchAcceptedReservations= (req: express.Request, res: express.Response)=>{
+        acceptedReservation.find({}, (err, reservations)=>{
+            if(err)console.log(err)
+            else res.json(reservations)
+        })
     }
 
 }
