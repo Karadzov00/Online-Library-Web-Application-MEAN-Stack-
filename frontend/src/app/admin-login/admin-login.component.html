@@ -1,0 +1,21 @@
+
+<div class="container" id="main">
+    <div class="loginForm">
+        <h2 class="active">Administrator</h2>
+        <form class="login">
+            <input type="text" class="text" name="username" [(ngModel)]="username">
+            <span>Korisničko ime:</span>
+            <br>
+            <br>
+            <input type="password" class="text" name="password" [(ngModel)]="password">
+            <span>Lozinka:</span>
+            <br>
+            <br>
+            <br>
+            <button class="signInDugme" (click)='login()'>Uloguj se</button>
+            <br>
+            <div *ngIf='errorMessage' class='errorClass'>{{errorMessage}}</div>
+        </form>
+        <hr>
+    </div>
+</div>

@@ -29,6 +29,7 @@ import { MatOptionModule } from '@angular/material/core';
 import { BookSuggestionsComponent } from './book-suggestions/book-suggestions.component';
 import { NgChartsModule } from 'ng2-charts';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     AddBookComponent,
     AdminComponent,
     UpdateUserComponent,
-    BookSuggestionsComponent
+    BookSuggestionsComponent,
+    AdminLoginComponent
 
   ],
   imports: [

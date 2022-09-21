@@ -1,0 +1,245 @@
+.signInDugme {
+    background-color: #d3d3d3;
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+
+.loginForm {
+    position: relative;
+    height: 580px;
+    width: 405px;
+    margin: auto;
+    padding: 60px 60px;
+    background: url(/assets/books-blured1.jpg) no-repeat center center #505050;
+    background-size: cover;
+    box-shadow: 0px 30px 60px -5px #000;
+}
+
+.login{
+    padding-top: 80px;
+    color: white;
+    
+}
+
+.active{
+    border-bottom: 2px solid #4f86e7;
+    color: white;
+}
+
+h2{
+    padding-left: 12px;
+    font-size: 22px;
+    text-transform: uppercase;
+    padding-bottom: 5px;
+    letter-spacing: 2px;
+    display: inline-block;
+    font-weight: 100;
+}
+
+h2:first-child{
+    padding-left: 0px;
+}
+
+span{
+    text-transform: uppercase;
+    font-size: 13px;
+    opacity: 0.9;
+    display: inline-block;
+    position: relative;
+    top: -65px;
+    transition: all 0.5s ease-in-out;
+}
+
+.text{
+    border: none;
+    width: 90%;
+    padding: 10px 20px;
+    display: block;
+    height: 15px;
+    border-radius: 20px;
+    background: rgba(119, 113, 113, 0.562);
+    border: 2px solid rgba(255, 255, 255, 0);
+    overflow: hidden;
+    margin-top: 15px;
+    transition: all 0.5s ease-in-out;
+}
+
+.typeSpan {
+    position: relative;
+    top: -5px;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    color: black;
+}
+
+.typeSpan:focus {
+    border: 20px solid rgba(0, 0, 0, 0.18);
+}
+
+.type {
+    width: 100%;
+    color: rgba(255, 255, 255, 0.76);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    background: rgba(119, 113, 113, 0.299);
+    padding: 5px 5px;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    box-sizing: border-box;
+    border: 1.5px solid rgba(0, 0, 0, 0.02);
+    margin-left: 0px;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.type text{
+    outline: 2;
+    border: 2px solid rgba(132, 132, 132, 0.859);
+    border-radius: 20px;
+    background: rgba(119, 113, 113, 0);
+}
+
+.text:focus {
+    outline: 2;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0);
+}
+
+.text:focus + span {
+    opacity: 0.6;
+}
+
+input[type="text"],
+input[type="password"] {
+  font-family: 'Montserrat', sans-serif;
+  color: rgb(255, 255, 255);
+}
+
+input {
+    display: inline-block;
+    padding-top: 20px;
+    font-size: 14px;
+}
+
+h2,
+span{
+  margin-left: 20px;
+}
+
+.signInDugme {
+    background-color: #494c51;
+    color: #FFF;
+    width: 100%;
+    padding: 10px 20px;
+    display: block;
+    height: 39px;
+    border-radius: 20px;
+    margin-top: 30px;
+    transition: all 0.5s ease-in-out;
+    border: none;
+    text-transform: uppercase;
+}
+
+.signInDugme:hover {
+    background: #5180d1;
+    box-shadow: 3px 5px 40px -5px #4082f5;
+    cursor: pointer;
+}
+
+.signInDugme:focus {
+    outline: none;
+}
+
+hr {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    top: 85px;
+    position: relative;
+}
+
+.errorClass {
+    padding: 5px;
+    width: 290px;
+    background-color: rgb(255, 79, 79);
+    color: white;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 0%;
+    border-radius: 1em;
+    box-shadow: 0px 11px 35px 2px rgba(255, 131, 131, 0.342);
+    text-align: center;
+}
+
+.topNav {
+    margin-left: 0px;
+    width: 100%;
+    background-color: #333;
+    overflow: hidden;
+    text-align: center;
+    display: inline-block;
+}
+
+.topNav li {
+    display: inline-block;
+    list-style-type: none;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.topNav li:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.topNav li.pocetna {
+    background-color: #4082f5;
+    color: white;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.buttonONama {
+    width: 66px;
+    height: 20px;
+    padding: 5px;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+
+.buttonONama:hover {
+    background-color: 333;
+    color: black;
+}
+ 
+li:hover a {
+    color: inherit;
+    cursor: pointer;
+}
+
+#avatar{
+    border-radius: 50%;
+}
+
+#main{
+    margin-top: 20px;
+}

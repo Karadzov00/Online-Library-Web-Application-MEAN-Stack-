@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddBookComponent } from './add-book/add-book.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminComponent } from './admin/admin.component';
 import { BookPageComponent } from './book-page/book-page.component';
 import { BookSuggestionsComponent } from './book-suggestions/book-suggestions.component';
@@ -34,7 +35,8 @@ const routes: Routes = [
   {path: 'addBook', component: AddBookComponent},
   {path: 'admin', component: AdminComponent},
   {path: 'updateUser', component: UpdateUserComponent},
-  {path: 'bookSuggestions', component: BookSuggestionsComponent}
+  {path: 'bookSuggestions', component: BookSuggestionsComponent},
+  {path: 'adminLogin', component: AdminLoginComponent}
 ];
 
 @NgModule({
