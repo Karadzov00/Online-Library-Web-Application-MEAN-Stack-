@@ -1,6 +1,6 @@
 # Online-Library-Web-Application-MEAN-Stack-
 
-This is an online library management system project built using Node.js, Angular, MongoDB, and Express.js. It provides user authentication and authorization functionality and supports three types of users: 
+This is a fullstack online library management system project built using Node.js, Angular, MongoDB, and Express.js. It provides user authentication and authorization functionality and supports three types of users: 
 - reader
 - moderator
 - admin
