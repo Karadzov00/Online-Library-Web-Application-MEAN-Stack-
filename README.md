@@ -19,7 +19,5 @@ The backend directory contains the Node.js and Express.js server application. It
 - src: Contains the server's source code.
   - controllers: Contains the request handlers and business logic.
   - models: Contains the database models and schema definitions.
-  - routes: Defines the API routes and maps them to the appropriate controller methods.
-  - middlewares: Contains custom middleware functions for authentication and authorization.
-  - app.js: Initializes the Express.js server and sets up middleware.
-  - config.js: Contains configuration variables like database c
+  - routes: Defines the API routes and maps them to the appropriate controller methods
+  - server.ts: The main entry point for the backend server.
